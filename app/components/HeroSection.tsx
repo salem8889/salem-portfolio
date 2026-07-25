@@ -41,12 +41,12 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="mt-6 text-base sm:text-lg md:text-xl text-[#8ba0c9] max-w-2xl leading-relaxed">
-          أنا <strong className="text-[#eaf2ff]">SALEM MOHAMMED BA ABBAD</strong>، مطور واجهات أمامية ومصمم UI/UX أدمج الأناقة البصرية مع حلول البرمجة المتقدمة لبناء مواجِهات حديثة وسريعة.
+          أنا <strong className="text-[#eaf2ff]">SALEM MOHAMMED BA ABBAD</strong>، مصمم UI/UX ومطور مواقع وبرامج شغوف بابتكار منصات ويب وتطبيقات ذكية تجمع بين الجاذبية البصرية، الأداء الفائق، وسهولة الاستخدام.
         </p>
 
         {/* Tech Stack Chips */}
         <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-xl">
-          {["Next.js", "React 19", "TypeScript", "UI/UX Design", "Tailwind CSS", "Canvas & Motion"].map((tech) => (
+          {["Next.js", "React 19", "Expo", "Android Studio", "TypeScript", "UI/UX Design", "Tailwind CSS"].map((tech) => (
             <span
               key={tech}
               className="px-3.5 py-1.5 rounded-lg bg-[#0d1a3d]/60 border border-[#4fd1ff]/15 text-[#8ba0c9] text-xs font-medium hover:border-[#4fd1ff]/40 hover:text-[#4fd1ff] transition-all"

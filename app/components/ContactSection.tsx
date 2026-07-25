@@ -112,32 +112,6 @@ export default function ContactSection() {
                   </div>
                 </div>
               </div>
-
-              {/* Social Media Links */}
-              <div className="mt-8 pt-6 border-t border-[#8ba0c9]/15">
-                <span className="text-xs text-[#8ba0c9] font-bold block mb-4">
-                  تابعني على الشبكات الاجتماعية:
-                </span>
-                <div className="flex items-center gap-3">
-                  {[
-                    { name: "GitHub", url: "#", icon: "💻" },
-                    { name: "LinkedIn", url: "#", icon: "💼" },
-                    { name: "Twitter / X", url: "#", icon: "🐦" },
-                    { name: "Dribbble", url: "#", icon: "🎨" },
-                  ].map((s) => (
-                    <a
-                      key={s.name}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-[#050b1f] border border-[#4fd1ff]/20 text-[#8ba0c9] hover:text-[#4fd1ff] hover:border-[#4fd1ff] flex items-center justify-center transition-all hover:scale-110"
-                      title={s.name}
-                    >
-                      <span>{s.icon}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
 
           </div>

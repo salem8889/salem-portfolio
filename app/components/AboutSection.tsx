@@ -10,10 +10,9 @@ interface CounterItem {
 }
 
 const stats: CounterItem[] = [
-  { target: 5, suffix: "+", label: "سنوات خبرة في التطوير", icon: "🚀" },
-  { target: 35, suffix: "+", label: "مشروع مكتمل بنجاح", icon: "💻" },
-  { target: 20, suffix: "+", label: "عميل وسعيد بالتعامل", icon: "🤝" },
-  { target: 99, suffix: "%", label: "نسبة رضا العملاء", icon: "⭐" },
+  { target: 1, suffix: "", label: "سنة خبرة مهنية", icon: "🚀" },
+  { target: 2, suffix: "", label: "مشاريع مكتملة بنجاح", icon: "💻" },
+  { target: 1, suffix: "", label: "مشروع تخرج متميز", icon: "🎓" },
 ];
 
 export default function AboutSection() {
@@ -98,7 +97,7 @@ export default function AboutSection() {
                     SALEM MOHAMMED BA ABBAD
                   </h3>
                   <p className="text-sm text-[#4fd1ff] mt-1 font-semibold">
-                    Frontend Developer & UI/UX Designer
+                    UI/UX Designer & Software Developer
                   </p>
                   <p className="text-xs text-[#8ba0c9] mt-3">الرياض، المملكة العربية السعودية</p>
                 </div>
@@ -117,15 +116,15 @@ export default function AboutSection() {
           {/* Bio Text & Details */}
           <div className="lg:col-span-7 space-y-6">
             <h3 className="font-cairo text-2xl sm:text-3xl font-bold text-[#eaf2ff] leading-snug">
-              أحول الأفكار المعقدة إلى واجهات مستخدم ملموسة، أنيقة، وسريعة للغاية.
+              أحول الأفكار المعقدة إلى منصات وتطبيقـات ملموسة، أنيقة، وسريعة للغاية.
             </h3>
             
             <p className="text-[#8ba0c9] text-base leading-relaxed">
-              أعمل كـ <strong>مطور واجهات أمامية ومصمم تجربة مستخدم (UI/UX)</strong> بخبرة أكثر من 5 سنوات في بناء المنصات الرقمية وتطبيقات الويب الحديثة. أمتلك رؤية تجمع بين دقة التصميم التفاعلي وهندسة الأكواد المتينة باستخدام أحدث أطر العمل مثل React و Next.js و TypeScript.
+              أنا <strong className="text-[#eaf2ff]">سالم محمد باعباد (SALEM MOHAMMED BA ABBAD)</strong>، خريج تقنية المعلومات (IT) لعام 2026 من جامعة الريان، مصمم تجربة مستخدم (UI/UX) ومطور مواقع وبرامج. أمتلك شغفاً ببناء المنصات الرقمية والمتاجر الإلكترونية وتصميم واجهات تفاعلية تمنح المستخدم تجربة فريدة بالاعتماد على أحدث أطر العمل مثل React و Next.js و TypeScript.
             </p>
 
             <p className="text-[#8ba0c9] text-base leading-relaxed">
-              أهتم بأدق التفاصيل الحركية والبصرية، لضمان أعلى معايير سهولة الاستخدام (Usability)، السرعة، التوافق مع محركات البحث SEO، ودعم كامل لمختلف الأجهزة والشاشات مع التجاوب التام والـ RTL.
+              أهتم بأدق التفاصيل الحركية والبصرية، لضمان أعلى معايير سهولة الاستخدام (Usability)، الأداء والسرعة، والتوافق التام مع مختلف الأجهزة والشاشات مع دعم RTL الكامل.
             </p>
 
             {/* Key Highlights */}
@@ -144,7 +143,7 @@ export default function AboutSection() {
         </div>
 
         {/* Animated Counters Grid */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {stats.map((stat, idx) => (
             <div
               key={stat.label}

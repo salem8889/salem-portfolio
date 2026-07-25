@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 
 interface Project {
   id: number;
@@ -11,59 +11,57 @@ interface Project {
   tags: string[];
   imageGradient: string;
   icon: string;
+  imageUrl?: string;
+  imageStyle?: "logo" | "full";
   liveUrl?: string;
   githubUrl?: string;
+  isDisplayOnly?: boolean;
 }
 
 const projectsData: Project[] = [
   {
     id: 1,
-    title: "منصة السفر وحجوزات رحلات الطيران الذكية",
+    title: "موقع وتطبيق شركة الجنية العربي للمعادن الثمينة",
     category: "web",
-    categoryLabel: "منصة ويب متكاملة",
+    categoryLabel: "مشروع حي ومباشر",
     description:
-      "منصة ويب تفاعلية توفر حجوزات سفر سلسة مع خرائط تفاعلية وتوصيات ذكية تعتمد على التفضيلات الشخصية وتجربة مستخدم متميزة.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Figma UI/UX"],
-    imageGradient: "from-[#1d63c9] via-[#0e3a8f] to-[#050b1f]",
-    icon: "✈️",
+      "منصة وموقع رسمي فاخر لشركة الجنية العربي للمعادن الثمينة بالمملكة العربية السعودية. يشتمل الموقع على شريط أسعار الذهب والفضة اللحظية المباشرة (Live Ticker)، وعرض السبائك والمنتجات مع استكشاف الفروع المعتمدة وتجربة مستخدم فاخرة.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Live Ticker API", "UI/UX Design", "RTL"],
+    imageGradient: "from-[#d4af37]/35 via-[#0e3a8f] to-[#050b1f]",
+    icon: "🪙",
+    imageUrl: "/arabic-coin-logo.jpg",
+    imageStyle: "logo",
+    liveUrl: "https://arabiccoincompany.com",
   },
   {
     id: 2,
-    title: "لوحة تحكم وتتبع الإنتاجية للمؤسسات (TaskFlow Pro)",
-    category: "app",
-    categoryLabel: "تطبيق ويب وتراسل",
+    title: "تصميم واجهات وتجربة تطبيق إعمار (Emaar App UI/UX)",
+    category: "uiux",
+    categoryLabel: "تصميم Figma تفاعلي",
     description:
-      "لوحة قيادة تفاعلية مخصصة لإدارة مشاريع الفرق الكبيرة، تحتوي على رسوم بيانية لحظية، تتبع مهام Kanban، ونظام إشعارات فورية.",
-    tags: ["React 19", "Redux Toolkit", "Recharts", "WebSockets"],
-    imageGradient: "from-[#0e3a8f] via-[#4fd1ff]/30 to-[#0d1a3d]",
-    icon: "📊",
+      "تصميم واجهات وتجربة مستخدم متكاملة وتفاعلية لتطبيق إعمار (Emaar App) على منصة Figma، تشمل النمذجة التفاعلية (Prototyping)، وتخطيط هيكلية المستخدم بأسلوب عصري جذاب.",
+    tags: ["Figma", "UI/UX Design", "Mobile App", "Wireframing", "Prototyping"],
+    imageGradient: "from-[#4fd1ff]/30 via-[#1d63c9] to-[#0e3a8f]",
+    icon: "🏢",
+    imageUrl: "/emaar-logo-center.png",
+    imageStyle: "logo",
+    liveUrl: "https://www.figma.com/design/pIJjE8wN3wRGT71f0rWSuz/Emaar-App?node-id=0-1&t=zxxVwlgOVdcmavZk-1",
   },
   {
     id: 3,
-    title: "متجر الساعات الفاخرة التجاري (LuxeTime)",
-    category: "web",
-    categoryLabel: "تجارة إلكترونية",
+    title: "بوابة تقنية المعلومات ونظام إدارة الخدمات (Rayyan IT Portal)",
+    category: "app",
+    categoryLabel: "مشروع تخرج 2026",
     description:
-      "متجر إلكتروني فاخر مع تجربة تسوق ثلاثية الأبعاد وتحريك سلس للمنتجات عند التصفح، تدعم بوابة دفع آمنة وتجاوب تام.",
-    tags: ["Next.js", "Stripe API", "Framer Motion", "RTL Styling"],
-    imageGradient: "from-[#1d63c9]/80 via-[#4fd1ff]/20 to-[#0e3a8f]",
-    icon: "💎",
-  },
-  {
-    id: 4,
-    title: "منصة التحليلات المالية وسوق الأسهم (FinPulse)",
-    category: "uiux",
-    categoryLabel: "تصميم UI/UX وواجهات",
-    description:
-      "تصميم واجهات مستخدم معقدة لتحليل البيانات المالية والمستندات بأسلوب مظلم راقٍ يسهل قراءة المؤشرات والمخططات الفنية.",
-    tags: ["Figma", "Design System", "UI/UX Architecture", "Prototyping"],
-    imageGradient: "from-[#050b1f] via-[#1d63c9] to-[#4fd1ff]/40",
-    icon: "📈",
+      "منصة ويب وتطبيق متكامل لتسهيل إدارة الخدمات البرمجية والمشاريع التقنية، تم تطويره كـ مشروع تخرج متميز لجامعة الريان لعام 2026 بمواصفات تقنية عالية ودعم متكامل للواجهات.",
+    tags: [],
+    imageGradient: "from-[#1d63c9] via-[#0e3a8f] to-[#050b1f]",
+    icon: "🎓",
+    isDisplayOnly: true,
   },
 ];
 
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState<"all" | "web" | "app" | "uiux">("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -75,11 +73,6 @@ export default function ProjectsSection() {
     card.style.setProperty("--mouse-y", `${y}px`);
   };
 
-  const filteredProjects =
-    filter === "all"
-      ? projectsData
-      : projectsData.filter((p) => p.category === filter);
-
   return (
     <section id="projects" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,90 +80,118 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
-            // محفظة الأعمال
+            // محفظة الأعمال والمشاريع
           </span>
           <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
-            أحدث المشاريع والابتكارات
+            المشاريع الحقيقية والتصاميم
           </h2>
           <p className="mt-3 text-[#8ba0c9] text-base">
-            نماذج حية لمشاريع قمت بتصميمها وتطويرها وفق أحدث المعايير البرمجية.
+            مشاريع واقعية وتصاميم متكاملة قمت بتطويرها وإعدادها بأعلى معايير الدقة والجمال.
           </p>
           <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {[
-            { id: "all", label: "الكل" },
-            { id: "web", label: "واجهات ويب" },
-            { id: "app", label: "تطبيقات ويب" },
-            { id: "uiux", label: "تصميم UI/UX" },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setFilter(item.id as any)}
-              className={`px-5 py-2.5 rounded-full text-sm font-cairo font-bold transition-all ${
-                filter === item.id
-                  ? "bg-gradient-to-r from-[#1d63c9] to-[#0e3a8f] text-[#eaf2ff] border border-[#4fd1ff]/40 shadow-[0_0_15px_rgba(79,209,255,0.3)]"
-                  : "bg-[#0d1a3d]/70 text-[#8ba0c9] hover:text-[#eaf2ff] hover:bg-[#0d1a3d] border border-transparent"
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid with Glow Effect */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectsData.map((project) => (
             <div
               key={project.id}
               onMouseMove={handleMouseMove}
-              className="glow-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between cursor-pointer group"
-              onClick={() => setSelectedProject(project)}
+              className={`glow-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group ${
+                project.isDisplayOnly ? "cursor-default" : "cursor-pointer"
+              }`}
+              onClick={() => {
+                if (!project.isDisplayOnly) {
+                  setSelectedProject(project);
+                }
+              }}
             >
-              {/* Top Banner & Icon */}
+              {/* Top Banner & Image/Icon */}
               <div>
                 <div
-                  className={`w-full h-48 sm:h-56 rounded-2xl bg-gradient-to-br ${project.imageGradient} border border-[#4fd1ff]/20 flex flex-col items-center justify-center p-6 mb-6 relative overflow-hidden group-hover:border-[#4fd1ff]/50 transition-all`}
+                  className={`w-full h-52 sm:h-56 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/20 flex flex-col items-center justify-center mb-6 relative overflow-hidden group-hover:border-[#4fd1ff]/50 transition-all shadow-inner`}
                 >
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#050b1f]/80 backdrop-blur-md text-[#4fd1ff] text-xs font-bold border border-[#4fd1ff]/20">
+                  {project.imageUrl ? (
+                    project.imageStyle === "full" ? (
+                      <div className="absolute inset-0 w-full h-full bg-[#050506]">
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a3d] via-transparent to-[#050b1f]/60 pointer-events-none"></div>
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full bg-[#050506] flex items-center justify-center p-6">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a3d] via-transparent to-[#050b1f]/70 z-10"></div>
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="w-32 h-32 sm:w-36 sm:h-36 object-cover rounded-full border-2 border-[#d4af37]/70 shadow-[0_0_35px_rgba(212,175,55,0.4)] z-0 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )
+                  ) : (
+                    <div
+                      className={`absolute inset-0 w-full h-full bg-gradient-to-br ${project.imageGradient} flex flex-col items-center justify-center`}
+                    >
+                      <span className="text-5xl transform group-hover:scale-110 transition-transform duration-300">
+                        {project.icon}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Category Label */}
+                  <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#050b1f]/85 backdrop-blur-md text-[#4fd1ff] text-[11px] font-bold border border-[#4fd1ff]/20 z-20">
                     {project.categoryLabel}
                   </div>
-                  <span className="text-6xl transform group-hover:scale-110 transition-transform duration-300">
-                    {project.icon}
-                  </span>
-                  <span className="mt-4 font-cairo text-sm text-[#eaf2ff]/80 font-semibold tracking-wider">
-                    معاينة تفاعلية ↗
-                  </span>
+
+                  {/* Live Link Overlay Button */}
+                  {project.liveUrl && (
+                    <div className="absolute bottom-3 left-3 z-20">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="font-cairo text-xs text-[#4fd1ff] font-bold px-3.5 py-1.5 rounded-full bg-[#050b1f]/90 backdrop-blur-md border border-[#4fd1ff]/40 hover:bg-[#4fd1ff] hover:text-[#050b1f] transition-all shadow-md"
+                      >
+                        {project.category === "uiux" ? "معاينة Figma ↗" : "زيارة الموقع ↗"}
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* Project Title & Description */}
-                <h3 className="font-cairo text-xl sm:text-2xl font-bold text-[#eaf2ff] group-hover:text-[#4fd1ff] transition-colors">
+                <h3 className="font-cairo text-lg sm:text-xl font-bold text-[#eaf2ff] group-hover:text-[#4fd1ff] transition-colors leading-snug">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm text-[#8ba0c9] leading-relaxed">
+                <p className="mt-3 text-xs sm:text-sm text-[#8ba0c9] leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
-              {/* Tags & Action Footer */}
-              <div className="mt-6 pt-6 border-t border-[#8ba0c9]/15 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md bg-[#050b1f]/80 text-[#8ba0c9] text-xs font-medium border border-[#4fd1ff]/10"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              {/* Tags & Action Footer (Only rendered if tags exist or not display only) */}
+              {project.tags.length > 0 && (
+                <div className="mt-6 pt-6 border-t border-[#8ba0c9]/15 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 rounded-md bg-[#050b1f]/80 text-[#8ba0c9] text-[11px] font-medium border border-[#4fd1ff]/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <span className="text-xs font-cairo font-bold text-[#4fd1ff] flex items-center gap-1 group-hover:translate-x-[-4px] transition-transform">
-                  عرض التفاصيل ←
-                </span>
-              </div>
+                  {!project.isDisplayOnly && (
+                    <span className="text-xs font-cairo font-bold text-[#4fd1ff] flex items-center gap-1 group-hover:translate-x-[-4px] transition-transform">
+                      التفاصيل ←
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -187,13 +208,21 @@ export default function ProjectsSection() {
                 ✕
               </button>
 
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">{selectedProject.icon}</span>
+              <div className="flex items-center gap-4 mb-4">
+                {selectedProject.imageUrl ? (
+                  <img
+                    src={selectedProject.imageUrl}
+                    alt={selectedProject.title}
+                    className="w-16 h-16 rounded-xl border border-[#4fd1ff]/40 object-cover shadow-lg"
+                  />
+                ) : (
+                  <span className="text-4xl">{selectedProject.icon}</span>
+                )}
                 <div>
                   <span className="text-xs text-[#4fd1ff] font-bold">
                     {selectedProject.categoryLabel}
                   </span>
-                  <h3 className="font-cairo text-2xl font-extrabold text-[#eaf2ff]">
+                  <h3 className="font-cairo text-xl sm:text-2xl font-extrabold text-[#eaf2ff]">
                     {selectedProject.title}
                   </h3>
                 </div>
@@ -203,21 +232,23 @@ export default function ProjectsSection() {
                 {selectedProject.description}
               </p>
 
-              <div className="mb-6">
-                <h4 className="font-cairo text-sm font-bold text-[#eaf2ff] mb-2">
-                  التقنيات المستخدمة:
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 rounded-lg bg-[#050b1f] border border-[#4fd1ff]/20 text-[#4fd1ff] text-xs font-medium"
-                    >
-                      {t}
-                    </span>
-                  ))}
+              {selectedProject.tags.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="font-cairo text-sm font-bold text-[#eaf2ff] mb-2">
+                    التقنيات والتراخيص:
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 rounded-lg bg-[#050b1f] border border-[#4fd1ff]/20 text-[#4fd1ff] text-xs font-medium"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex justify-end gap-3 pt-4 border-t border-[#8ba0c9]/15">
                 <button
@@ -226,14 +257,16 @@ export default function ProjectsSection() {
                 >
                   إغلاق
                 </button>
-                <button
-                  onClick={() => {
-                    alert(`جاري الانتقال إلى معاينة: ${selectedProject.title}`);
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#1d63c9] to-[#0e3a8f] hover:from-[#4fd1ff] hover:to-[#1d63c9] text-[#eaf2ff] hover:text-[#050b1f] font-cairo text-sm font-bold border border-[#4fd1ff]/40 shadow-[0_0_15px_rgba(79,209,255,0.4)] transition-all"
-                >
-                  معاينة المشروع التفاعلية ↗
-                </button>
+                {selectedProject.liveUrl && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#1d63c9] to-[#0e3a8f] hover:from-[#4fd1ff] hover:to-[#1d63c9] text-[#eaf2ff] hover:text-[#050b1f] font-cairo text-sm font-bold border border-[#4fd1ff]/40 shadow-[0_0_15px_rgba(79,209,255,0.4)] transition-all flex items-center gap-1"
+                  >
+                    {selectedProject.category === "uiux" ? "فتح تصميم Figma ↗" : "زيارة الموقع ↗"}
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -17,9 +17,9 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "SALEM MOHAMMED BA ABBAD | مطور واجهات أمامية ومصمم UI/UX",
-  description: "الموقع الشخصي ومحفظة الأعمال لمطور الواجهات ومصمم تجارب المستخدم SALEM MOHAMMED BA ABBAD - مشاريع ابتكارية بتأثيرات بصرية عالية الجودة.",
-  keywords: ["مطور واجهات", "تصميم UI/UX", "Frontend Developer", "Next.js", "React", "SALEM MOHAMMED BA ABBAD", "سالم محمد باعباد", "محفظة أعمال"],
+  title: "SALEM MOHAMMED BA ABBAD | مصمم UI/UX ومطور مواقع وبرامج",
+  description: "الموقع الشخصي ومحفظة الأعمال لمصمم UI/UX ومطور المواقع والبرامج SALEM MOHAMMED BA ABBAD - مشاريع ابتكارية بتأثيرات بصرية عالية الجودة.",
+  keywords: ["مطور مواقع", "مطور برامج", "تصميم UI/UX", "Web Developer", "Software Developer", "Next.js", "React", "SALEM MOHAMMED BA ABBAD", "سالم محمد باعباد"],
 };
 
 export default function RootLayout({

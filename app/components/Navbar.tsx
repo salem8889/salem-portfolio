@@ -85,7 +85,7 @@ export default function Navbar() {
               SALEM MOHAMMED BA ABBAD
             </span>
             <span className="text-[10px] text-[#8ba0c9] tracking-tight">
-              Frontend & UI/UX
+              UI/UX & Web/Software Developer
             </span>
           </div>
         </button>

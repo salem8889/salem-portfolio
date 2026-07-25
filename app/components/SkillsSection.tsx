@@ -1,52 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface Skill {
   name: string;
-  level: number; // percentage
   icon: string;
   category: "frontend" | "design" | "tools";
+  badge: string;
 }
 
 const skillsData: Skill[] = [
   // Frontend
-  { name: "React.js / Next.js", level: 95, icon: "⚛️", category: "frontend" },
-  { name: "TypeScript / JavaScript (ES6+)", level: 90, icon: "📜", category: "frontend" },
-  { name: "HTML5 / CSS3 / Vanilla CSS", level: 98, icon: "🌐", category: "frontend" },
-  { name: "Tailwind CSS / CSS Modules", level: 92, icon: "🎨", category: "frontend" },
-  { name: "Canvas & Web Animations (GSAP/Framer)", level: 85, icon: "✨", category: "frontend" },
+  { name: "React.js / Next.js", icon: "⚛️", category: "frontend", badge: "مستوى متقدم" },
+  { name: "TypeScript / JavaScript (ES6+)", icon: "📜", category: "frontend", badge: "إتقان عالمي" },
+  { name: "HTML5 / CSS3 / Vanilla CSS", icon: "🌐", category: "frontend", badge: "بناء هيكلي" },
+  { name: "Tailwind CSS / CSS Modules", icon: "🎨", category: "frontend", badge: "تصميم متجاوب" },
+  { name: "Canvas & Web Animations", icon: "✨", category: "frontend", badge: "تفاعلات حية" },
   // Design & UX
-  { name: "UI/UX Architecture & Wireframing", level: 90, icon: "📐", category: "design" },
-  { name: "Figma & Design Systems", level: 92, icon: "🎨", category: "design" },
-  { name: "Responsive & Mobile-First Design", level: 96, icon: "📱", category: "design" },
+  { name: "UI/UX Architecture & Wireframing", icon: "📐", category: "design", badge: "تخطيط الواجهات" },
+  { name: "Figma & Design Systems", icon: "🎨", category: "design", badge: "أنظمة التصميم" },
+  { name: "Responsive & Mobile-First Design", icon: "📱", category: "design", badge: "تجاوب كامل" },
   // Tools & Performance
-  { name: "Git / GitHub Version Control", level: 90, icon: "🌿", category: "tools" },
-  { name: "Web Performance & SEO Optimization", level: 88, icon: "⚡", category: "tools" },
-  { name: "State Management (Redux/Zustand)", level: 86, icon: "🔄", category: "tools" },
+  { name: "Android Studio & Expo Mobile App", icon: "🤖", category: "tools", badge: "تطوير تطبيقات الجوال" },
+  { name: "Git / GitHub Version Control", icon: "🌿", category: "tools", badge: "إدارة الإصدارات" },
 ];
 
 export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState<"all" | "frontend" | "design" | "tools">("all");
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const filteredSkills =
     activeTab === "all"
@@ -54,7 +34,7 @@ export default function SkillsSection() {
       : skillsData.filter((s) => s.category === activeTab);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-24 relative bg-[#050b1f]/60">
+    <section id="skills" className="py-24 relative bg-[#050b1f]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -63,7 +43,7 @@ export default function SkillsSection() {
             // أدواتي وخبراتي
           </span>
           <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
-            المهارات التقنية وأشرطة التميز
+            المهارات التقنية وأدوات التطوير
           </h2>
           <p className="mt-3 text-[#8ba0c9] text-base">
             مجموعة مهاراتي المتخصصة في بناء وتصميم منتجات رقمية مبهرة ومستدامة.
@@ -93,36 +73,19 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        {/* Skills Bars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Skills Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSkills.map((skill) => (
             <div
               key={skill.name}
-              className="p-6 rounded-2xl bg-[#0d1a3d]/70 border border-[#4fd1ff]/15 hover:border-[#4fd1ff]/40 transition-all duration-300 shadow-md"
+              className="p-5 rounded-2xl bg-[#0d1a3d]/70 border border-[#4fd1ff]/15 hover:border-[#4fd1ff]/50 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(79,209,255,0.15)] flex items-center gap-3.5 group"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl p-2 rounded-lg bg-[#050b1f] border border-[#4fd1ff]/10">
-                    {skill.icon}
-                  </span>
-                  <span className="font-cairo font-bold text-[#eaf2ff] text-base">
-                    {skill.name}
-                  </span>
-                </div>
-                <span className="font-cairo font-extrabold text-[#4fd1ff] text-base">
-                  {skill.level}%
-                </span>
-              </div>
-
-              {/* Progress Bar Container */}
-              <div className="w-full h-3 rounded-full bg-[#050b1f] overflow-hidden p-0.5 border border-[#4fd1ff]/10">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#0e3a8f] via-[#1d63c9] to-[#4fd1ff] shadow-[0_0_12px_#4fd1ff] transition-all duration-1000 ease-out"
-                  style={{
-                    width: isVisible ? `${skill.level}%` : "0%",
-                  }}
-                ></div>
-              </div>
+              <span className="text-2xl p-2.5 rounded-xl bg-[#050b1f] border border-[#4fd1ff]/10 group-hover:border-[#4fd1ff]/40 transition-colors">
+                {skill.icon}
+              </span>
+              <span className="font-cairo font-bold text-[#eaf2ff] text-sm sm:text-base group-hover:text-[#4fd1ff] transition-colors">
+                {skill.name}
+              </span>
             </div>
           ))}
         </div>
