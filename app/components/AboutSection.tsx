@@ -1,0 +1,168 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+
+interface CounterItem {
+  target: number;
+  suffix: string;
+  label: string;
+  icon: string;
+}
+
+const stats: CounterItem[] = [
+  { target: 5, suffix: "+", label: "سنوات خبرة في التطوير", icon: "🚀" },
+  { target: 35, suffix: "+", label: "مشروع مكتمل بنجاح", icon: "💻" },
+  { target: 20, suffix: "+", label: "عميل وسعيد بالتعامل", icon: "🤝" },
+  { target: 99, suffix: "%", label: "نسبة رضا العملاء", icon: "⭐" },
+];
+
+export default function AboutSection() {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [counts, setCounts] = useState<number[]>(stats.map(() => 0));
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          stats.forEach((stat, index) => {
+            let start = 0;
+            const duration = 1800; // ms
+            const stepTime = 30;
+            const totalSteps = duration / stepTime;
+            const increment = stat.target / totalSteps;
+
+            const timer = setInterval(() => {
+              start += increment;
+              if (start >= stat.target) {
+                setCounts((prev) => {
+                  const updated = [...prev];
+                  updated[index] = stat.target;
+                  return updated;
+                });
+                clearInterval(timer);
+              } else {
+                setCounts((prev) => {
+                  const updated = [...prev];
+                  updated[index] = Math.floor(start);
+                  return updated;
+                });
+              }
+            }, stepTime);
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  return (
+    <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
+            // من أنا
+          </span>
+          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
+            شغف بالتحول الرقمي وتصميم التجارب الفريدة
+          </h2>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
+        </div>
+
+        {/* Grid Layout: Avatar/Bio & Details */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Avatar Box */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative group">
+              {/* Outer Glow Ring */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#4fd1ff] to-[#1d63c9] rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+              
+              {/* Avatar Container */}
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl bg-[#0d1a3d] border border-[#4fd1ff]/30 overflow-hidden flex flex-col justify-between p-6 shadow-2xl">
+                <div className="w-full h-full flex flex-col items-center justify-center text-center">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#1d63c9] to-[#0e3a8f] border-2 border-[#4fd1ff] flex items-center justify-center text-6xl shadow-[0_0_25px_rgba(79,209,255,0.4)] mb-6">
+                    👨‍💻
+                  </div>
+                  <h3 className="font-cairo text-xl font-bold text-[#eaf2ff]">
+                    SALEM MOHAMMED BA ABBAD
+                  </h3>
+                  <p className="text-sm text-[#4fd1ff] mt-1 font-semibold">
+                    Frontend Developer & UI/UX Designer
+                  </p>
+                  <p className="text-xs text-[#8ba0c9] mt-3">الرياض، المملكة العربية السعودية</p>
+                </div>
+
+                {/* Bottom decorative bar */}
+                <div className="w-full pt-4 border-t border-[#8ba0c9]/15 flex items-center justify-between text-xs text-[#8ba0c9]">
+                  <span>تطوير تكيّفي متكامل</span>
+                  <span className="flex items-center gap-1.5 text-[#4fd1ff]">
+                    <span className="w-2 h-2 rounded-full bg-[#4fd1ff]"></span> متصل
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bio Text & Details */}
+          <div className="lg:col-span-7 space-y-6">
+            <h3 className="font-cairo text-2xl sm:text-3xl font-bold text-[#eaf2ff] leading-snug">
+              أحول الأفكار المعقدة إلى واجهات مستخدم ملموسة، أنيقة، وسريعة للغاية.
+            </h3>
+            
+            <p className="text-[#8ba0c9] text-base leading-relaxed">
+              أعمل كـ <strong>مطور واجهات أمامية ومصمم تجربة مستخدم (UI/UX)</strong> بخبرة أكثر من 5 سنوات في بناء المنصات الرقمية وتطبيقات الويب الحديثة. أمتلك رؤية تجمع بين دقة التصميم التفاعلي وهندسة الأكواد المتينة باستخدام أحدث أطر العمل مثل React و Next.js و TypeScript.
+            </p>
+
+            <p className="text-[#8ba0c9] text-base leading-relaxed">
+              أهتم بأدق التفاصيل الحركية والبصرية، لضمان أعلى معايير سهولة الاستخدام (Usability)، السرعة، التوافق مع محركات البحث SEO، ودعم كامل لمختلف الأجهزة والشاشات مع التجاوب التام والـ RTL.
+            </p>
+
+            {/* Key Highlights */}
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-[#0d1a3d]/60 border border-[#4fd1ff]/15">
+                <span className="text-[#4fd1ff] font-bold block mb-1">تفكير مصمم، تنفيذ مهندس</span>
+                <span className="text-xs text-[#8ba0c9]">فهم دقيق لسلوك المستخدم والجماليات البرمجية</span>
+              </div>
+              <div className="p-4 rounded-xl bg-[#0d1a3d]/60 border border-[#4fd1ff]/15">
+                <span className="text-[#4fd1ff] font-bold block mb-1">أداء وأمان عالي</span>
+                <span className="text-xs text-[#8ba0c9]">أكواد نظيفة وسريعة التحميل وقابلة للتوسع</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Animated Counters Grid */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, idx) => (
+            <div
+              key={stat.label}
+              className="glow-card p-6 rounded-2xl text-center border border-[#4fd1ff]/15"
+            >
+              <div className="text-3xl mb-3">{stat.icon}</div>
+              <div className="font-cairo text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4fd1ff] to-[#1d63c9]">
+                {counts[idx]}
+                {stat.suffix}
+              </div>
+              <p className="mt-2 text-xs sm:text-sm font-semibold text-[#8ba0c9]">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}

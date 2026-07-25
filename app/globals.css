@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg-main: #050b1f;
+  --bg-card: #0d1a3d;
+  --blue-dark: #0e3a8f;
+  --blue-primary: #1d63c9;
+  --accent-blue: #4fd1ff;
+  --text-light: #eaf2ff;
+  --text-muted: #8ba0c9;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  font-family: var(--font-tajawal), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-cairo {
+  font-family: var(--font-cairo), system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050b1f;
+}
+::-webkit-scrollbar-thumb {
+  background: #0d1a3d;
+  border: 2px solid #050b1f;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d63c9;
+}
+
+/* Cursor Following Mouse Glow on Cards */
+.glow-card {
+  position: relative;
+  background-color: #0d1a3d;
+  border: 1px solid rgba(79, 209, 255, 0.12);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(79, 209, 255, 0.12),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+.glow-card:hover {
+  border-color: rgba(79, 209, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px rgba(79, 209, 255, 0.15);
+}
+
+/* Floating Label Form Fields */
+.floating-group {
+  position: relative;
+}
+
+.floating-input {
+  width: 100%;
+  padding: 1.1rem 1rem 0.5rem 1rem;
+  background-color: rgba(13, 26, 61, 0.7);
+  border: 1.5px solid rgba(139, 160, 201, 0.25);
+  border-radius: 0.75rem;
+  color: #eaf2ff;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.floating-input:focus {
+  border-color: #4fd1ff;
+  box-shadow: 0 0 15px rgba(79, 209, 255, 0.2);
+  background-color: rgba(13, 26, 61, 0.9);
+}
+
+.floating-label {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8ba0c9;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+
+.floating-textarea ~ .floating-label {
+  top: 1.25rem;
+  transform: none;
+}
+
+.floating-input:focus ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+  top: 0.45rem;
+  transform: none;
+  font-size: 0.75rem;
+  color: #4fd1ff;
+  font-weight: 600;
+}
+
+/* Timeline vertical line glow */
+.timeline-line {
+  background: linear-gradient(180deg, #1d63c9 0%, #4fd1ff 50%, #0e3a8f 100%);
+  box-shadow: 0 0 12px rgba(79, 209, 255, 0.5);
+}
+
+/* Pulse animation for node dots */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(79, 209, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(79, 209, 255, 0);
+  }
+}
+
+.pulse-node {
+  animation: pulse-glow 2.5s infinite;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(13, 26, 61, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(79, 209, 255, 0.15);
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
