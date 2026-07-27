@@ -7,7 +7,6 @@ interface TimelineItem {
   company: string;
   description: string;
   achievements: string[];
-  icon: string;
 }
 
 const timelineData: TimelineItem[] = [
@@ -21,7 +20,6 @@ const timelineData: TimelineItem[] = [
     achievements: [
       "بناء وتطوير تطبيقات جوال احترافية وتفاعلية عبر Android Studio و Expo",
     ],
-    icon: "📱",
   },
   {
     id: 2,
@@ -33,7 +31,6 @@ const timelineData: TimelineItem[] = [
     achievements: [
       "ابتكار وتصميم تجارب مستخدم فريدة وسلسة الاستخدام عبر Figma",
     ],
-    icon: "🎨",
   },
   {
     id: 3,
@@ -45,7 +42,6 @@ const timelineData: TimelineItem[] = [
     achievements: [
       "تطوير مواقع ويب متجاوبة وعالية الأداء مع دعم RTL الكامل",
     ],
-    icon: "💻",
   },
   {
     id: 4,
@@ -58,7 +54,6 @@ const timelineData: TimelineItem[] = [
       "خريج دفعة عام 2026",
       "مشروع تخرج متميز في تطوير واجهات الويب والتطبيقات",
     ],
-    icon: "🎓",
   },
 ];
 
@@ -100,7 +95,6 @@ export default function TimelineSection() {
                 >
                   {/* Timeline Glowing Node Dot */}
                   <div className="absolute right-4 md:right-1/2 translate-x-1/2 w-9 h-9 rounded-full bg-[#050b1f] border-2 border-[#4fd1ff] flex items-center justify-center text-sm z-10 pulse-node shadow-[0_0_15px_#4fd1ff]">
-                    <span>{item.icon}</span>
                   </div>
 
                   {/* Content Box */}

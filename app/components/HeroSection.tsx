@@ -31,7 +31,7 @@ export default function HeroSection() {
         </div>
 
         {/* Hero Title */}
-        <h1 className="font-cairo text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-[#eaf2ff] leading-tight tracking-tight max-w-4xl">
+        <h1 className="font-cairo text-3xl sm:text-5xl lg:text-[56px] font-black text-[#eaf2ff] leading-tight tracking-tight max-w-4xl">
           أبني تجارب ويب{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4fd1ff] via-[#1d63c9] to-[#eaf2ff] drop-shadow-[0_0_25px_rgba(79,209,255,0.4)]">
             تفاعلية ومذهلة
@@ -72,28 +72,7 @@ export default function HeroSection() {
           </button>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-16 animate-bounce">
-          <button
-            onClick={() => scrollTo("about")}
-            aria-label="الانتقال للأسفل"
-            className="p-2 rounded-full border border-[#4fd1ff]/20 text-[#8ba0c9] hover:text-[#4fd1ff] hover:border-[#4fd1ff]/50 transition-colors"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </button>
-        </div>
+
       </div>
     </section>
   );

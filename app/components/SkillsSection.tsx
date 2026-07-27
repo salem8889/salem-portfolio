@@ -4,25 +4,24 @@ import { useState } from "react";
 
 interface Skill {
   name: string;
-  icon: string;
   category: "frontend" | "design" | "tools";
   badge: string;
 }
 
 const skillsData: Skill[] = [
   // Frontend
-  { name: "React.js / Next.js", icon: "⚛️", category: "frontend", badge: "مستوى متقدم" },
-  { name: "TypeScript / JavaScript (ES6+)", icon: "📜", category: "frontend", badge: "إتقان عالمي" },
-  { name: "HTML5 / CSS3 / Vanilla CSS", icon: "🌐", category: "frontend", badge: "بناء هيكلي" },
-  { name: "Tailwind CSS / CSS Modules", icon: "🎨", category: "frontend", badge: "تصميم متجاوب" },
-  { name: "Canvas & Web Animations", icon: "✨", category: "frontend", badge: "تفاعلات حية" },
+  { name: "React • Next.js", category: "frontend", badge: "مستوى متقدم" },
+  { name: "TypeScript • JavaScript (ES6+)", category: "frontend", badge: "إتقان عالمي" },
+  { name: "HTML5 • CSS3", category: "frontend", badge: "بناء هيكلي" },
+  { name: "Tailwind CSS", category: "frontend", badge: "تصميم متجاوب" },
+  { name: "Node.js", category: "frontend", badge: "تفاعلات حية" },
   // Design & UX
-  { name: "UI/UX Architecture & Wireframing", icon: "📐", category: "design", badge: "تخطيط الواجهات" },
-  { name: "Figma & Design Systems", icon: "🎨", category: "design", badge: "أنظمة التصميم" },
-  { name: "Responsive & Mobile-First Design", icon: "📱", category: "design", badge: "تجاوب كامل" },
+  { name: "REST APIs", category: "design", badge: "تخطيط الواجهات" },
+  { name: "Supabase", category: "design", badge: "أنظمة التصميم" },
+  { name: "Expo • React Native", category: "design", badge: "تجاوب كامل" },
   // Tools & Performance
-  { name: "Android Studio & Expo Mobile App", icon: "🤖", category: "tools", badge: "تطوير تطبيقات الجوال" },
-  { name: "Git / GitHub Version Control", icon: "🌿", category: "tools", badge: "إدارة الإصدارات" },
+  { name: "Figma • Design Systems", category: "tools", badge: "تطوير تطبيقات الجوال" },
+  { name: "Git • GitHub", category: "tools", badge: "إدارة الإصدارات" },
 ];
 
 export default function SkillsSection() {
@@ -80,9 +79,7 @@ export default function SkillsSection() {
               key={skill.name}
               className="p-5 rounded-2xl bg-[#0d1a3d]/70 border border-[#4fd1ff]/15 hover:border-[#4fd1ff]/50 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(79,209,255,0.15)] flex items-center gap-3.5 group"
             >
-              <span className="text-2xl p-2.5 rounded-xl bg-[#050b1f] border border-[#4fd1ff]/10 group-hover:border-[#4fd1ff]/40 transition-colors">
-                {skill.icon}
-              </span>
+
               <span className="font-cairo font-bold text-[#eaf2ff] text-sm sm:text-base group-hover:text-[#4fd1ff] transition-colors">
                 {skill.name}
               </span>

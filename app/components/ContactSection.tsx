@@ -68,7 +68,7 @@ export default function ContactSection() {
                 {/* Email */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    📧
+                    <img src="/contact-email.png" alt="Email" className="w-8 h-8 object-contain rounded-lg" />
                   </div>
                   <div>
                     <span className="text-xs text-[#8ba0c9] block">البريد الإلكتروني</span>
@@ -84,7 +84,7 @@ export default function ContactSection() {
                 {/* Phone */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    📱
+                    <img src="/contact-phone.png" alt="Phone" className="w-8 h-8 object-contain rounded-lg" />
                   </div>
                   <div>
                     <span className="text-xs text-[#8ba0c9] block">الهاتف / واتساب</span>
@@ -102,7 +102,7 @@ export default function ContactSection() {
                 {/* Location */}
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    📍
+                    <img src="/contact-location.png" alt="Location" className="w-8 h-8 object-contain rounded-lg" />
                   </div>
                   <div>
                     <span className="text-xs text-[#8ba0c9] block">الموقع الحالي</span>
@@ -207,7 +207,7 @@ export default function ContactSection() {
                     onClick={handleRipple}
                     className="relative overflow-hidden w-full py-4 rounded-2xl bg-gradient-to-r from-[#1d63c9] via-[#0e3a8f] to-[#1d63c9] hover:from-[#4fd1ff] hover:to-[#1d63c9] text-[#eaf2ff] hover:text-[#050b1f] font-cairo font-black text-base border border-[#4fd1ff]/40 shadow-[0_0_20px_rgba(79,209,255,0.3)] transition-all transform hover:-translate-y-0.5"
                   >
-                    إرسال الرسالة الان ✨
+                    إرسال الرسالة الان
                     
                     {/* Ripple Elements */}
                     {ripples.map((r) => (

@@ -10,7 +10,6 @@ interface Project {
   description: string;
   tags: string[];
   imageGradient: string;
-  icon: string;
   imageUrl?: string;
   imageStyle?: "logo" | "full";
   liveUrl?: string;
@@ -28,7 +27,6 @@ const projectsData: Project[] = [
       "منصة وموقع رسمي فاخر لشركة الجنية العربي للمعادن الثمينة بالمملكة العربية السعودية. يشتمل الموقع على شريط أسعار الذهب والفضة اللحظية المباشرة (Live Ticker)، وعرض السبائك والمنتجات مع استكشاف الفروع المعتمدة وتجربة مستخدم فاخرة.",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Live Ticker API", "UI/UX Design", "RTL"],
     imageGradient: "from-[#d4af37]/35 via-[#0e3a8f] to-[#050b1f]",
-    icon: "🪙",
     imageUrl: "/arabic-coin-logo.jpg",
     imageStyle: "logo",
     liveUrl: "https://arabiccoincompany.com",
@@ -42,7 +40,6 @@ const projectsData: Project[] = [
       "تصميم واجهات وتجربة مستخدم متكاملة وتفاعلية لتطبيق إعمار (Emaar App) على منصة Figma، تشمل النمذجة التفاعلية (Prototyping)، وتخطيط هيكلية المستخدم بأسلوب عصري جذاب.",
     tags: ["Figma", "UI/UX Design", "Mobile App", "Wireframing", "Prototyping"],
     imageGradient: "from-[#4fd1ff]/30 via-[#1d63c9] to-[#0e3a8f]",
-    icon: "🏢",
     imageUrl: "/emaar-logo-center.png",
     imageStyle: "logo",
     liveUrl: "https://www.figma.com/design/pIJjE8wN3wRGT71f0rWSuz/Emaar-App?node-id=0-1&t=zxxVwlgOVdcmavZk-1",
@@ -56,7 +53,6 @@ const projectsData: Project[] = [
       "منصة ويب وتطبيق متكامل لتسهيل إدارة الخدمات البرمجية والمشاريع التقنية، تم تطويره كـ مشروع تخرج متميز لجامعة الريان لعام 2026 بمواصفات تقنية عالية ودعم متكامل للواجهات.",
     tags: [],
     imageGradient: "from-[#1d63c9] via-[#0e3a8f] to-[#050b1f]",
-    icon: "🎓",
     isDisplayOnly: true,
   },
 ];
@@ -135,9 +131,6 @@ export default function ProjectsSection() {
                     <div
                       className={`absolute inset-0 w-full h-full bg-gradient-to-br ${project.imageGradient} flex flex-col items-center justify-center`}
                     >
-                      <span className="text-5xl transform group-hover:scale-110 transition-transform duration-300">
-                        {project.icon}
-                      </span>
                     </div>
                   )}
 
@@ -215,9 +208,7 @@ export default function ProjectsSection() {
                     alt={selectedProject.title}
                     className="w-16 h-16 rounded-xl border border-[#4fd1ff]/40 object-cover shadow-lg"
                   />
-                ) : (
-                  <span className="text-4xl">{selectedProject.icon}</span>
-                )}
+                ) : null}
                 <div>
                   <span className="text-xs text-[#4fd1ff] font-bold">
                     {selectedProject.categoryLabel}

@@ -6,13 +6,12 @@ interface CounterItem {
   target: number;
   suffix: string;
   label: string;
-  icon: string;
 }
 
 const stats: CounterItem[] = [
-  { target: 1, suffix: "", label: "سنة خبرة مهنية", icon: "🚀" },
-  { target: 2, suffix: "", label: "مشاريع مكتملة بنجاح", icon: "💻" },
-  { target: 1, suffix: "", label: "مشروع تخرج متميز", icon: "🎓" },
+  { target: 1, suffix: "", label: "سنة خبرة مهنية" },
+  { target: 2, suffix: "", label: "مشاريع مكتملة بنجاح" },
+  { target: 1, suffix: "", label: "مشروع تخرج متميز" },
 ];
 
 export default function AboutSection() {
@@ -90,9 +89,6 @@ export default function AboutSection() {
               {/* Avatar Container */}
               <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl bg-[#0d1a3d] border border-[#4fd1ff]/30 overflow-hidden flex flex-col justify-between p-6 shadow-2xl">
                 <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#1d63c9] to-[#0e3a8f] border-2 border-[#4fd1ff] flex items-center justify-center text-6xl shadow-[0_0_25px_rgba(79,209,255,0.4)] mb-6">
-                    👨‍💻
-                  </div>
                   <h3 className="font-cairo text-xl font-bold text-[#eaf2ff]">
                     SALEM MOHAMMED BA ABBAD
                   </h3>
@@ -127,17 +123,7 @@ export default function AboutSection() {
               أهتم بأدق التفاصيل الحركية والبصرية، لضمان أعلى معايير سهولة الاستخدام (Usability)، الأداء والسرعة، والتوافق التام مع مختلف الأجهزة والشاشات مع دعم RTL الكامل.
             </p>
 
-            {/* Key Highlights */}
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-[#0d1a3d]/60 border border-[#4fd1ff]/15">
-                <span className="text-[#4fd1ff] font-bold block mb-1">تفكير مصمم، تنفيذ مهندس</span>
-                <span className="text-xs text-[#8ba0c9]">فهم دقيق لسلوك المستخدم والجماليات البرمجية</span>
-              </div>
-              <div className="p-4 rounded-xl bg-[#0d1a3d]/60 border border-[#4fd1ff]/15">
-                <span className="text-[#4fd1ff] font-bold block mb-1">أداء وأمان عالي</span>
-                <span className="text-xs text-[#8ba0c9]">أكواد نظيفة وسريعة التحميل وقابلة للتوسع</span>
-              </div>
-            </div>
+
           </div>
 
         </div>
@@ -149,7 +135,6 @@ export default function AboutSection() {
               key={stat.label}
               className="glow-card p-6 rounded-2xl text-center border border-[#4fd1ff]/15"
             >
-              <div className="text-3xl mb-3">{stat.icon}</div>
               <div className="font-cairo text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4fd1ff] to-[#1d63c9]">
                 {counts[idx]}
                 {stat.suffix}

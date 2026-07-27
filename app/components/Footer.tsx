@@ -9,14 +9,11 @@ export default function Footer() {
     <footer className="bg-[#050b1f] border-t border-[#4fd1ff]/15 py-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         
-        {/* Logo & Copyright */}
+        {/* Copyright */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1d63c9] to-[#0e3a8f] border border-[#4fd1ff]/30 flex items-center justify-center text-[#4fd1ff] font-cairo font-black text-xs">
-            SB
-          </div>
           <p className="text-sm text-[#8ba0c9]">
             جميع الحقوق محفوظة © {new Date().getFullYear()}{" "}
-            <strong className="text-[#eaf2ff]">SALEM MOHAMMED BA ABBAD</strong>. تم البناء بدقة وعناية.
+            <strong className="text-[#eaf2ff]">SALEM MOHAMMED BA ABBAD</strong>
           </p>
         </div>
 
