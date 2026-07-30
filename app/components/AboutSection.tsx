@@ -68,13 +68,13 @@ export default function AboutSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
+          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
             // من أنا
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
+          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
             شغف بالتحول الرقمي وتصميم التجارب الفريدة
           </h2>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Grid Layout: Avatar/Bio & Details */}
@@ -84,25 +84,25 @@ export default function AboutSection() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative group">
               {/* Outer Glow Ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#4fd1ff] to-[#1d63c9] rounded-3xl blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-500 to-white rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
               
               {/* Avatar Container */}
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl bg-[#0d1a3d] border border-[#4fd1ff]/30 overflow-hidden flex flex-col justify-between p-6 shadow-2xl">
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl bg-[#0c0c0e] border border-white/20 overflow-hidden flex flex-col justify-between p-6 shadow-2xl">
                 <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                  <h3 className="font-cairo text-xl font-bold text-[#eaf2ff]">
+                  <h3 className="font-cairo text-xl font-bold text-white">
                     SALEM MOHAMMED BA ABBAD
                   </h3>
-                  <p className="text-sm text-[#4fd1ff] mt-1 font-semibold">
+                  <p className="text-sm text-zinc-300 mt-1 font-semibold">
                     UI/UX Designer & Software Developer
                   </p>
-                  <p className="text-xs text-[#8ba0c9] mt-3">الرياض، المملكة العربية السعودية</p>
+                  <p className="text-xs text-zinc-400 mt-3">الرياض، المملكة العربية السعودية</p>
                 </div>
 
                 {/* Bottom decorative bar */}
-                <div className="w-full pt-4 border-t border-[#8ba0c9]/15 flex items-center justify-between text-xs text-[#8ba0c9]">
+                <div className="w-full pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
                   <span>تطوير تكيّفي متكامل</span>
-                  <span className="flex items-center gap-1.5 text-[#4fd1ff]">
-                    <span className="w-2 h-2 rounded-full bg-[#4fd1ff]"></span> متصل
+                  <span className="flex items-center gap-1.5 text-white">
+                    <span className="w-2 h-2 rounded-full bg-white"></span> متصل
                   </span>
                 </div>
               </div>
@@ -111,15 +111,15 @@ export default function AboutSection() {
 
           {/* Bio Text & Details */}
           <div className="lg:col-span-7 space-y-6">
-            <h3 className="font-cairo text-2xl sm:text-3xl font-bold text-[#eaf2ff] leading-snug">
+            <h3 className="font-cairo text-2xl sm:text-3xl font-bold text-white leading-snug">
               أحول الأفكار المعقدة إلى منصات وتطبيقـات ملموسة، أنيقة، وسريعة للغاية.
             </h3>
             
-            <p className="text-[#8ba0c9] text-base leading-relaxed">
-              أنا <strong className="text-[#eaf2ff]">سالم محمد باعباد (SALEM MOHAMMED BA ABBAD)</strong>، خريج تقنية المعلومات (IT) لعام 2026 من جامعة الريان، مصمم تجربة مستخدم (UI/UX) ومطور مواقع وبرامج. أمتلك شغفاً ببناء المنصات الرقمية والمتاجر الإلكترونية وتصميم واجهات تفاعلية تمنح المستخدم تجربة فريدة بالاعتماد على أحدث أطر العمل مثل React و Next.js و TypeScript.
+            <p className="text-zinc-400 text-base leading-relaxed">
+              أنا <strong className="text-white">سالم محمد باعباد (SALEM MOHAMMED BA ABBAD)</strong>، خريج تقنية المعلومات (IT) لعام 2026 من جامعة الريان، مصمم تجربة مستخدم (UI/UX) ومطور مواقع وبرامج. أمتلك شغفاً ببناء المنصات الرقمية والمتاجر الإلكترونية وتصميم واجهات تفاعلية تمنح المستخدم تجربة فريدة بالاعتماد على أحدث أطر العمل مثل React و Next.js و TypeScript.
             </p>
 
-            <p className="text-[#8ba0c9] text-base leading-relaxed">
+            <p className="text-zinc-400 text-base leading-relaxed">
               أهتم بأدق التفاصيل الحركية والبصرية، لضمان أعلى معايير سهولة الاستخدام (Usability)، الأداء والسرعة، والتوافق التام مع مختلف الأجهزة والشاشات مع دعم RTL الكامل.
             </p>
 
@@ -133,13 +133,13 @@ export default function AboutSection() {
           {stats.map((stat, idx) => (
             <div
               key={stat.label}
-              className="glow-card p-6 rounded-2xl text-center border border-[#4fd1ff]/15"
+              className="glow-card p-6 rounded-2xl text-center border border-white/10"
             >
-              <div className="font-cairo text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#4fd1ff] to-[#1d63c9]">
+              <div className="font-cairo text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">
                 {counts[idx]}
                 {stat.suffix}
               </div>
-              <p className="mt-2 text-xs sm:text-sm font-semibold text-[#8ba0c9]">
+              <p className="mt-2 text-xs sm:text-sm font-semibold text-zinc-400">
                 {stat.label}
               </p>
             </div>

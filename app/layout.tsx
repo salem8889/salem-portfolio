@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" className={`${cairo.variable} ${tajawal.variable} scroll-smooth`}>
-      <body className="bg-[#050b1f] text-[#eaf2ff] font-tajawal antialiased selection:bg-[#4fd1ff]/30 selection:text-[#4fd1ff] overflow-x-hidden min-h-screen">
+      <body className="bg-[#000000] text-[#ffffff] font-tajawal antialiased selection:bg-white/20 selection:text-white overflow-x-hidden min-h-screen">
         {children}
       </body>
     </html>

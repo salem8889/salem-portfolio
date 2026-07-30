@@ -59,21 +59,21 @@ const timelineData: TimelineItem[] = [
 
 export default function TimelineSection() {
   return (
-    <section id="timeline" className="py-24 relative bg-[#050b1f]/60">
+    <section id="timeline" className="py-24 relative bg-black/60">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
+          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
             // رحلتي المهنية
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
+          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
             المسار المهني والتطوير الذاتي
           </h2>
-          <p className="mt-3 text-[#8ba0c9] text-base">
+          <p className="mt-3 text-zinc-400 text-base">
             تطور خطوة بخطوة نحو التميز في بناء تجارب المستخدم وهندسة الويب.
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Timeline Container */}
@@ -94,7 +94,7 @@ export default function TimelineSection() {
                   }`}
                 >
                   {/* Timeline Glowing Node Dot */}
-                  <div className="absolute right-4 md:right-1/2 translate-x-1/2 w-9 h-9 rounded-full bg-[#050b1f] border-2 border-[#4fd1ff] flex items-center justify-center text-sm z-10 pulse-node shadow-[0_0_15px_#4fd1ff]">
+                  <div className="absolute right-4 md:right-1/2 translate-x-1/2 w-9 h-9 rounded-full bg-black border-2 border-white flex items-center justify-center text-sm z-10 pulse-node shadow-[0_0_15px_rgba(255,255,255,0.6)]">
                   </div>
 
                   {/* Content Box */}
@@ -103,29 +103,29 @@ export default function TimelineSection() {
                       isEven ? "md:pl-8 md:text-right" : "md:pr-8 md:text-right"
                     }`}
                   >
-                    <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#4fd1ff]/20 hover:border-[#4fd1ff]/50 transition-all">
+                    <div className="glow-card p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/30 transition-all">
                       
                       {/* Period Badge */}
-                      <span className="inline-block px-3 py-1 rounded-full bg-[#1d63c9]/30 text-[#4fd1ff] text-xs font-bold border border-[#4fd1ff]/30 mb-3">
+                      <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold border border-white/20 mb-3">
                         {item.period}
                       </span>
 
-                      <h3 className="font-cairo text-xl font-bold text-[#eaf2ff]">
+                      <h3 className="font-cairo text-xl font-bold text-white">
                         {item.role}
                       </h3>
-                      <p className="text-sm font-semibold text-[#1d63c9] mt-1">
+                      <p className="text-sm font-semibold text-zinc-300 mt-1">
                         {item.company}
                       </p>
                       
-                      <p className="mt-3 text-sm text-[#8ba0c9] leading-relaxed">
+                      <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
                         {item.description}
                       </p>
 
                       {/* Achievements Bullet List */}
-                      <ul className="mt-4 space-y-2 text-xs text-[#eaf2ff]/90">
+                      <ul className="mt-4 space-y-2 text-xs text-white/90">
                         {item.achievements.map((ach) => (
                           <li key={ach} className="flex items-center gap-2">
-                            <span className="text-[#4fd1ff]">✦</span>
+                            <span className="text-white">✦</span>
                             <span>{ach}</span>
                           </li>
                         ))}

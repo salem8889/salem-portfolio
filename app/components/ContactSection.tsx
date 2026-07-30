@@ -41,16 +41,16 @@ export default function ContactSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
+          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
             // تواصل معي
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
+          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
             هل لديك مشروع جديد أو فكرة تود مناقشتها؟
           </h2>
-          <p className="mt-3 text-[#8ba0c9] text-base">
+          <p className="mt-3 text-zinc-400 text-base">
             يسعدني دائماً التواصل معك وبناء تجارب ويب وتصميمات مبتكرة تلبي طموحاتك.
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Layout: Form & Direct Contact Cards */}
@@ -59,57 +59,42 @@ export default function ContactSection() {
           {/* Contact Info Cards (Left/Right depending on RTL) */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#4fd1ff]/20">
-              <h3 className="font-cairo text-xl font-bold text-[#eaf2ff] mb-6">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-white/15">
+              <h3 className="font-cairo text-xl font-bold text-white mb-6">
                 معلومات التواصل المباشر
               </h3>
 
               <div className="space-y-6">
                 {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    <img src="/contact-email.png" alt="Email" className="w-8 h-8 object-contain rounded-lg" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#8ba0c9] block">البريد الإلكتروني</span>
-                    <a
-                      href="mailto:salem_baabad@outlook.com"
-                      className="font-cairo font-bold text-[#eaf2ff] hover:text-[#4fd1ff] transition-colors"
-                    >
-                      salem_baabad@outlook.com
-                    </a>
-                  </div>
+                <div>
+                  <span className="text-xs text-zinc-400 block">البريد الإلكتروني</span>
+                  <a
+                    href="mailto:salem_baabad@outlook.com"
+                    className="font-cairo font-bold text-white hover:text-zinc-300 transition-colors"
+                  >
+                    salem_baabad@outlook.com
+                  </a>
                 </div>
 
                 {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    <img src="/contact-phone.png" alt="Phone" className="w-8 h-8 object-contain rounded-lg" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#8ba0c9] block">الهاتف / واتساب</span>
-                    <a
-                      href="https://wa.me/966509788768"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-cairo font-bold text-[#eaf2ff] hover:text-[#4fd1ff] transition-colors dir-ltr block text-right"
-                    >
-                      +966 50 978 8768
-                    </a>
-                  </div>
+                <div>
+                  <span className="text-xs text-zinc-400 block">الهاتف / واتساب</span>
+                  <a
+                    href="https://wa.me/966509788768"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-cairo font-bold text-white hover:text-zinc-300 transition-colors dir-ltr block text-right"
+                  >
+                    +966 50 978 8768
+                  </a>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#050b1f] border border-[#4fd1ff]/30 text-[#4fd1ff] flex items-center justify-center text-xl shrink-0">
-                    <img src="/contact-location.png" alt="Location" className="w-8 h-8 object-contain rounded-lg" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#8ba0c9] block">الموقع الحالي</span>
-                    <span className="font-cairo font-bold text-[#eaf2ff]">
-                      الرياض، المملكة العربية السعودية
-                    </span>
-                  </div>
+                <div>
+                  <span className="text-xs text-zinc-400 block">الموقع الحالي</span>
+                  <span className="font-cairo font-bold text-white">
+                    الرياض، المملكة العربية السعودية
+                  </span>
                 </div>
               </div>
             </div>
@@ -118,19 +103,19 @@ export default function ContactSection() {
 
           {/* Floating Label Contact Form */}
           <div className="lg:col-span-7">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#4fd1ff]/20">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-white/15">
               
-              <h3 className="font-cairo text-xl font-bold text-[#eaf2ff] mb-6">
+              <h3 className="font-cairo text-xl font-bold text-white mb-6">
                 أرسل لي رسالة مباشرة
               </h3>
 
               {submitted ? (
-                <div className="p-6 rounded-2xl bg-[#1d63c9]/20 border border-[#4fd1ff]/50 text-center animate-fade-in">
+                <div className="p-6 rounded-2xl bg-white/10 border border-white/30 text-center animate-fade-in">
                   <span className="text-4xl mb-2 block">🎉</span>
-                  <h4 className="font-cairo font-bold text-xl text-[#4fd1ff]">
+                  <h4 className="font-cairo font-bold text-xl text-white">
                     تم إرسال رسالتك بنجاح!
                   </h4>
-                  <p className="mt-2 text-sm text-[#eaf2ff]">
+                  <p className="mt-2 text-sm text-zinc-300">
                     شكراً لتواصلك يا {formData.name || "صديقي"}. سأقوم بالرد عليك في أقرب وقت ممكن.
                   </p>
                 </div>
@@ -205,7 +190,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     onClick={handleRipple}
-                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-gradient-to-r from-[#1d63c9] via-[#0e3a8f] to-[#1d63c9] hover:from-[#4fd1ff] hover:to-[#1d63c9] text-[#eaf2ff] hover:text-[#050b1f] font-cairo font-black text-base border border-[#4fd1ff]/40 shadow-[0_0_20px_rgba(79,209,255,0.3)] transition-all transform hover:-translate-y-0.5"
+                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-cairo font-extrabold text-base border border-white shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all transform hover:-translate-y-0.5"
                   >
                     إرسال الرسالة الان
                     

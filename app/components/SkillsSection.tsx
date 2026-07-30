@@ -33,21 +33,21 @@ export default function SkillsSection() {
       : skillsData.filter((s) => s.category === activeTab);
 
   return (
-    <section id="skills" className="py-24 relative bg-[#050b1f]/60">
+    <section id="skills" className="py-24 relative bg-black/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-[#4fd1ff] font-cairo font-bold text-sm tracking-widest uppercase">
+          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
             // أدواتي وخبراتي
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-[#eaf2ff]">
+          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
             المهارات التقنية وأدوات التطوير
           </h2>
-          <p className="mt-3 text-[#8ba0c9] text-base">
+          <p className="mt-3 text-zinc-400 text-base">
             مجموعة مهاراتي المتخصصة في بناء وتصميم منتجات رقمية مبهرة ومستدامة.
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#1d63c9] via-[#4fd1ff] to-[#1d63c9] mx-auto rounded-full"></div>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Category Tabs */}
@@ -63,8 +63,8 @@ export default function SkillsSection() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-5 py-2.5 rounded-full text-sm font-cairo font-bold transition-all ${
                 activeTab === tab.id
-                  ? "bg-gradient-to-r from-[#1d63c9] to-[#0e3a8f] text-[#eaf2ff] border border-[#4fd1ff]/40 shadow-[0_0_15px_rgba(79,209,255,0.3)]"
-                  : "bg-[#0d1a3d]/70 text-[#8ba0c9] hover:text-[#eaf2ff] hover:bg-[#0d1a3d] border border-transparent"
+                  ? "bg-white text-black font-extrabold border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                  : "bg-[#121214]/80 text-zinc-400 hover:text-white hover:bg-[#1c1c20] border border-transparent"
               }`}
             >
               {tab.label}
@@ -77,10 +77,10 @@ export default function SkillsSection() {
           {filteredSkills.map((skill) => (
             <div
               key={skill.name}
-              className="p-5 rounded-2xl bg-[#0d1a3d]/70 border border-[#4fd1ff]/15 hover:border-[#4fd1ff]/50 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(79,209,255,0.15)] flex items-center gap-3.5 group"
+              className="p-5 rounded-2xl bg-[#0c0c0e] border border-white/10 hover:border-white/30 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(255,255,255,0.1)] flex items-center gap-3.5 group"
             >
 
-              <span className="font-cairo font-bold text-[#eaf2ff] text-sm sm:text-base group-hover:text-[#4fd1ff] transition-colors">
+              <span className="font-cairo font-bold text-white text-sm sm:text-base group-hover:text-zinc-200 transition-colors">
                 {skill.name}
               </span>
             </div>
