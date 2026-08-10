@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface Skill {
   name: string;
-  category: "frontend" | "design" | "tools";
+  category: "frontend" | "backend" | "design" | "tools";
   badge: string;
 }
 
@@ -14,18 +14,20 @@ const skillsData: Skill[] = [
   { name: "TypeScript • JavaScript (ES6+)", category: "frontend", badge: "إتقان عالمي" },
   { name: "HTML5 • CSS3", category: "frontend", badge: "بناء هيكلي" },
   { name: "Tailwind CSS", category: "frontend", badge: "تصميم متجاوب" },
-  { name: "Node.js", category: "frontend", badge: "تفاعلات حية" },
+  { name: "Expo • React Native", category: "frontend", badge: "تطبيقات الجوال" },
+  // Backend
+  { name: "Supabase", category: "backend", badge: "قواعد البيانات والخدمات السحابية" },
+  { name: "Node.js", category: "backend", badge: "بيئة تشغيل الخوادم" },
+  { name: "REST APIs", category: "backend", badge: "ربط الخدمات والتكامل" },
   // Design & UX
-  { name: "REST APIs", category: "design", badge: "تخطيط الواجهات" },
-  { name: "Supabase", category: "design", badge: "أنظمة التصميم" },
-  { name: "Expo • React Native", category: "design", badge: "تجاوب كامل" },
+  { name: "Figma • Design Systems", category: "design", badge: "تصميم الواجهات والنظم" },
   // Tools & Performance
-  { name: "Figma • Design Systems", category: "tools", badge: "تطوير تطبيقات الجوال" },
-  { name: "Git • GitHub", category: "tools", badge: "إدارة الإصدارات" },
+  { name: "Antigravity IDE", category: "tools", badge: "بيئة التطوير الذكية" },
+  { name: "Git • GitHub", category: "tools", badge: "إدارة الإصدارات والتحكم بها" },
 ];
 
 export default function SkillsSection() {
-  const [activeTab, setActiveTab] = useState<"all" | "frontend" | "design" | "tools">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "frontend" | "backend" | "design" | "tools">("all");
 
   const filteredSkills =
     activeTab === "all"
@@ -55,6 +57,7 @@ export default function SkillsSection() {
           {[
             { id: "all", label: "جميع المهارات" },
             { id: "frontend", label: "تطوير الواجهات (Frontend)" },
+            { id: "backend", label: "تطوير الخلفية (Backend)" },
             { id: "design", label: "التصميم والتجربة (UI/UX)" },
             { id: "tools", label: "الأدوات والأداء" },
           ].map((tab) => (
