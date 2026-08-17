@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 interface CounterItem {
   target: number;
@@ -10,7 +11,7 @@ interface CounterItem {
 
 const stats: CounterItem[] = [
   { target: 1, suffix: "", label: "سنة خبرة مهنية" },
-  { target: 2, suffix: "", label: "مشاريع مكتملة بنجاح" },
+  { target: 3, suffix: "", label: "مشاريع مكتملة بنجاح" },
   { target: 1, suffix: "", label: "مشروع تخرج متميز" },
 ];
 
@@ -80,29 +81,41 @@ export default function AboutSection() {
         {/* Grid Layout: Avatar/Bio & Details */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Avatar Box */}
+          {/* Avatar Box with Profile Image */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative group">
+            <div className="relative group w-full max-w-sm">
               {/* Outer Glow Ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-500 to-white rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-zinc-500 via-white to-zinc-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-50 transition duration-500"></div>
               
               {/* Avatar Container */}
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl bg-[#0c0c0e] border border-white/20 overflow-hidden flex flex-col justify-between p-6 shadow-2xl">
-                <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                  <h3 className="font-cairo text-xl font-bold text-white">
+              <div className="relative w-full rounded-3xl bg-[#0c0c0e] border border-white/20 overflow-hidden p-5 shadow-2xl flex flex-col gap-4">
+                {/* Photo Container */}
+                <div className="relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-white/10 shadow-inner group">
+                  <Image
+                    src="/salem-profile.jpg"
+                    alt="سالم محمد باعباد - SALEM MOHAMMED BA ABBAD"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-transparent opacity-80" />
+                </div>
+
+                {/* Name & Title */}
+                <div className="text-center px-2">
+                  <h3 className="font-cairo text-lg sm:text-xl font-bold text-white tracking-wide">
                     SALEM MOHAMMED BA ABBAD
                   </h3>
-                  <p className="text-sm text-zinc-300 mt-1 font-semibold">
-                    UI/UX Designer & Software Developer
+                  <p className="text-xs sm:text-sm text-zinc-300 font-semibold mt-1">
+                    Frontend | Mobile Developer | UI/UX Designer
                   </p>
-                  <p className="text-xs text-zinc-400 mt-3">الرياض، المملكة العربية السعودية</p>
                 </div>
 
                 {/* Bottom decorative bar */}
-                <div className="w-full pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
-                  <span>تطوير تكيّفي متكامل</span>
-                  <span className="flex items-center gap-1.5 text-white">
-                    <span className="w-2 h-2 rounded-full bg-white"></span> متصل
+                <div className="w-full pt-3 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400 px-1">
+                  <span>الرياض، السعودية</span>
+                  <span className="flex items-center gap-1.5 text-white font-medium">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span> متصل
                   </span>
                 </div>
               </div>
