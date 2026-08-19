@@ -14,6 +14,7 @@ interface Project {
   imageStyle?: "logo" | "full";
   liveUrl?: string;
   appStoreUrl?: string;
+  googlePlayUrl?: string;
   badge?: string;
   isDisplayOnly?: boolean;
 }
@@ -48,14 +49,15 @@ const projectsData: Project[] = [
     title: "تطبيق الجنية العربي للمعادن الثمينة (Arabic Coin)",
     category: "mobile",
     categoryLabel: "تطبيق جوال منشور",
-    badge: "Published on App Store",
+    badge: "Published on App Store & Google Play",
     description:
-      "تطبيق الجوال الرسمي لشركة الجنية العربي المتاح على متجر أبل (App Store) لمتابعة أسعار الذهب والفضة والسبائك بشكل لحظي، وحساب قيمة المقتنيات، واستقبال إشعارات الأسعار الذكية للمستثمرين.",
+      "تطبيق الجوال الرسمي لشركة الجنية العربي المتاح على متجري أبل (App Store) وجوجل بلاي (Google Play) لمتابعة أسعار الذهب والفضة والسبائك بشكل لحظي، وحساب قيمة المقتنيات، واستقبال إشعارات الأسعار الذكية للمستثمرين.",
     tags: ["React Native", "Expo", "TypeScript", "REST APIs", "Push Notifications", "Mobile UI/UX"],
     imageGradient: "from-[#d4af37]/40 via-zinc-900 to-black",
     imageUrl: "/arabic-coin-app-icon.png",
     imageStyle: "full",
-    appStoreUrl: "https://apps.apple.com/sa/app/arabic-coin-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6792820414",
+    appStoreUrl: "https://lnkd.in/dpwsJw_x",
+    googlePlayUrl: "https://lnkd.in/d4rck-9T",
   },
   {
     id: 4,
@@ -147,20 +149,32 @@ export default function ProjectsSection() {
             )}
           </div>
 
-          {/* Live / App Store Link Button */}
-          {(project.appStoreUrl || project.liveUrl) && (
-            <div className="absolute bottom-3 left-3 z-20">
-              {project.appStoreUrl ? (
+          {/* Live / App Store / Google Play Link Buttons */}
+          {(project.appStoreUrl || project.googlePlayUrl || project.liveUrl) && (
+            <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap gap-2 items-center justify-start">
+              {project.appStoreUrl && (
                 <a
                   href={project.appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="font-cairo text-xs text-white font-bold px-3.5 py-1.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 backdrop-blur-md border border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] flex items-center gap-1"
+                  className="font-cairo text-xs text-white font-bold px-3 py-1.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 backdrop-blur-md border border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] flex items-center gap-1"
                 >
-                  View on App Store ↗
+                  App Store ↗
                 </a>
-              ) : (
+              )}
+              {project.googlePlayUrl && (
+                <a
+                  href={project.googlePlayUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="font-cairo text-xs text-white font-bold px-3 py-1.5 rounded-full bg-sky-600/95 hover:bg-sky-500 backdrop-blur-md border border-sky-400/50 transition-all shadow-[0_0_15px_rgba(14,165,233,0.4)] flex items-center gap-1"
+                >
+                  Google Play ↗
+                </a>
+              )}
+              {project.liveUrl && !project.appStoreUrl && !project.googlePlayUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -357,33 +371,42 @@ export default function ProjectsSection() {
                 </div>
               )}
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-white/10">
+              <div className="flex flex-wrap justify-end gap-3 pt-4 border-t border-white/10">
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="px-6 py-2.5 rounded-full bg-black border border-white/20 text-zinc-400 hover:text-white font-cairo text-sm font-bold transition-all"
                 >
                   إغلاق
                 </button>
-                {selectedProject.appStoreUrl ? (
+                {selectedProject.appStoreUrl && (
                   <a
                     href={selectedProject.appStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-cairo text-sm font-extrabold border border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all flex items-center gap-1.5"
+                    className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-cairo text-sm font-extrabold border border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all flex items-center gap-1.5"
                   >
-                    View on App Store ↗
+                    App Store (iOS) ↗
                   </a>
-                ) : (
-                  selectedProject.liveUrl && (
-                    <a
-                      href={selectedProject.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-cairo text-sm font-extrabold border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all flex items-center gap-1"
-                    >
-                      {selectedProject.liveUrl.includes("figma") ? "فتح تصميم Figma ↗" : "زيارة الموقع ↗"}
-                    </a>
-                  )
+                )}
+                {selectedProject.googlePlayUrl && (
+                  <a
+                    href={selectedProject.googlePlayUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-500 text-white font-cairo text-sm font-extrabold border border-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all flex items-center gap-1.5"
+                  >
+                    Google Play (Android) ↗
+                  </a>
+                )}
+                {selectedProject.liveUrl && !selectedProject.appStoreUrl && !selectedProject.googlePlayUrl && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-cairo text-sm font-extrabold border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all flex items-center gap-1"
+                  >
+                    {selectedProject.liveUrl.includes("figma") ? "فتح تصميم Figma ↗" : "زيارة الموقع ↗"}
+                  </a>
                 )}
               </div>
             </div>
