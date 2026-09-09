@@ -1,73 +1,83 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-interface Skill {
+interface SkillItem {
   name: string;
-  category: "frontend" | "backend" | "design" | "tools";
-  badge: string;
+  category: "frontend" | "mobile" | "backend" | "tools";
+  categoryKey: "frontend" | "mobile" | "backend" | "apis" | "tools" | "design";
 }
 
-const skillsData: Skill[] = [
+const skillsList: SkillItem[] = [
   // Frontend
-  { name: "React • Next.js", category: "frontend", badge: "مستوى متقدم" },
-  { name: "TypeScript • JavaScript (ES6+)", category: "frontend", badge: "إتقان عالمي" },
-  { name: "HTML5 • CSS3", category: "frontend", badge: "بناء هيكلي" },
-  { name: "Tailwind CSS", category: "frontend", badge: "تصميم متجاوب" },
-  { name: "Expo • React Native", category: "frontend", badge: "تطبيقات الجوال" },
-  // Backend
-  { name: "Supabase", category: "backend", badge: "قواعد البيانات والخدمات السحابية" },
-  { name: "Node.js", category: "backend", badge: "بيئة تشغيل الخوادم" },
-  { name: "REST APIs", category: "backend", badge: "ربط الخدمات والتكامل" },
-  // Design & UX
-  { name: "Figma • Design Systems", category: "design", badge: "تصميم الواجهات والنظم" },
-  // Tools & Performance
-  { name: "Antigravity IDE", category: "tools", badge: "بيئة التطوير الذكية" },
-  { name: "Git • GitHub", category: "tools", badge: "إدارة الإصدارات والتحكم بها" },
+  { name: "React", category: "frontend", categoryKey: "frontend" },
+  { name: "Next.js", category: "frontend", categoryKey: "frontend" },
+  { name: "TypeScript", category: "frontend", categoryKey: "frontend" },
+  { name: "JavaScript (ES6+)", category: "frontend", categoryKey: "frontend" },
+  { name: "Tailwind CSS", category: "frontend", categoryKey: "frontend" },
+  { name: "HTML5", category: "frontend", categoryKey: "frontend" },
+  { name: "CSS3", category: "frontend", categoryKey: "frontend" },
+
+  // Mobile
+  { name: "React Native", category: "mobile", categoryKey: "mobile" },
+  { name: "Expo", category: "mobile", categoryKey: "mobile" },
+
+  // Backend & APIs
+  { name: "Node.js", category: "backend", categoryKey: "backend" },
+  { name: "REST APIs", category: "backend", categoryKey: "apis" },
+  { name: "Supabase", category: "backend", categoryKey: "backend" },
+
+  // Tools & Design
+  { name: "Git", category: "tools", categoryKey: "tools" },
+  { name: "GitHub", category: "tools", categoryKey: "tools" },
+  { name: "Figma", category: "tools", categoryKey: "design" },
+  { name: "Microsoft Excel", category: "tools", categoryKey: "tools" },
+  { name: "Google Analytics", category: "tools", categoryKey: "tools" },
 ];
 
 export default function SkillsSection() {
-  const [activeTab, setActiveTab] = useState<"all" | "frontend" | "backend" | "design" | "tools">("all");
+  const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState<"all" | "frontend" | "mobile" | "backend" | "tools">("all");
 
   const filteredSkills =
     activeTab === "all"
-      ? skillsData
-      : skillsData.filter((s) => s.category === activeTab);
+      ? skillsList
+      : skillsList.filter((s) => s.category === activeTab);
 
   return (
-    <section id="skills" className="py-24 relative bg-black/60">
+    <section id="skills" className="py-24 relative bg-zinc-50/70 border-y border-black/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
-            // أدواتي وخبراتي
+          <span className="text-zinc-500 font-heading font-bold text-xs tracking-widest uppercase">
+            {t.skills.tag}
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
-            المهارات التقنية وأدوات التطوير
+          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-zinc-950">
+            {t.skills.heading}
           </h2>
-          <p className="mt-3 text-zinc-400 text-base">
-            مجموعة مهاراتي المتخصصة في بناء وتصميم منتجات رقمية مبهرة ومستدامة.
+          <p className="mt-3 text-zinc-600 text-sm sm:text-base">
+            {t.skills.subtitle}
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
+          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-zinc-300 via-black to-zinc-300 mx-auto rounded-full"></div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
           {[
-            { id: "all", label: "جميع المهارات" },
-            { id: "frontend", label: "تطوير الواجهات (Frontend)" },
-            { id: "backend", label: "تطوير الخلفية (Backend)" },
-            { id: "design", label: "التصميم والتجربة (UI/UX)" },
-            { id: "tools", label: "الأدوات والأداء" },
+            { id: "all", label: t.skills.tabs.all },
+            { id: "frontend", label: t.skills.tabs.frontend },
+            { id: "mobile", label: t.skills.tabs.mobile },
+            { id: "backend", label: t.skills.tabs.backend },
+            { id: "tools", label: t.skills.tabs.tools },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-5 py-2.5 rounded-full text-sm font-cairo font-bold transition-all ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-heading font-bold transition-all ${
                 activeTab === tab.id
-                  ? "bg-white text-black font-extrabold border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                  : "bg-[#121214]/80 text-zinc-400 hover:text-white hover:bg-[#1c1c20] border border-transparent"
+                  ? "bg-black text-white font-extrabold border border-black shadow-[0_4px_15px_rgba(0,0,0,0.15)]"
+                  : "bg-white text-zinc-700 hover:text-black hover:bg-zinc-100 border border-black/10 shadow-xs"
               }`}
             >
               {tab.label}
@@ -76,20 +86,24 @@ export default function SkillsSection() {
         </div>
 
         {/* Skills Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredSkills.map((skill) => (
             <div
               key={skill.name}
-              className="p-5 rounded-2xl bg-[#0c0c0e] border border-white/10 hover:border-white/30 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(255,255,255,0.1)] flex items-center gap-3.5 group"
+              className="p-5 rounded-2xl bg-white border border-black/10 hover:border-black/30 transition-all duration-300 shadow-xs hover:-translate-y-0.5 hover:shadow-md flex items-center justify-between group"
             >
-
-              <span className="font-cairo font-bold text-white text-sm sm:text-base group-hover:text-zinc-200 transition-colors">
-                {skill.name}
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-black group-hover:scale-125 transition-transform"></span>
+                <span className="font-heading font-bold text-zinc-950 text-sm sm:text-base">
+                  {skill.name}
+                </span>
+              </div>
+              <span className="text-[11px] font-medium text-zinc-500 bg-zinc-50 px-2.5 py-1 rounded-md border border-black/5">
+                {t.skills.categoryLabels[skill.categoryKey]}
               </span>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

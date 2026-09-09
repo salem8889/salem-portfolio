@@ -89,9 +89,9 @@ export default function HeroCanvas() {
         // Draw particle node
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.baseAlpha * 0.75})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = "#ffffff";
+        ctx.fillStyle = `rgba(0, 0, 0, ${p.baseAlpha * 0.6})`;
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = "rgba(0, 0, 0, 0.2)";
         ctx.fill();
 
         // Connect with other particles
@@ -102,11 +102,11 @@ export default function HeroCanvas() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.25;
+            const alpha = (1 - dist / 130) * 0.18;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(0, 0, 0, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -118,11 +118,11 @@ export default function HeroCanvas() {
         const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
 
         if (mdist < mouse.radius) {
-          const malpha = (1 - mdist / mouse.radius) * 0.6;
+          const malpha = (1 - mdist / mouse.radius) * 0.45;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${malpha})`;
+          ctx.strokeStyle = `rgba(0, 0, 0, ${malpha})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
 

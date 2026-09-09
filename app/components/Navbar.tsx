@@ -2,20 +2,23 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
-const navItems = [
-  { id: "hero", label: "الرئيسية" },
-  { id: "about", label: "عني" },
-  { id: "skills", label: "مهاراتي" },
-  { id: "projects", label: "أعمالي" },
-  { id: "timeline", label: "المسار المهني" },
-  { id: "contact", label: "تواصل معي" },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Navbar() {
+  const { language, toggleLanguage, setLanguage, t, isRtl } = useLanguage();
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navItems = [
+    { id: "about", label: t.navbar.nav.about },
+    { id: "experience", label: t.navbar.nav.experience },
+    { id: "projects", label: t.navbar.nav.projects },
+    { id: "skills", label: t.navbar.nav.skills },
+    { id: "education", label: t.navbar.nav.education },
+    { id: "approach", label: t.navbar.nav.approach },
+    { id: "contact", label: t.navbar.nav.contact },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +31,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Section Observer for active link glow
+    // Section Observer for active link highlight
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -40% 0px",
@@ -45,8 +48,8 @@ export default function Navbar() {
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
-    navItems.forEach((item) => {
-      const el = document.getElementById(item.id);
+    ["hero", "about", "experience", "projects", "skills", "education", "approach", "contact"].forEach((id) => {
+      const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
@@ -68,120 +71,201 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#000000]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-lg shadow-black/80"
+          ? "bg-[#ffffff]/90 backdrop-blur-md border-b border-black/10 py-3 shadow-sm shadow-black/5"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo & Identity */}
         <button
           onClick={() => scrollTo("hero")}
-          className="flex items-center gap-3 group cursor-pointer focus:outline-none"
+          className="flex items-center gap-3 group cursor-pointer focus:outline-none text-start"
         >
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/30 group-hover:border-white group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all bg-zinc-900 flex-shrink-0">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-black/20 group-hover:border-black group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(0,0,0,0.15)] transition-all bg-zinc-100 flex-shrink-0">
             <Image
               src="/salem-profile.jpg"
-              alt="SALEM MOHAMMED BA ABBAD"
+              alt="SALEM BA ABBAD"
               width={40}
               height={40}
               className="w-full h-full object-cover object-top"
             />
           </div>
-          <div className="flex flex-col text-right">
-            <span className="font-cairo font-bold text-base text-white group-hover:text-zinc-300 transition-colors">
-              SALEM MOHAMMED BA ABBAD
+          <div className="flex flex-col text-start">
+            <span className="font-heading font-extrabold text-base text-zinc-950 group-hover:text-zinc-700 transition-colors tracking-tight">
+              {t.navbar.name}
             </span>
-            <span className="text-[10px] sm:text-xs text-zinc-400 tracking-tight">
-              Frontend | Mobile Developer | UI/UX Designer
+            <span className="text-[11px] text-zinc-500 font-medium tracking-tight">
+              {t.navbar.role}
             </span>
           </div>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#0e0e11]/80 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 shadow-inner">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#f4f4f5]/90 backdrop-blur-md border border-black/10 rounded-full px-4 py-1.5 shadow-sm">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${
-                  isActive
-                    ? "text-white font-bold"
-                    : "text-zinc-400 hover:text-white"
+                className={`relative px-3.5 py-1.5 text-xs font-semibold tracking-wide transition-colors rounded-full ${
+                  isActive ? "text-black font-bold" : "text-zinc-600 hover:text-black"
                 }`}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-gradient-to-r from-zinc-400 via-white to-zinc-400 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)] transition-all"></span>
+                  <span className="absolute bottom-0 inset-x-2.5 h-[2px] bg-black rounded-full shadow-xs transition-all"></span>
                 )}
               </button>
             );
           })}
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden md:block">
+        {/* Action Buttons & Language Switcher */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Segmented Language Switcher */}
+          <div
+            className="flex items-center bg-zinc-100/90 p-1 rounded-full border border-black/15 shadow-xs"
+            dir="ltr"
+          >
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              aria-label="Switch to English"
+              className={`px-3 py-1 rounded-full text-xs font-heading font-bold transition-all ${
+                language === "en"
+                  ? "bg-black text-white shadow-xs"
+                  : "text-zinc-600 hover:text-black"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("ar")}
+              aria-label="التبديل إلى العربية"
+              className={`px-3 py-1 rounded-full text-xs font-heading font-bold transition-all ${
+                language === "ar"
+                  ? "bg-black text-white shadow-xs"
+                  : "text-zinc-600 hover:text-black"
+              }`}
+            >
+              العربية
+            </button>
+          </div>
+
+          <a
+            href="/SALEM_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-full bg-white hover:bg-zinc-100 text-zinc-900 font-bold text-xs border border-black/20 shadow-xs transition-all transform hover:-translate-y-0.5 flex items-center gap-1.5"
+          >
+            <span>{t.navbar.resume}</span>
+            <span className="text-[10px] text-zinc-500">{t.navbar.resumePdf}</span>
+          </a>
           <button
             onClick={() => scrollTo("contact")}
-            className="px-5 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-cairo font-extrabold text-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all transform hover:-translate-y-0.5"
+            className="px-5 py-2 rounded-full bg-black hover:bg-zinc-800 text-white font-extrabold text-xs border border-black shadow-[0_4px_15px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-all transform hover:-translate-y-0.5"
           >
-            تواصل معي
+            {t.navbar.getInTouch}
           </button>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="القائمة"
-          className="md:hidden p-2 rounded-lg bg-[#0e0e11] border border-white/20 text-white focus:outline-none"
-        >
-          <div className="w-6 h-5 relative flex flex-col justify-between">
-            <span
-              className={`w-full h-0.5 bg-white rounded transition-all duration-300 origin-right ${
-                mobileOpen ? "rotate-[-45deg] translate-y-0.5" : ""
+        {/* Mobile View: Lang Switcher + Hamburger */}
+        <div className="flex items-center gap-2 lg:hidden">
+          {/* Mobile Segmented Switcher */}
+          <div
+            className="flex items-center bg-zinc-100 p-0.5 rounded-full border border-black/15"
+            dir="ltr"
+          >
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              aria-label="Switch to English"
+              className={`px-2.5 py-1 rounded-full text-[11px] font-heading font-bold transition-all ${
+                language === "en"
+                  ? "bg-black text-white shadow-xs"
+                  : "text-zinc-600 hover:text-black"
               }`}
-            ></span>
-            <span
-              className={`w-full h-0.5 bg-white rounded transition-all duration-300 ${
-                mobileOpen ? "opacity-0" : "opacity-100"
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLanguage("ar")}
+              aria-label="التبديل إلى العربية"
+              className={`px-2.5 py-1 rounded-full text-[11px] font-heading font-bold transition-all ${
+                language === "ar"
+                  ? "bg-black text-white shadow-xs"
+                  : "text-zinc-600 hover:text-black"
               }`}
-            ></span>
-            <span
-              className={`w-full h-0.5 bg-white rounded transition-all duration-300 origin-right ${
-                mobileOpen ? "rotate-[45deg] -translate-y-0.5" : ""
-              }`}
-            ></span>
+            >
+              العربية
+            </button>
           </div>
-        </button>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
+            className="p-2 rounded-lg bg-[#f4f4f5] border border-black/15 text-black focus:outline-none"
+          >
+            <div className="w-6 h-5 relative flex flex-col justify-between">
+              <span
+                className={`w-full h-0.5 bg-black rounded transition-all duration-300 origin-start ${
+                  mobileOpen ? "rotate-[45deg] translate-y-0.5" : ""
+                }`}
+              ></span>
+              <span
+                className={`w-full h-0.5 bg-black rounded transition-all duration-300 ${
+                  mobileOpen ? "opacity-0" : "opacity-100"
+                }`}
+              ></span>
+              <span
+                className={`w-full h-0.5 bg-black rounded transition-all duration-300 origin-start ${
+                  mobileOpen ? "rotate-[-45deg] -translate-y-0.5" : ""
+                }`}
+              ></span>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`md:hidden fixed inset-x-0 top-[65px] bg-[#000000]/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300 overflow-hidden ${
-          mobileOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+        className={`lg:hidden fixed inset-x-0 top-[65px] bg-[#ffffff]/98 backdrop-blur-xl border-b border-black/10 shadow-lg transition-all duration-300 overflow-hidden ${
+          mobileOpen ? "max-h-[520px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
         }`}
       >
-        <div className="flex flex-col gap-3 px-6">
+        <div className="flex flex-col gap-2 px-6">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className={`text-right py-2.5 px-4 rounded-xl text-base font-semibold transition-all ${
+              className={`text-start py-2.5 px-4 rounded-xl text-sm font-semibold transition-all ${
                 activeSection === item.id
-                  ? "bg-white/10 text-white border border-white/20"
-                  : "text-zinc-400 hover:bg-[#141418] hover:text-white"
+                  ? "bg-black/5 text-black border border-black/15 font-bold"
+                  : "text-zinc-600 hover:bg-zinc-100 hover:text-black"
               }`}
             >
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => scrollTo("contact")}
-            className="mt-2 w-full py-3 rounded-xl bg-white hover:bg-zinc-200 text-black font-cairo font-extrabold text-center shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-          >
-            تواصل معي
-          </button>
+          <div className="pt-2 flex flex-col gap-2">
+            <a
+              href="/SALEM_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-bold text-xs text-center border border-black/10"
+            >
+              {t.navbar.downloadResume}
+            </a>
+            <button
+              onClick={() => scrollTo("contact")}
+              className="w-full py-2.5 rounded-xl bg-black hover:bg-zinc-800 text-white font-bold text-xs text-center shadow-md"
+            >
+              {t.navbar.getInTouch}
+            </button>
+          </div>
         </div>
       </div>
     </header>

@@ -1,10 +1,13 @@
 import Preloader from "./components/Preloader";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import ImpactMetrics from "./components/ImpactMetrics";
 import AboutSection from "./components/AboutSection";
-import SkillsSection from "./components/SkillsSection";
+import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectsSection";
-import TimelineSection from "./components/TimelineSection";
+import SkillsSection from "./components/SkillsSection";
+import EducationSection from "./components/EducationSection";
+import ApproachSection from "./components/ApproachSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
@@ -15,10 +18,13 @@ export default function Home() {
       <Navbar />
       <main className="relative z-10 min-h-screen">
         <HeroSection />
+        <ImpactMetrics />
         <AboutSection />
-        <SkillsSection />
+        <ExperienceSection />
         <ProjectsSection />
-        <TimelineSection />
+        <SkillsSection />
+        <EducationSection />
+        <ApproachSection />
         <ContactSection />
       </main>
       <Footer />

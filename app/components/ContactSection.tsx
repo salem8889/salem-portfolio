@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, FormEvent, MouseEvent } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,52 +40,52 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
-            // تواصل معي
+          <span className="text-zinc-500 font-heading font-bold text-xs tracking-widest uppercase">
+            {t.contact.tag}
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
-            هل لديك مشروع جديد أو فكرة تود مناقشتها؟
+          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-zinc-950">
+            {t.contact.heading}
           </h2>
-          <p className="mt-3 text-zinc-400 text-base">
-            يسعدني دائماً التواصل معك وبناء تجارب ويب وتصميمات مبتكرة تلبي طموحاتك.
+          <p className="mt-3 text-zinc-600 text-sm sm:text-base">
+            {t.contact.subtitle}
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
+          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-zinc-300 via-black to-zinc-300 mx-auto rounded-full"></div>
         </div>
 
-        {/* Layout: Form & Direct Contact Cards */}
+        {/* Layout: Info & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          {/* Contact Info Cards (Left/Right depending on RTL) */}
+          {/* Direct Contact Cards */}
           <div className="lg:col-span-5 space-y-6">
-            
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-white/15">
-              <h3 className="font-cairo text-xl font-bold text-white mb-6">
-                معلومات التواصل المباشر
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-black/10 bg-white shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-zinc-950 mb-6">
+                {t.contact.directTitle}
               </h3>
 
               <div className="space-y-6">
                 {/* Email */}
                 <div>
-                  <span className="text-xs text-zinc-400 block">البريد الإلكتروني</span>
+                  <span className="text-xs text-zinc-500 block uppercase tracking-wider font-semibold">
+                    {t.contact.emailLabel}
+                  </span>
                   <a
-                    href="mailto:salem_baabad@outlook.com"
-                    className="font-cairo font-bold text-white hover:text-zinc-300 transition-colors"
+                    href="mailto:SALEM_BAABAD@outlook.sa"
+                    className="font-heading font-bold text-zinc-950 hover:text-zinc-600 transition-colors text-sm sm:text-base"
                   >
-                    salem_baabad@outlook.com
+                    SALEM_BAABAD@outlook.sa
                   </a>
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <span className="text-xs text-zinc-400 block">الهاتف / واتساب</span>
+                  <span className="text-xs text-zinc-500 block uppercase tracking-wider font-semibold">
+                    {t.contact.phoneLabel}
+                  </span>
                   <a
-                    href="https://wa.me/966509788768"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-cairo font-bold text-white hover:text-zinc-300 transition-colors dir-ltr block text-right"
+                    href="tel:+966509788768"
+                    className="font-heading font-bold text-zinc-950 hover:text-zinc-600 transition-colors block text-sm sm:text-base"
+                    dir="ltr"
                   >
                     +966 50 978 8768
                   </a>
@@ -91,38 +93,67 @@ export default function ContactSection() {
 
                 {/* Location */}
                 <div>
-                  <span className="text-xs text-zinc-400 block">الموقع الحالي</span>
-                  <span className="font-cairo font-bold text-white">
-                    الرياض، المملكة العربية السعودية
+                  <span className="text-xs text-zinc-500 block uppercase tracking-wider font-semibold">
+                    {t.contact.locationLabel}
+                  </span>
+                  <span className="font-heading font-bold text-zinc-950 text-sm sm:text-base">
+                    {t.contact.locationVal}
                   </span>
                 </div>
               </div>
-            </div>
 
+              {/* Links & Resume download */}
+              <div className="mt-8 pt-6 border-t border-black/10 flex flex-col gap-3">
+                <a
+                  href="/SALEM_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 px-4 rounded-2xl bg-zinc-100 hover:bg-zinc-200 text-zinc-900 font-heading font-bold text-xs flex items-center justify-between border border-black/10 transition-all"
+                >
+                  <span>{t.contact.downloadResume}</span>
+                  <span>↗</span>
+                </a>
+
+                <div className="flex items-center gap-3 pt-1">
+                  <a
+                    href="https://github.com/salem8889"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-zinc-50 text-zinc-800 font-heading font-semibold text-xs text-center border border-black/15 shadow-xs transition-all"
+                  >
+                    GitHub ↗
+                  </a>
+                  <a
+                    href="mailto:SALEM_BAABAD@outlook.sa"
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-black hover:bg-zinc-800 text-white font-heading font-semibold text-xs text-center shadow-xs transition-all"
+                  >
+                    {t.contact.directEmailBtn}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Floating Label Contact Form */}
+          {/* Contact Message Form */}
           <div className="lg:col-span-7">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-white/15">
-              
-              <h3 className="font-cairo text-xl font-bold text-white mb-6">
-                أرسل لي رسالة مباشرة
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-black/10 bg-white shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-zinc-950 mb-6">
+                {t.contact.formTitle}
               </h3>
 
               {submitted ? (
-                <div className="p-6 rounded-2xl bg-white/10 border border-white/30 text-center animate-fade-in">
-                  <span className="text-4xl mb-2 block">🎉</span>
-                  <h4 className="font-cairo font-bold text-xl text-white">
-                    تم إرسال رسالتك بنجاح!
+                <div className="p-8 rounded-2xl bg-zinc-50 border border-black/15 text-center animate-fade-in">
+                  <span className="text-4xl mb-3 block">✓</span>
+                  <h4 className="font-heading font-bold text-xl text-zinc-950">
+                    {t.contact.successTitle}
                   </h4>
-                  <p className="mt-2 text-sm text-zinc-300">
-                    شكراً لتواصلك يا {formData.name || "صديقي"}. سأقوم بالرد عليك في أقرب وقت ممكن.
+                  <p className="mt-2 text-sm text-zinc-600">
+                    {t.contact.successDesc}
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  
-                  {/* Floating Input: Name */}
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Name Input */}
                   <div className="floating-group">
                     <input
                       type="text"
@@ -134,11 +165,11 @@ export default function ContactSection() {
                       className="floating-input"
                     />
                     <label htmlFor="name" className="floating-label">
-                      الاسم الكامل
+                      {t.contact.namePlaceholder}
                     </label>
                   </div>
 
-                  {/* Floating Input: Email */}
+                  {/* Email Input */}
                   <div className="floating-group">
                     <input
                       type="email"
@@ -150,11 +181,11 @@ export default function ContactSection() {
                       className="floating-input"
                     />
                     <label htmlFor="email" className="floating-label">
-                      البريد الإلكتروني
+                      {t.contact.emailPlaceholder}
                     </label>
                   </div>
 
-                  {/* Floating Input: Subject */}
+                  {/* Subject Input */}
                   <div className="floating-group">
                     <input
                       type="text"
@@ -166,11 +197,11 @@ export default function ContactSection() {
                       className="floating-input"
                     />
                     <label htmlFor="subject" className="floating-label">
-                      موضوع الرسالة
+                      {t.contact.subjectPlaceholder}
                     </label>
                   </div>
 
-                  {/* Floating Textarea: Message */}
+                  {/* Textarea: Message */}
                   <div className="floating-group">
                     <textarea
                       id="message"
@@ -182,23 +213,22 @@ export default function ContactSection() {
                       className="floating-input floating-textarea resize-none"
                     ></textarea>
                     <label htmlFor="message" className="floating-label">
-                      نص الرسالة التفصيلي...
+                      {t.contact.messagePlaceholder}
                     </label>
                   </div>
 
-                  {/* Submit Button with Ripple Effect */}
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     onClick={handleRipple}
-                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-white hover:bg-zinc-200 text-black font-cairo font-extrabold text-base border border-white shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all transform hover:-translate-y-0.5"
+                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-black hover:bg-zinc-800 text-white font-heading font-extrabold text-sm border border-black shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] transition-all transform hover:-translate-y-0.5"
                   >
-                    إرسال الرسالة الان
-                    
-                    {/* Ripple Elements */}
+                    {t.contact.sendBtn}
+
                     {ripples.map((r) => (
                       <span
                         key={r.id}
-                        className="absolute rounded-full bg-white/40 pointer-events-none animate-[ping_0.6s_linear]"
+                        className="absolute rounded-full bg-white/30 pointer-events-none animate-[ping_0.6s_linear]"
                         style={{
                           left: r.x - 20,
                           top: r.y - 20,
@@ -208,15 +238,11 @@ export default function ContactSection() {
                       />
                     ))}
                   </button>
-
                 </form>
               )}
-
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

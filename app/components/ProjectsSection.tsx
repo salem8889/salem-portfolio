@@ -1,82 +1,12 @@
 "use client";
 
 import { useState, MouseEvent } from "react";
-
-interface Project {
-  id: number;
-  title: string;
-  category: "web" | "mobile";
-  categoryLabel: string;
-  description: string;
-  tags: string[];
-  imageGradient?: string;
-  imageUrl?: string;
-  imageStyle?: "logo" | "full";
-  liveUrl?: string;
-  appStoreUrl?: string;
-  googlePlayUrl?: string;
-  badge?: string;
-  isDisplayOnly?: boolean;
-}
-
-const projectsData: Project[] = [
-  {
-    id: 1,
-    title: "موقع شركة الجنية العربي للمعادن الثمينة",
-    category: "web",
-    categoryLabel: "موقع إلكتروني حي",
-    description:
-      "المنصة والموقع الرسمي الفاخر لشركة الجنية العربي للمعادن الثمينة بالمملكة العربية السعودية. يشتمل الموقع على شريط أسعار الذهب والفضة اللحظية المباشرة (Live Ticker)، واستعراض السبائك والمنتجات مع استكشاف الفروع المعتمدة وتجربة مستخدم راقية.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Live Ticker API", "UI/UX Design", "RTL"],
-    imageGradient: "from-[#d4af37]/35 via-zinc-800 to-black",
-    imageUrl: "/arabic-coin-logo.jpg",
-    imageStyle: "logo",
-    liveUrl: "https://arabiccoincompany.com",
-  },
-  {
-    id: 2,
-    title: "بوابة تقنية المعلومات ونظام إدارة الخدمات (Rayyan IT Portal)",
-    category: "web",
-    categoryLabel: "مشروع تخرج 2026",
-    description:
-      "منصة ويب متكاملة لتسهيل إدارة الخدمات البرمجية والمشاريع التقنية، تم تطويرها كـ مشروع تخرج متميز لجامعة الريان لعام 2026 بمواصفات تقنية عالية ودعم متكامل للواجهات.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Web Portal", "UI/UX Architecture"],
-    imageGradient: "from-zinc-800 via-zinc-900 to-black",
-    isDisplayOnly: true,
-  },
-  {
-    id: 3,
-    title: "تطبيق الجنية العربي للمعادن الثمينة (Arabic Coin)",
-    category: "mobile",
-    categoryLabel: "تطبيق جوال منشور",
-    badge: "Published on App Store & Google Play",
-    description:
-      "تطبيق الجوال الرسمي لشركة الجنية العربي المتاح على متجري أبل (App Store) وجوجل بلاي (Google Play) لمتابعة أسعار الذهب والفضة والسبائك بشكل لحظي، وحساب قيمة المقتنيات، واستقبال إشعارات الأسعار الذكية للمستثمرين.",
-    tags: ["React Native", "Expo", "TypeScript", "REST APIs", "Push Notifications", "Mobile UI/UX"],
-    imageGradient: "from-[#d4af37]/40 via-zinc-900 to-black",
-    imageUrl: "/arabic-coin-app-icon.png",
-    imageStyle: "full",
-    appStoreUrl: "https://lnkd.in/dpwsJw_x",
-    googlePlayUrl: "https://lnkd.in/d4rck-9T",
-  },
-  {
-    id: 4,
-    title: "تصميم واجهات وتجربة تطبيق إعمار (Emaar App UI/UX)",
-    category: "mobile",
-    categoryLabel: "نموذج Figma تفاعلي",
-    description:
-      "تصميم واجهات وتجربة مستخدم متكاملة وتفاعلية لتطبيق إعمار (Emaar App) على منصة Figma، تشمل النمذجة التفاعلية (Prototyping)، وتخطيط هيكلية التطبيق بأسلوب عصري جذاب.",
-    tags: ["Figma", "UI/UX Design", "Mobile App Prototype", "Wireframing", "Prototyping"],
-    imageGradient: "from-zinc-700 via-zinc-800 to-black",
-    imageUrl: "/emaar-logo-center.png",
-    imageStyle: "logo",
-    liveUrl: "https://www.figma.com/design/pIJjE8wN3wRGT71f0rWSuz/Emaar-App?node-id=0-1&t=zxxVwlgOVdcmavZk-1",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState<"all" | "web" | "mobile">("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { t, isRtl } = useLanguage();
+  const [activeTab, setActiveTab] = useState<"all" | "web" | "mobile" | "design">("all");
+  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -87,305 +17,330 @@ export default function ProjectsSection() {
     card.style.setProperty("--mouse-y", `${y}px`);
   };
 
-  const webProjects = projectsData.filter((p) => p.category === "web");
-  const mobileProjects = projectsData.filter((p) => p.category === "mobile");
+  const filteredProjects =
+    activeTab === "all"
+      ? t.projects.items
+      : t.projects.items.filter((p) => p.category === activeTab);
 
-  const renderProjectCard = (project: Project) => (
-    <div
-      key={project.id}
-      onMouseMove={handleMouseMove}
-      className={`glow-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group ${
-        project.isDisplayOnly ? "cursor-default" : "cursor-pointer"
-      }`}
-      onClick={() => {
-        if (!project.isDisplayOnly) {
-          setSelectedProject(project);
-        }
-      }}
-    >
-      {/* Top Banner & Image/Icon */}
-      <div>
-        <div
-          className={`w-full h-52 sm:h-56 rounded-2xl bg-black border border-white/15 flex flex-col items-center justify-center mb-6 relative overflow-hidden group-hover:border-white/40 transition-all shadow-inner`}
-        >
-          {project.imageUrl ? (
-            project.imageStyle === "full" ? (
-              <div className="absolute inset-0 w-full h-full bg-[#070709] flex items-center justify-center p-2">
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 z-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-black/50 pointer-events-none z-10"></div>
-              </div>
-            ) : (
-              <div className="absolute inset-0 w-full h-full bg-[#050506] flex items-center justify-center p-3">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-black/70 z-10"></div>
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-40 h-40 sm:w-44 sm:h-44 object-contain rounded-2xl border-2 border-[#d4af37]/70 shadow-[0_0_35px_rgba(212,175,55,0.4)] z-0 group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            )
-          ) : (
-            <div
-              className={`absolute inset-0 w-full h-full bg-gradient-to-br ${
-                project.imageGradient || "from-zinc-800 to-black"
-              } flex flex-col items-center justify-center`}
-            >
-            </div>
-          )}
-
-          {/* Category Label / App Badge */}
-          <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-20">
-            <div className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-white text-[11px] font-bold border border-white/20 shadow-sm">
-              {project.categoryLabel}
-            </div>
-            {project.badge && (
-              <div className="px-2.5 py-0.5 rounded-full bg-emerald-500/90 text-white text-[10px] font-bold border border-emerald-400/50 shadow-[0_0_10px_rgba(16,185,129,0.4)]">
-                {project.badge}
-              </div>
-            )}
-          </div>
-
-          {/* Live / App Store / Google Play Link Buttons */}
-          {(project.appStoreUrl || project.googlePlayUrl || project.liveUrl) && (
-            <div className="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap gap-2 items-center justify-start">
-              {project.appStoreUrl && (
-                <a
-                  href={project.appStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="font-cairo text-xs text-white font-bold px-3 py-1.5 rounded-full bg-emerald-600/95 hover:bg-emerald-500 backdrop-blur-md border border-emerald-400/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] flex items-center gap-1"
-                >
-                  App Store ↗
-                </a>
-              )}
-              {project.googlePlayUrl && (
-                <a
-                  href={project.googlePlayUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="font-cairo text-xs text-white font-bold px-3 py-1.5 rounded-full bg-sky-600/95 hover:bg-sky-500 backdrop-blur-md border border-sky-400/50 transition-all shadow-[0_0_15px_rgba(14,165,233,0.4)] flex items-center gap-1"
-                >
-                  Google Play ↗
-                </a>
-              )}
-              {project.liveUrl && !project.appStoreUrl && !project.googlePlayUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="font-cairo text-xs text-white font-bold px-3.5 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-white/30 hover:bg-white hover:text-black transition-all shadow-md"
-                >
-                  {project.liveUrl?.includes("figma") ? "معاينة Figma ↗" : "زيارة الموقع ↗"}
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Project Title & Description */}
-        <h3 className="font-cairo text-lg sm:text-xl font-bold text-white group-hover:text-zinc-200 transition-colors leading-snug">
-          {project.title}
-        </h3>
-        <p className="mt-3 text-xs sm:text-sm text-zinc-400 leading-relaxed">
-          {project.description}
-        </p>
-      </div>
-
-      {/* Tags & Action Footer */}
-      {project.tags.length > 0 && (
-        <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-1.5">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 rounded-md bg-black/80 text-zinc-300 text-[11px] font-medium border border-white/10"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {!project.isDisplayOnly && (
-            <span className="text-xs font-cairo font-bold text-white flex items-center gap-1 group-hover:translate-x-[-4px] transition-transform">
-              التفاصيل ←
-            </span>
-          )}
-        </div>
-      )}
-    </div>
-  );
+  const selectedProject = selectedProjectId
+    ? t.projects.items.find((p) => p.id === selectedProjectId) || null
+    : null;
 
   return (
     <section id="projects" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="text-zinc-400 font-cairo font-bold text-sm tracking-widest uppercase">
-            // محفظة الأعمال والمشاريع
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-zinc-500 font-heading font-bold text-xs tracking-widest uppercase">
+            {t.projects.tag}
           </span>
-          <h2 className="mt-2 font-cairo text-3xl sm:text-4xl font-extrabold text-white">
-            المشاريع الحقيقية والتطبيقات
+          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-zinc-950">
+            {t.projects.heading}
           </h2>
-          <p className="mt-3 text-zinc-400 text-base">
-            استعرض مشاريع المواقع والتطبيقات المنشورة على المتاجر والتصاميم التفاعلية.
+          <p className="mt-3 text-zinc-600 text-sm sm:text-base">
+            {t.projects.subtitle}
           </p>
-          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-zinc-600 via-white to-zinc-600 mx-auto rounded-full"></div>
+          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-zinc-300 via-black to-zinc-300 mx-auto rounded-full"></div>
         </div>
 
-        {/* Category Filters / Tabs */}
+        {/* Category Filters */}
         <div className="flex justify-center items-center gap-2 sm:gap-3 mb-14 flex-wrap">
-          <button
-            onClick={() => setActiveTab("all")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-cairo font-bold transition-all ${
-              activeTab === "all"
-                ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white"
-                : "bg-[#121214]/80 text-zinc-400 border border-white/10 hover:text-white hover:border-white/20"
-            }`}
-          >
-            الكل (All)
-          </button>
-          <button
-            onClick={() => setActiveTab("web")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-cairo font-bold transition-all ${
-              activeTab === "web"
-                ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white"
-                : "bg-[#121214]/80 text-zinc-400 border border-white/10 hover:text-white hover:border-white/20"
-            }`}
-          >
-            مشاريع المواقع (Web Projects)
-          </button>
-          <button
-            onClick={() => setActiveTab("mobile")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-cairo font-bold transition-all ${
-              activeTab === "mobile"
-                ? "bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white"
-                : "bg-[#121214]/80 text-zinc-400 border border-white/10 hover:text-white hover:border-white/20"
-            }`}
-          >
-            تطبيقات الجوال (Mobile Apps)
-          </button>
+          {[
+            { id: "all", label: t.projects.tabs.all },
+            { id: "web", label: t.projects.tabs.web },
+            { id: "mobile", label: t.projects.tabs.mobile },
+            { id: "design", label: t.projects.tabs.design },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-heading font-bold transition-all ${
+                activeTab === tab.id
+                  ? "bg-black text-white shadow-[0_4px_15px_rgba(0,0,0,0.15)] border border-black"
+                  : "bg-white text-zinc-700 border border-black/10 hover:text-black hover:border-black/25 shadow-xs"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        {/* Web Projects Subsection */}
-        {(activeTab === "all" || activeTab === "web") && (
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-8 pb-3 border-b border-white/10">
-              <span className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              onMouseMove={handleMouseMove}
+              onClick={() => setSelectedProjectId(project.id)}
+              className="glow-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between cursor-pointer group bg-white border border-black/10 hover:border-black/30 transition-all shadow-sm"
+            >
               <div>
-                <h3 className="font-cairo text-xl sm:text-2xl font-bold text-white">
-                  Web Projects — مشاريع المواقع
+                {/* Visual Header / Image Container */}
+                <div className="w-full h-52 sm:h-60 rounded-2xl bg-zinc-50 border border-black/10 flex flex-col items-center justify-center mb-6 relative overflow-hidden group-hover:border-black/25 transition-all">
+                  {project.imageUrl ? (
+                    project.imageStyle === "full" ? (
+                      <div className="absolute inset-0 w-full h-full bg-[#f8f8f9] flex items-center justify-center p-3">
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 z-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent pointer-events-none z-10"></div>
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full bg-[#f8f8f9] flex items-center justify-center p-4">
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent z-10"></div>
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="w-36 h-36 sm:w-40 sm:h-40 object-contain rounded-2xl border border-black/10 shadow-md z-0 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )
+                  ) : (
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-50 flex flex-col items-center justify-center p-6 text-center">
+                      <div className="w-14 h-14 rounded-2xl bg-white border border-black/10 flex items-center justify-center font-heading font-black text-xl text-zinc-900 shadow-sm mb-2">
+                        IT
+                      </div>
+                      <span className="font-heading font-bold text-sm text-zinc-800">
+                        {project.title}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Badge & Category */}
+                  <div className="absolute top-3 end-3 flex flex-col items-end gap-1.5 z-20">
+                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-zinc-900 text-[11px] font-bold border border-black/15 shadow-xs">
+                      {project.categoryLabel}
+                    </span>
+                    {project.badge && (
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold border border-emerald-500 shadow-xs">
+                        {project.badge}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Direct Link Badges at Bottom */}
+                  <div className="absolute bottom-3 inset-x-3 z-20 flex flex-wrap gap-2 items-center">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="font-heading text-xs text-zinc-900 font-bold px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/20 hover:bg-black hover:text-white transition-all shadow-xs flex items-center gap-1"
+                      >
+                        <span>
+                          {project.category === "design"
+                            ? isRtl
+                              ? "نموذج Figma ↗"
+                              : "Figma Prototype ↗"
+                            : isRtl
+                            ? "الموقع الحي ↗"
+                            : "Live Website ↗"}
+                        </span>
+                      </a>
+                    )}
+                    {project.appStoreUrl && (
+                      <a
+                        href={project.appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="font-heading text-xs text-white font-bold px-3 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 transition-all shadow-xs flex items-center gap-1"
+                      >
+                        <span>App Store ↗</span>
+                      </a>
+                    )}
+                    {project.googlePlayUrl && (
+                      <a
+                        href={project.googlePlayUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="font-heading text-xs text-white font-bold px-3 py-1.5 rounded-full bg-sky-600 hover:bg-sky-700 transition-all shadow-xs flex items-center gap-1"
+                      >
+                        <span>Google Play ↗</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* Title & Summary */}
+                <h3 className="font-heading text-xl sm:text-2xl font-bold text-zinc-950 group-hover:text-zinc-700 transition-colors leading-snug">
+                  {project.title}
                 </h3>
-                <p className="text-xs text-zinc-400">مواقع ومنصات إلكترونية تفاعلية</p>
+                <p className="mt-2 text-xs sm:text-sm text-zinc-600 leading-relaxed">
+                  {project.summary}
+                </p>
+
+                {/* Key Metrics Callout if available */}
+                {project.metrics && project.metrics.length > 0 && (
+                  <div className="mt-4 grid grid-cols-2 gap-2.5 p-3 rounded-2xl bg-zinc-50 border border-black/5">
+                    {project.metrics.map((m, i) => (
+                      <div key={i}>
+                        <div
+                          className="font-heading text-base sm:text-lg font-extrabold text-zinc-950"
+                          dir="ltr"
+                        >
+                          {m.value}
+                        </div>
+                        <div className="text-[11px] text-zinc-500 font-medium leading-tight">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Tags & Action Link */}
+              <div className="mt-6 pt-5 border-t border-black/10 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.slice(0, 4).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-800 text-[11px] font-medium border border-black/5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {project.tags.length > 4 && (
+                    <span className="px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-500 text-[11px] font-medium">
+                      +{project.tags.length - 4}
+                    </span>
+                  )}
+                </div>
+
+                <span className="text-xs font-heading font-bold text-black flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                  {t.projects.viewDetails}
+                </span>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {webProjects.map(renderProjectCard)}
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Apps Subsection */}
-        {(activeTab === "all" || activeTab === "mobile") && (
-          <div>
-            <div className="flex items-center gap-3 mb-8 pb-3 border-b border-white/10">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#d4af37] shadow-[0_0_8px_rgba(212,175,55,0.8)]"></span>
-              <div>
-                <h3 className="font-cairo text-xl sm:text-2xl font-bold text-white">
-                  Mobile Apps — تطبيقات الجوال
-                </h3>
-                <p className="text-xs text-zinc-400">تطبيقات الهواتف الذكية المنشورة والتصاميم التفاعلية</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mobileProjects.map(renderProjectCard)}
-            </div>
-          </div>
-        )}
-
-        {/* Project Detail Modal */}
+        {/* Project Details Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
-            <div className="relative w-full max-w-2xl bg-[#0c0c0e] border border-white/30 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="relative w-full max-w-2xl bg-white border border-black/15 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
               <button
-                onClick={() => setSelectedProject(null)}
-                aria-label="إغلاق"
-                className="absolute top-5 left-5 w-9 h-9 rounded-full bg-black border border-white/30 text-white flex items-center justify-center text-lg hover:bg-white hover:text-black transition-all"
+                onClick={() => setSelectedProjectId(null)}
+                aria-label={t.projects.closeBtn}
+                className="absolute top-5 end-5 w-9 h-9 rounded-full bg-zinc-100 border border-black/15 text-zinc-800 flex items-center justify-center text-sm font-bold hover:bg-black hover:text-white transition-all shadow-xs"
               >
                 ✕
               </button>
 
-              <div className="flex items-center gap-4 mb-4">
-                {selectedProject.imageUrl ? (
+              {/* Modal Header */}
+              <div className="flex items-center gap-4 mb-5 pe-8">
+                {selectedProject.imageUrl && (
                   <img
                     src={selectedProject.imageUrl}
                     alt={selectedProject.title}
-                    className="w-16 h-16 rounded-xl border border-white/30 object-cover shadow-lg"
+                    className="w-16 h-16 rounded-2xl border border-black/15 object-contain p-1 bg-zinc-50 shadow-xs shrink-0"
                   />
-                ) : null}
+                )}
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-zinc-300 font-bold">
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
+                    <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">
                       {selectedProject.categoryLabel}
                     </span>
                     {selectedProject.badge && (
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[10px] font-bold">
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold">
                         {selectedProject.badge}
                       </span>
                     )}
                   </div>
-                  <h3 className="font-cairo text-xl sm:text-2xl font-extrabold text-white">
+                  <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-zinc-950">
                     {selectedProject.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+              {/* Detailed Description */}
+              <p className="text-zinc-600 text-sm leading-relaxed mb-5">
                 {selectedProject.description}
               </p>
 
-              {selectedProject.tags.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="font-cairo text-sm font-bold text-white mb-2">
-                    التقنيات المستخدمة:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="px-3 py-1 rounded-lg bg-black border border-white/20 text-white text-xs font-medium"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+              {/* Metrics Grid */}
+              {selectedProject.metrics && selectedProject.metrics.length > 0 && (
+                <div className="mb-6 grid grid-cols-2 gap-3 p-4 rounded-2xl bg-zinc-50 border border-black/10">
+                  {selectedProject.metrics.map((m, i) => (
+                    <div key={i}>
+                      <div className="font-heading text-xl font-black text-zinc-950" dir="ltr">
+                        {m.value}
+                      </div>
+                      <div className="text-xs text-zinc-600 font-medium">{m.label}</div>
+                    </div>
+                  ))}
                 </div>
               )}
 
-              <div className="flex flex-wrap justify-end gap-3 pt-4 border-t border-white/10">
+              {/* Key Deliverables Bullet Points */}
+              <div className="mb-6">
+                <h4 className="font-heading text-xs uppercase tracking-wider text-zinc-500 font-bold mb-3">
+                  {t.projects.highlightsTitle}
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-zinc-700">
+                  {selectedProject.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="text-black font-bold shrink-0 mt-0.5">✦</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Tech Stack Tags */}
+              <div className="mb-6">
+                <h4 className="font-heading text-xs uppercase tracking-wider text-zinc-500 font-bold mb-2.5">
+                  {t.projects.techTitle}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-lg bg-zinc-100 border border-black/10 text-zinc-800 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Modal Actions */}
+              <div className="flex flex-wrap justify-end gap-3 pt-5 border-t border-black/10">
                 <button
-                  onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2.5 rounded-full bg-black border border-white/20 text-zinc-400 hover:text-white font-cairo text-sm font-bold transition-all"
+                  onClick={() => setSelectedProjectId(null)}
+                  className="px-5 py-2.5 rounded-full bg-zinc-100 border border-black/15 text-zinc-700 hover:text-black font-heading text-xs font-bold transition-all"
                 >
-                  إغلاق
+                  {t.projects.closeBtn}
                 </button>
+                {selectedProject.liveUrl && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 rounded-full bg-black hover:bg-zinc-800 text-white font-heading text-xs font-extrabold border border-black shadow-xs transition-all flex items-center gap-1.5"
+                  >
+                    <span>
+                      {selectedProject.category === "design"
+                        ? t.projects.openFigma
+                        : t.projects.visitLive}
+                    </span>
+                    <span>↗</span>
+                  </a>
+                )}
                 {selectedProject.appStoreUrl && (
                   <a
                     href={selectedProject.appStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-cairo text-sm font-extrabold border border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all flex items-center gap-1.5"
+                    className="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-heading text-xs font-bold transition-all flex items-center gap-1.5"
                   >
-                    App Store (iOS) ↗
+                    <span>{t.projects.appStore}</span>
+                    <span>↗</span>
                   </a>
                 )}
                 {selectedProject.googlePlayUrl && (
@@ -393,26 +348,16 @@ export default function ProjectsSection() {
                     href={selectedProject.googlePlayUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-500 text-white font-cairo text-sm font-extrabold border border-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all flex items-center gap-1.5"
+                    className="px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-heading text-xs font-bold transition-all flex items-center gap-1.5"
                   >
-                    Google Play (Android) ↗
-                  </a>
-                )}
-                {selectedProject.liveUrl && !selectedProject.appStoreUrl && !selectedProject.googlePlayUrl && (
-                  <a
-                    href={selectedProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black font-cairo text-sm font-extrabold border border-white shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all flex items-center gap-1"
-                  >
-                    {selectedProject.liveUrl.includes("figma") ? "فتح تصميم Figma ↗" : "زيارة الموقع ↗"}
+                    <span>{t.projects.googlePlay}</span>
+                    <span>↗</span>
                   </a>
                 )}
               </div>
             </div>
           </div>
         )}
-
       </div>
     </section>
   );

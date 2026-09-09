@@ -1,25 +1,55 @@
 import type { Metadata } from "next";
-import { Cairo, Tajawal } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Tajawal } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./context/LanguageContext";
 
-const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  weight: ["600", "700", "800", "900"],
-  variable: "--font-cairo",
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
 const tajawal = Tajawal({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "500", "700", "800", "900"],
   variable: "--font-tajawal",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "SALEM MOHAMMED BA ABBAD | مصمم UI/UX ومطور مواقع وبرامج",
-  description: "الموقع الشخصي ومحفظة الأعمال لمصمم UI/UX ومطور المواقع والبرامج SALEM MOHAMMED BA ABBAD - مشاريع ابتكارية بتأثيرات بصرية عالية الجودة.",
-  keywords: ["مطور مواقع", "مطور برامج", "تصميم UI/UX", "Web Developer", "Software Developer", "Next.js", "React", "SALEM MOHAMMED BA ABBAD", "سالم محمد باعباد"],
+  title: "Salem Ba Abbad | Frontend & Mobile Developer • UI/UX Designer",
+  description:
+    "Portfolio of Salem Ba Abbad, Frontend & Mobile Developer and UI/UX Designer specializing in React, Next.js, React Native, TypeScript, and thoughtful digital experiences.",
+  keywords: [
+    "Salem Ba Abbad",
+    "سالم باعباد",
+    "Frontend Developer",
+    "Mobile Developer",
+    "UI/UX Designer",
+    "React",
+    "Next.js",
+    "React Native",
+    "TypeScript",
+    "Tailwind CSS",
+    "Software Engineer",
+    "Riyadh Developer",
+  ],
+  authors: [{ name: "Salem Ba Abbad" }],
+  openGraph: {
+    title: "Salem Ba Abbad | Frontend & Mobile Developer • UI/UX Designer",
+    description:
+      "Building modern digital experiences through frontend development, mobile applications, and thoughtful UI/UX design.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({
@@ -28,11 +58,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} ${tajawal.variable} scroll-smooth`}>
-      <body className="bg-[#000000] text-[#ffffff] font-tajawal antialiased selection:bg-white/20 selection:text-white overflow-x-hidden min-h-screen">
-        {children}
+    <html
+      lang="en"
+      dir="ltr"
+      className={`${plusJakarta.variable} ${inter.variable} ${tajawal.variable} scroll-smooth`}
+    >
+      <body className="bg-[#ffffff] text-[#09090b] font-sans antialiased selection:bg-black/10 selection:text-black overflow-x-hidden min-h-screen">
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
 }
+
 
