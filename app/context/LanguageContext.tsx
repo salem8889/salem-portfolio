@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useMemo } from "react";
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from "react";
 import { Language, TranslationDictionary, translations } from "../data/translations";
 
 interface LanguageContextType {
@@ -15,34 +15,47 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    const saved = localStorage.getItem("portfolio_lang") as Language | null;
-    if (saved === "ar" || saved === "en") {
-      setLanguageState(saved);
-      document.documentElement.lang = saved;
-      document.documentElement.dir = saved === "ar" ? "rtl" : "ltr";
-    } else {
-      document.documentElement.lang = "en";
-      document.documentElement.dir = "ltr";
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("portfolio_lang") as Language | null;
+      if (saved === "ar" || saved === "en") {
+        return saved;
+      }
     }
+    return "en";
+  });
+
+  const applyLanguage = useCallback((lang: Language) => {
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, []);
 
-  const setLanguage = (newLang: Language) => {
-    setLanguageState(newLang);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("portfolio_lang", newLang);
-      document.documentElement.lang = newLang;
-      document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
-    }
-  };
+  useEffect(() => {
+    applyLanguage(language);
+  }, [applyLanguage, language]);
 
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "ar" : "en");
-  };
+  const setLanguage = useCallback(
+    (newLang: Language) => {
+      setLanguageState(newLang);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("portfolio_lang", newLang);
+      }
+      applyLanguage(newLang);
+    },
+    [applyLanguage]
+  );
+
+  const toggleLanguage = useCallback(() => {
+    setLanguageState((prev) => {
+      const next = prev === "en" ? "ar" : "en";
+      if (typeof window !== "undefined") {
+        localStorage.setItem("portfolio_lang", next);
+      }
+      applyLanguage(next);
+      return next;
+    });
+  }, [applyLanguage]);
 
   const dir: "ltr" | "rtl" = language === "ar" ? "rtl" : "ltr";
   const isRtl = language === "ar";
@@ -57,7 +70,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       toggleLanguage,
       t,
     }),
-    [language, dir, isRtl, t]
+    [language, dir, isRtl, setLanguage, toggleLanguage, t]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

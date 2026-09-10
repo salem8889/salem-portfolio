@@ -213,9 +213,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         contact: "Contact",
       },
       resume: "Resume",
-      resumePdf: "PDF ↗",
+      resumePdf: "PDF",
       getInTouch: "Get In Touch",
-      downloadResume: "Download Resume (PDF) ↗",
+      downloadResume: "Download Resume (PDF)",
       switchLangAria: "Switch language to Arabic",
     },
     hero: {
@@ -428,7 +428,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         type: "Higher Education",
         period: "2021 – 2025",
         title: "Bachelor's Degree in Information Technology",
-        university: "Al-Rayan University, Yemen",
+        university: "Al-Rayan University",
         description:
           "Comprehensive study covering computer networks, database systems, software engineering fundamentals, and modern web & mobile application architectures. Completed capstone graduation project focused on IT service management workflows.",
         conferred: "Degree Conferred: 2025",
@@ -530,9 +530,9 @@ export const translations: Record<Language, TranslationDictionary> = {
         contact: "تواصل معي",
       },
       resume: "السيرة الذاتية",
-      resumePdf: "PDF ↗",
+      resumePdf: "PDF",
       getInTouch: "تواصل معي",
-      downloadResume: "تحميل السيرة الذاتية (PDF) ↗",
+      downloadResume: "تحميل السيرة الذاتية (PDF)",
       switchLangAria: "التبديل إلى اللغة الإنجليزية",
     },
     hero: {
@@ -745,7 +745,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         type: "التعليم الجامعي",
         period: "2021 – 2025",
         title: "بكالوريوس تقنية المعلومات",
-        university: "جامعة الريان، اليمن",
+        university: "جامعة الريان",
         description:
           "دراسة شاملة تغطي شبكات الحاسب، أنظمة قواعد البيانات، أساسيات هندسة البرمجيات، وهيكلة تطبيقات الويب والجوال الحديثة. إنجاز مشروع تخرج ركز على إدارة وتدفق خدمات تقنية المعلومات.",
         conferred: "تاريخ التخرج: 2025",

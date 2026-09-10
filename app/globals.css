@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --bg-main: #ffffff;
   --bg-card: #ffffff;
@@ -7,7 +9,35 @@
   --accent-white: #000000;
   --accent-silver: #3f3f46;
   --text-light: #09090b;
-  --text-muted: #71717a;
+  --text-muted: #52525b;
+  --grid-line: rgba(0, 0, 0, 0.095);
+}
+
+html.dark,
+.dark {
+  --bg-main: #09090b;
+  --bg-card: #121215;
+  --bg-card-hover: #18181b;
+  --accent-white: #ffffff;
+  --accent-silver: #a1a1aa;
+  --text-light: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --grid-line: rgba(255, 255, 255, 0.085);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  font-feature-settings: "locl" 0;
+  -webkit-font-feature-settings: "locl" 0;
 }
 
 body {
@@ -15,19 +45,31 @@ body {
   color: var(--text-light);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  font-feature-settings: "locl" 0;
+  -webkit-font-feature-settings: "locl" 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
   font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
 }
 
-/* Arabic RTL Typography */
+/* Arabic RTL Typography - Numbers stay in English (0-9) */
+[dir="rtl"],
 [dir="rtl"] body,
 [dir="rtl"] button,
 [dir="rtl"] input,
 [dir="rtl"] textarea,
 [dir="rtl"] select {
   font-family: var(--font-tajawal), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "locl" 0;
+  -webkit-font-feature-settings: "locl" 0;
 }
 
 [dir="rtl"] h1,
@@ -38,30 +80,45 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 [dir="rtl"] h6,
 [dir="rtl"] .font-heading {
   font-family: var(--font-tajawal), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "locl" 0;
+  -webkit-font-feature-settings: "locl" 0;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #ffffff;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #e4e4e7;
   border: 2px solid #ffffff;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1aa;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border: 2px solid #09090b;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
 
 /* Cursor Following Mouse Glow on Cards */
 .glow-card {
   position: relative;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
@@ -73,11 +130,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(0, 0, 0, 0.04),
-    transparent 40%
-  );
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(0, 0, 0, 0.04),
+      transparent 40%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -88,13 +143,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   opacity: 1;
 }
 
-.glow-card:hover {
-  border-color: rgba(0, 0, 0, 0.25);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.1);
+html.dark .glow-card::before {
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.05),
+      transparent 40%);
 }
 
-/* Floating Label Form Fields with Logical Insets */
+/* Floating Label Form Fields */
 .floating-group {
   position: relative;
 }
@@ -117,6 +172,18 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background-color: #ffffff;
 }
 
+html.dark .floating-input {
+  background-color: rgba(24, 24, 27, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fafafa;
+}
+
+html.dark .floating-input:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+  background-color: #18181b;
+}
+
 .floating-label {
   position: absolute;
   inset-inline-start: 1rem;
@@ -128,13 +195,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-size: 0.95rem;
 }
 
-.floating-textarea ~ .floating-label {
+html.dark .floating-label {
+  color: #a1a1aa;
+}
+
+.floating-textarea~.floating-label {
   top: 1.25rem;
   transform: none;
 }
 
-.floating-input:focus ~ .floating-label,
-.floating-input:not(:placeholder-shown) ~ .floating-label {
+.floating-input:focus~.floating-label,
+.floating-input:not(:placeholder-shown)~.floating-label {
   top: 0.45rem;
   transform: none;
   font-size: 0.75rem;
@@ -142,24 +213,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-weight: 600;
 }
 
-/* Timeline vertical line glow */
-.timeline-line {
-  background: linear-gradient(180deg, #000000 0%, #71717a 50%, #e4e4e7 100%);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
-}
-
-/* Pulse animation for node dots */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-  }
-}
-
-.pulse-node {
-  animation: pulse-glow 2.5s infinite;
+html.dark .floating-input:focus~.floating-label,
+html.dark .floating-input:not(:placeholder-shown)~.floating-label {
+  color: #ffffff;
 }
 
 /* Glassmorphism utility */
@@ -170,9 +226,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+html.dark .glass-panel {
+  background: rgba(18, 18, 22, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
