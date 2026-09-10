@@ -105,7 +105,7 @@ export default function ContactSection() {
               {/* Links & Resume download */}
               <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col gap-3">
                 <a
-                  href="/SALEM_CV.pdf"
+                  href="/SALEM_BAABBAD.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs flex items-center justify-between border border-black/10 dark:border-white/10 transition-all"

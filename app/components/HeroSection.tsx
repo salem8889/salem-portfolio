@@ -62,7 +62,7 @@ export default function HeroSection() {
             {t.hero.exploreProjects}
           </button>
           <a
-            href="/SALEM_CV.pdf"
+            href="/SALEM_BAABBAD.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-sm border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 shadow-xs transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"

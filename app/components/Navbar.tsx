@@ -154,7 +154,7 @@ export default function Navbar() {
 
           {/* Unified Resume Button */}
           <a
-            href="/SALEM_CV.pdf"
+            href="/SALEM_BAABBAD.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="h-9 px-3.5 rounded-full bg-zinc-100/90 dark:bg-zinc-800/90 backdrop-blur-md hover:bg-white dark:hover:bg-zinc-700/80 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs border border-black/10 dark:border-white/10 hover:border-black/25 dark:hover:border-white/25 transition-all duration-200 flex items-center gap-1.5"
@@ -269,7 +269,7 @@ export default function Navbar() {
           ))}
           <div className="pt-2 flex flex-col gap-2">
             <a
-              href="/SALEM_CV.pdf"
+              href="/SALEM_BAABBAD.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs flex items-center justify-center gap-1.5 border border-black/10 dark:border-white/10 transition-all duration-200"
