@@ -21,13 +21,20 @@ export default function HeroSection() {
       {/* Canvas Particle Background */}
       <HeroCanvas />
 
+      {/* Subtle Ambient Glass Glow behind Hero */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] sm:w-[750px] sm:h-[450px] rounded-full pointer-events-none opacity-30 dark:opacity-15 blur-[120px] bg-gradient-to-tr from-zinc-300 via-zinc-400 to-transparent dark:from-zinc-500 dark:via-zinc-700 dark:to-transparent -z-0"
+      />
+
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Identity & Headline */}
-        <div className="space-y-2 mb-4">
-          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-zinc-700 dark:text-zinc-300 font-bold font-heading">
+        <div className="space-y-3 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.03] dark:bg-white/[0.05] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] text-xs uppercase tracking-[0.2em] text-zinc-800 dark:text-zinc-200 font-bold font-heading shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             {t.hero.name}
-          </p>
+          </div>
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 dark:text-zinc-50 leading-[1.25] tracking-tight max-w-4xl">
             {t.hero.titleMain}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-800 to-zinc-600 dark:from-white dark:via-zinc-200 dark:to-zinc-400">
@@ -41,19 +48,19 @@ export default function HeroSection() {
           {t.hero.subtitle}
         </p>
 
-        {/* Tech Stack Chips */}
+        {/* Tech Stack Chips (Glass Style) */}
         <div className="mt-7 flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
           {["React", "Next.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "REST APIs", "UI/UX & Figma"].map((tech) => (
             <span
               key={tech}
-              className="px-3.5 py-1.5 rounded-lg bg-zinc-100/90 dark:bg-zinc-800/90 border border-black/10 dark:border-white/10 text-zinc-900 dark:text-zinc-100 text-xs font-semibold hover:border-black/30 dark:hover:border-white/30 hover:bg-white dark:hover:bg-zinc-700 hover:text-black dark:hover:text-white transition-all shadow-xs"
+              className="px-3.5 py-1.5 rounded-xl bg-white/50 dark:bg-white/[0.05] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] text-zinc-900 dark:text-zinc-100 text-xs font-semibold hover:border-black/30 dark:hover:border-white/30 hover:bg-white/80 dark:hover:bg-white/[0.12] hover:text-black dark:hover:text-white transition-all shadow-xs"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons (Glassmorphic) */}
         <div className="mt-9 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
           <button
             onClick={() => scrollTo("projects")}
@@ -65,14 +72,14 @@ export default function HeroSection() {
             href="/SALEM_BAABBAD.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-sm border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 shadow-xs transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/60 dark:bg-white/[0.06] hover:bg-white dark:hover:bg-white/[0.12] backdrop-blur-md text-zinc-950 dark:text-zinc-50 font-heading font-bold text-sm border border-black/[0.12] dark:border-white/[0.15] hover:border-black/30 dark:hover:border-white/30 shadow-xs transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
           >
             <span>{t.hero.viewResume}</span>
             <span className="text-xs text-zinc-600 dark:text-zinc-400 font-mono font-bold">PDF ↗</span>
           </a>
           <button
             onClick={() => scrollTo("contact")}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-sm border border-black/10 dark:border-white/10 transition-all transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.06] dark:hover:bg-white/[0.08] backdrop-blur-md text-zinc-900 dark:text-zinc-100 font-heading font-bold text-sm border border-black/[0.08] dark:border-white/[0.1] transition-all transform hover:-translate-y-0.5 shadow-xs"
           >
             {t.hero.getInTouch}
           </button>
