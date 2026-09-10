@@ -13,12 +13,12 @@ export default function Footer() {
     <footer className="bg-black border-t border-zinc-800/80 py-12 relative text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright & Identity */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-start">
-          <span className="font-heading font-bold text-sm text-white">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-start text-sm text-zinc-400">
+          <span className="font-heading font-medium text-zinc-400">
             {t.footer.name}
           </span>
-          <span className="hidden sm:inline text-zinc-600">•</span>
-          <p className="text-xs text-zinc-400">
+          <span className="hidden sm:inline text-zinc-500">•</span>
+          <p className="text-zinc-400">
             {t.footer.role} © {new Date().getFullYear()} {t.footer.rights}
           </p>
         </div>

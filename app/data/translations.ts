@@ -183,8 +183,11 @@ export interface TranslationDictionary {
     subjectPlaceholder: string;
     messagePlaceholder: string;
     sendBtn: string;
+    sendingBtn: string;
     successTitle: string;
     successDesc: string;
+    errorTitle: string;
+    errorDesc: string;
   };
   footer: {
     name: string;
@@ -502,8 +505,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       subjectPlaceholder: "Subject / Project Scope",
       messagePlaceholder: "How can I help with your project or role?",
       sendBtn: "Send Message",
+      sendingBtn: "Sending Message...",
       successTitle: "Message Sent Successfully!",
       successDesc: "Thank you for reaching out. I will respond to your inquiry promptly.",
+      errorTitle: "Failed to Send Message",
+      errorDesc: "Something went wrong while sending. You can reach out directly via email.",
     },
     footer: {
       name: "SALEM BA ABBAD",
@@ -819,8 +825,11 @@ export const translations: Record<Language, TranslationDictionary> = {
       subjectPlaceholder: "الموضوع / نطاق المشروع",
       messagePlaceholder: "كيف يمكنني مساعدتك في مشروعك أو فرصتك الوظيفية؟",
       sendBtn: "إرسال الرسالة",
+      sendingBtn: "جاري إرسال الرسالة...",
       successTitle: "تم إرسال الرسالة بنجاح!",
       successDesc: "شكرًا لتواصلك. سأقوم بالرد على استفسارك في أقرب وقت.",
+      errorTitle: "تعذر إرسال الرسالة",
+      errorDesc: "حدث خطأ أثناء الإرسال، يمكنك التواصل معي مباشرة عبر البريد الإلكتروني.",
     },
     footer: {
       name: "سالم باعباد",

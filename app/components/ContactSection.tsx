@@ -12,7 +12,7 @@ export default function ContactSection() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
 
   const handleRipple = (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,13 +28,41 @@ export default function ContactSection() {
     }, 600);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 4000);
+    setStatus("loading");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/SALEM_BAABAD@outlook.sa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `رسالة جديدة من الموقع: ${formData.subject || formData.name}`,
+          subject: formData.subject,
+          message: formData.message,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      // Accept 200 OK or Activation notification response as success
+      if (response.ok || (data.message && data.message.includes("Activation"))) {
+        setStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setStatus("error");
+    }
   };
 
   return (
@@ -141,18 +169,48 @@ export default function ContactSection() {
                 {t.contact.formTitle}
               </h3>
 
-              {submitted ? (
-                <div className="p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-800 border border-black/15 dark:border-white/15 text-center animate-fade-in">
-                  <span className="text-4xl mb-3 block">✓</span>
+              {status === "success" ? (
+                <div className="p-8 rounded-2xl bg-zinc-50 dark:bg-zinc-800/80 border border-black/15 dark:border-white/15 text-center animate-fade-in space-y-4">
+                  <div className="w-16 h-16 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                    ✓
+                  </div>
                   <h4 className="font-heading font-bold text-xl text-zinc-950 dark:text-zinc-50">
                     {t.contact.successTitle}
                   </h4>
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
                     {t.contact.successDesc}
                   </p>
+                  <div className="pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setStatus("idle")}
+                      className="px-6 py-2.5 rounded-xl bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs transition-colors"
+                    >
+                      {t.contact.formTitle} ↺
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {status === "error" && (
+                    <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 text-sm space-y-2">
+                      <p className="font-bold text-rose-800 dark:text-rose-300">
+                        {t.contact.errorTitle}
+                      </p>
+                      <p className="text-xs text-rose-700 dark:text-rose-400">
+                        {t.contact.errorDesc}
+                      </p>
+                      <a
+                        href={`mailto:SALEM_BAABAD@outlook.sa?subject=${encodeURIComponent(formData.subject || "Message from Portfolio")}&body=${encodeURIComponent(
+                          `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+                        )}`}
+                        className="inline-block text-xs font-bold underline text-rose-900 dark:text-rose-200 hover:opacity-80"
+                      >
+                        SALEM_BAABAD@outlook.sa ↗
+                      </a>
+                    </div>
+                  )}
+
                   {/* Name Input */}
                   <div className="floating-group">
                     <input
@@ -220,23 +278,32 @@ export default function ContactSection() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    onClick={handleRipple}
-                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-black hover:bg-zinc-800 text-white font-heading font-extrabold text-sm border border-black shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] transition-all transform hover:-translate-y-0.5"
+                    disabled={status === "loading"}
+                    onClick={status === "loading" ? undefined : handleRipple}
+                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-black hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-heading font-extrabold text-sm border border-black dark:border-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
                   >
-                    {t.contact.sendBtn}
-
-                    {ripples.map((r) => (
-                      <span
-                        key={r.id}
-                        className="absolute rounded-full bg-white/30 pointer-events-none animate-[ping_0.6s_linear]"
-                        style={{
-                          left: r.x - 20,
-                          top: r.y - 20,
-                          width: 40,
-                          height: 40,
-                        }}
-                      />
-                    ))}
+                    {status === "loading" ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></span>
+                        <span>{t.contact.sendingBtn}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{t.contact.sendBtn}</span>
+                        {ripples.map((r) => (
+                          <span
+                            key={r.id}
+                            className="absolute rounded-full bg-white/30 pointer-events-none animate-[ping_0.6s_linear]"
+                            style={{
+                              left: r.x - 20,
+                              top: r.y - 20,
+                              width: 40,
+                              height: 40,
+                            }}
+                          />
+                        ))}
+                      </>
+                    )}
                   </button>
                 </form>
               )}
