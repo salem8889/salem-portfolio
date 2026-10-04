@@ -205,7 +205,7 @@ export const translations: Record<Language, TranslationDictionary> = {
   en: {
     navbar: {
       name: "SALEM BA ABBAD",
-      role: "Frontend & Mobile Developer • UI/UX",
+      role: "Full-Stack Developer | iOS & Android | UI/UX",
       nav: {
         about: "About",
         experience: "Experience",
@@ -222,12 +222,12 @@ export const translations: Record<Language, TranslationDictionary> = {
       switchLangAria: "Switch language to Arabic",
     },
     hero: {
-      statusBadge: "Available for Frontend & Mobile Opportunities",
+      statusBadge: "Available for Full-Stack & Mobile Opportunities",
       name: "SALEM BA ABBAD",
-      titleMain: "Frontend & Mobile Developer",
-      titleSub: "• UI/UX Designer",
+      titleMain: "Full-Stack Developer",
+      titleSub: "| iOS & Android App Developer | UI/UX",
       subtitle:
-        "Building modern digital experiences through frontend development, mobile applications, and thoughtful UI/UX design. Transforming ideas into fast, responsive, and intuitive products.",
+        "Building modern digital experiences through full-stack development, mobile applications, and thoughtful UI/UX design. Transforming ideas into fast, responsive, and intuitive products.",
       exploreProjects: "Explore Projects",
       viewResume: "View Resume",
       getInTouch: "Get In Touch",
@@ -247,7 +247,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       tag: "// ABOUT ME",
       heading: "Bridging Thoughtful Design & Robust Engineering",
       name: "SALEM BA ABBAD",
-      role: "Frontend & Mobile Developer • UI/UX Designer",
+      role: "Full-Stack Developer | iOS & Android App Developer | UI/UX",
       location: "Riyadh, Saudi Arabia",
       availableBadge: "Available for Roles",
       mainHeading: "Transforming complex requirements into intuitive, fast, and scalable digital products.",
@@ -513,19 +513,19 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     footer: {
       name: "SALEM BA ABBAD",
-      role: "Frontend & Mobile Developer • UI/UX Designer",
+      role: "Full-Stack Developer | iOS & Android App Developer | UI/UX",
       rights: "All rights reserved.",
       backToTop: "Back to Top",
     },
     preloader: {
       name: "SALEM BA ABBAD",
-      role: "Frontend & Mobile Developer • UI/UX Designer",
+      role: "Full-Stack Developer | iOS & Android App Developer | UI/UX",
     },
   },
   ar: {
     navbar: {
       name: "سالم باعباد",
-      role: "مطور واجهات وتطبيقات • UI/UX",
+      role: "مطور Full-Stack وتطبيقات • UI/UX",
       nav: {
         about: "نبذة عني",
         experience: "الخبرة",
@@ -542,12 +542,12 @@ export const translations: Record<Language, TranslationDictionary> = {
       switchLangAria: "التبديل إلى اللغة الإنجليزية",
     },
     hero: {
-      statusBadge: "متاح لفرص تطوير الواجهات وتطبيقات الجوال",
+      statusBadge: "متاح لفرص تطوير Full-Stack وتطبيقات الجوال",
       name: "سالم باعباد",
-      titleMain: "مطور واجهات أمامية وتطبيقات جوال",
-      titleSub: "• مصمم UI/UX",
+      titleMain: "مطور Full-Stack",
+      titleSub: "| مطور تطبيقات iOS و Android | مصمم UI/UX",
       subtitle:
-        "أبني تجارب رقمية حديثة تجمع بين تطوير الواجهات، وتطبيقات الجوال، وتصميم تجربة المستخدم. محوّلًا الأفكار إلى منتجات سريعة وسلسة وقابلة للتوسع.",
+        "أبني تجارب رقمية حديثة تجمع بين تطوير البرمجيات المتكاملة (Full-Stack)، وتطبيقات الجوال، وتصميم تجربة المستخدم. محوّلًا الأفكار إلى منتجات سريعة وسلسة وقابلة للتوسع.",
       exploreProjects: "استكشف المشاريع",
       viewResume: "عرض السيرة الذاتية",
       getInTouch: "تواصل معي",
@@ -567,7 +567,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       tag: "// نبذة عني",
       heading: "الربط بين التصميم المتقن والهندسة البرمجية القوية",
       name: "سالم باعباد",
-      role: "مطور واجهات أمامية وتطبيقات جوال • مصمم UI/UX",
+      role: "مطور Full-Stack | مطور تطبيقات iOS و Android | مصمم UI/UX",
       location: "الرياض، المملكة العربية السعودية",
       availableBadge: "متاح للعمل",
       mainHeading: "تحويل المتطلبات المعقدة إلى منتجات رقمية بديهية وسريعة وقابلة للتوسع.",
@@ -833,13 +833,13 @@ export const translations: Record<Language, TranslationDictionary> = {
     },
     footer: {
       name: "سالم باعباد",
-      role: "مطور واجهات أمامية وتطبيقات جوال • مصمم UI/UX",
+      role: "مطور Full-Stack | مطور تطبيقات iOS و Android | مصمم UI/UX",
       rights: "جميع الحقوق محفوظة.",
       backToTop: "العودة للأعلى",
     },
     preloader: {
       name: "سالم باعباد",
-      role: "مطور واجهات أمامية وتطبيقات جوال • مصمم UI/UX",
+      role: "مطور Full-Stack | مطور تطبيقات iOS و Android | مصمم UI/UX",
     },
   },
 };

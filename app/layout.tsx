@@ -26,13 +26,15 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "SALEM BAABBAD | Frontend & Mobile Developer • UI/UX ",
+  title: "SALEM BAABBAD | Full-Stack Developer | iOS & Android App Developer | UI/UX",
   description:
-    "Portfolio of SALEM BAABBAD, Frontend & Mobile Developer and UI/UX  specializing in React, Next.js, React Native, TypeScript, and thoughtful digital experiences.",
+    "Portfolio of SALEM BAABBAD, Full-Stack Developer, iOS & Android App Developer, and UI/UX Designer specializing in React, Next.js, React Native, TypeScript, and thoughtful digital experiences.",
   keywords: [
     "SALEM BAABBAD",
     "سالم باعباد",
-    "Frontend Developer",
+    "Full-Stack Developer",
+    "iOS Developer",
+    "Android Developer",
     "Mobile Developer",
     "UI/UX Designer",
     "React",
@@ -45,9 +47,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "SALEM BAABBAD" }],
   openGraph: {
-    title: "SALEM BAABBAD | Frontend & Mobile Developer • UI/UX",
+    title: "SALEM BAABBAD | Full-Stack Developer | iOS & Android App Developer | UI/UX",
     description:
-      "Building modern digital experiences through frontend development, mobile applications, and thoughtful UI/UX design.",
+      "Building modern digital experiences through full-stack development, mobile applications, and thoughtful UI/UX design.",
     type: "website",
     locale: "en_US",
   },
