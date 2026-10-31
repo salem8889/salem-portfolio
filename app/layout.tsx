@@ -46,6 +46,11 @@ export const metadata: Metadata = {
     "Riyadh Developer",
   ],
   authors: [{ name: "SALEM BAABBAD" }],
+  icons: {
+    icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+    shortcut: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+    apple: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+  },
   openGraph: {
     title: "SALEM BAABBAD | Full-Stack Developer | iOS & Android App Developer | UI/UX",
     description:
@@ -96,5 +101,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

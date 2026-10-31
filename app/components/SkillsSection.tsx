@@ -16,22 +16,30 @@ const skillsList: SkillItem[] = [
   { name: "TypeScript", category: "frontend", categoryKey: "frontend" },
   { name: "JavaScript (ES6+)", category: "frontend", categoryKey: "frontend" },
   { name: "Tailwind CSS", category: "frontend", categoryKey: "frontend" },
+  { name: "State Management (Context API / Redux)", category: "frontend", categoryKey: "frontend" },
   { name: "HTML5", category: "frontend", categoryKey: "frontend" },
   { name: "CSS3", category: "frontend", categoryKey: "frontend" },
 
   // Mobile
   { name: "React Native", category: "mobile", categoryKey: "mobile" },
   { name: "Expo", category: "mobile", categoryKey: "mobile" },
+  { name: "Push Notifications", category: "mobile", categoryKey: "mobile" },
+  { name: "Cross-Platform Deployment", category: "mobile", categoryKey: "mobile" },
 
   // Backend & APIs
   { name: "Node.js", category: "backend", categoryKey: "backend" },
-  { name: "REST APIs", category: "backend", categoryKey: "apis" },
   { name: "Supabase", category: "backend", categoryKey: "backend" },
+  { name: "PostgreSQL", category: "backend", categoryKey: "backend" },
+  { name: "REST APIs", category: "backend", categoryKey: "apis" },
+  { name: "Real-time Feeds", category: "backend", categoryKey: "apis" },
+  { name: "LLM Integration (OpenAI API)", category: "backend", categoryKey: "apis" },
 
   // Tools & Design
   { name: "Git", category: "tools", categoryKey: "tools" },
   { name: "GitHub", category: "tools", categoryKey: "tools" },
+  { name: "GitHub Actions", category: "tools", categoryKey: "tools" },
   { name: "Figma", category: "tools", categoryKey: "design" },
+  { name: "Vercel", category: "tools", categoryKey: "tools" },
   { name: "Microsoft Excel", category: "tools", categoryKey: "tools" },
   { name: "Google Analytics", category: "tools", categoryKey: "tools" },
 ];

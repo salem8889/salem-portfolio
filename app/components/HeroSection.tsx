@@ -50,7 +50,7 @@ export default function HeroSection() {
 
         {/* Tech Stack Chips (Glass Style) */}
         <div className="mt-7 flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
-          {["React", "Next.js", "React Native", "Expo", "TypeScript", "Tailwind CSS", "REST APIs", "UI/UX & Figma"].map((tech) => (
+          {["React", "Next.js", "React Native", "Expo", "TypeScript", "Supabase", "Node.js", "UI/UX & Figma"].map((tech) => (
             <span
               key={tech}
               className="px-3.5 py-1.5 rounded-xl bg-white/50 dark:bg-white/[0.05] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] text-zinc-900 dark:text-zinc-100 text-xs font-semibold hover:border-black/30 dark:hover:border-white/30 hover:bg-white/80 dark:hover:bg-white/[0.12] hover:text-black dark:hover:text-white transition-all shadow-xs"
@@ -87,6 +87,16 @@ export default function HeroSection() {
 
         {/* Quick Social / Contact Strip */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-zinc-600 dark:text-zinc-400 font-medium">
+          <a
+            href="https://www.linkedin.com/in/salem-baabbad-626592359/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1.5 font-semibold"
+          >
+            <span>LinkedIn</span>
+            <span className="text-[10px]">↗</span>
+          </a>
+          <span className="text-zinc-400 dark:text-zinc-600">•</span>
           <a
             href="https://github.com/salem8889"
             target="_blank"

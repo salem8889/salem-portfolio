@@ -142,18 +142,26 @@ export default function ContactSection() {
                   <span className="text-xs font-mono font-bold">PDF ↗</span>
                 </a>
 
-                <div className="flex items-center gap-3 pt-1">
+                <div className="grid grid-cols-3 gap-2.5 pt-1">
+                  <a
+                    href="https://www.linkedin.com/in/salem-baabbad-626592359/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs text-center border border-black/15 dark:border-white/15 shadow-xs transition-all"
+                  >
+                    LinkedIn ↗
+                  </a>
                   <a
                     href="https://github.com/salem8889"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs text-center border border-black/15 dark:border-white/15 shadow-xs transition-all"
+                    className="py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs text-center border border-black/15 dark:border-white/15 shadow-xs transition-all"
                   >
                     GitHub ↗
                   </a>
                   <a
                     href="mailto:SALEM_BAABAD@outlook.sa"
-                    className="flex-1 py-2.5 px-3 rounded-xl bg-black hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs text-center shadow-xs transition-all"
+                    className="py-2.5 px-3 rounded-xl bg-black hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs text-center shadow-xs transition-all"
                   >
                     {t.contact.directEmailBtn}
                   </a>

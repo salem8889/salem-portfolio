@@ -132,6 +132,11 @@ export interface TranslationDictionary {
     tag: string;
     heading: string;
     subtitle: string;
+    certificationsHeading: string;
+    certificationsSubtitle: string;
+    verifyBtn: string;
+    previewBtn: string;
+    closePreview: string;
     degree: {
       type: string;
       period: string;
@@ -148,6 +153,17 @@ export interface TranslationDictionary {
       description: string;
       verified: string;
     };
+    certificationsList: {
+      id: string;
+      type: string;
+      period: string;
+      title: string;
+      issuer: string;
+      description: string;
+      verified: string;
+      imageUrl: string;
+      credentialUrl: string;
+    }[];
     languages: {
       title: string;
       subtitle: string;
@@ -227,7 +243,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleMain: "Full-Stack Developer",
       titleSub: "| iOS & Android App Developer | UI/UX",
       subtitle:
-        "Building modern digital experiences through full-stack development, mobile applications, and thoughtful UI/UX design. Transforming ideas into fast, responsive, and intuitive products.",
+        "Results-driven Full-Stack Developer and Information Technology graduate building scalable web and cross-platform mobile applications with React, Next.js, React Native, TypeScript, Node.js, and Supabase.",
       exploreProjects: "Explore Projects",
       viewResume: "View Resume",
       getInTouch: "Get In Touch",
@@ -252,7 +268,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       availableBadge: "Available for Roles",
       mainHeading: "Transforming complex requirements into intuitive, fast, and scalable digital products.",
       bioP1:
-        "I am an Information Technology graduate (2021 – 2025) from Al-Rayan University with specialized expertise in Frontend Development, Cross-Platform Mobile Development, and UI/UX Design.",
+        "I am an Information Technology graduate (2021 – 2025) from Al-Rayan University with specialized expertise in Full-Stack Web Development, Cross-Platform Mobile Development, and UI/UX Design.",
       bioP2:
         "My approach focuses on creating production-grade applications that seamlessly unite visual clarity with high performance. Having built and deployed live platforms like the Arab Coin precious metals web platform (serving 1,500+ active users and 20,000+ views) and its companion mobile app on iOS & Android, I understand what it takes to deliver end-to-end software that users love and businesses rely on.",
       coreValues: {
@@ -277,23 +293,24 @@ export const translations: Record<Language, TranslationDictionary> = {
     experience: {
       tag: "// WORK EXPERIENCE",
       heading: "Professional Experience",
-      subtitle: "Work history demonstrating operational discipline, accuracy, and customer-facing responsibility.",
+      subtitle: "Work history combining full-stack product deployment, operational discipline, and data precision.",
       role: "Sales Associate & Data Entry Specialist",
       company: "Arab Coin Company",
       location: "Riyadh, Saudi Arabia",
       period: "Oct 2025 – Present",
       type: "Full-Time",
       description:
-        "Managing operational records, daily sales data verification, and customer transactions in a fast-paced commercial environment with a strict commitment to data precision.",
+        "Developing and maintaining the company's live digital platforms while managing operational records, daily sales data verification, and customer transactions with strict accuracy.",
       responsibilitiesTitle: "Key Responsibilities & Deliverables:",
       responsibilities: [
+        "Developed and deployed the company's official live gold & silver web and mobile platforms using Next.js and React Native.",
         "Maintained accurate customer and sales records using Microsoft Excel and Office tools.",
         "Managed daily data entry and verified records with a strong focus on accuracy and quality control.",
         "Supported daily business operations through organized documentation and data management workflows.",
         "Assisted customers and handled sales transactions in a fast-paced retail environment.",
       ],
       toolsTitle: "Skills & Tools:",
-      tools: ["Microsoft Excel", "Data Verification", "Documentation", "Customer Service", "Office Tools"],
+      tools: ["Next.js", "React Native", "Microsoft Excel", "Data Verification", "Documentation", "Customer Service", "Office Tools"],
     },
     projects: {
       tag: "// FEATURED WORK",
@@ -346,7 +363,7 @@ export const translations: Record<Language, TranslationDictionary> = {
           badge: "Published on App Store & Google Play",
           summary: "Cross-platform iOS and Android mobile app for live precious metals tracking and instant price alerts.",
           description:
-            "Official cross-platform mobile application developed for Arab Coin Company using React Native and Expo. The app allows investors to monitor live bullion prices, compute holdings value in real time, and receive smart push notifications on market shifts.",
+            "Official cross-platform mobile application developed for Arab Coin Company using React Native, Expo, and Supabase. The app allows investors to monitor live bullion prices, compute holdings value in real time, and receive smart push notifications on market shifts.",
           bullets: [
             "Developed and deployed a cross-platform mobile app for live precious metals prices using React Native and Expo.",
             "Recorded 200+ device registrations on iOS and 200+ on Android through Supabase device-token records.",
@@ -357,11 +374,11 @@ export const translations: Record<Language, TranslationDictionary> = {
             { value: "200+", label: "iOS Device Registrations" },
             { value: "200+", label: "Android Registrations" },
           ],
-          tags: ["React Native", "Expo", "TypeScript", "REST APIs", "Push Notifications", "Mobile UI/UX"],
+          tags: ["React Native", "Expo", "Supabase", "TypeScript", "REST APIs", "Push Notifications"],
           imageUrl: "/arabic-coin-app-icon.png",
           imageStyle: "full",
-          appStoreUrl: "https://lnkd.in/dpwsJw_x",
-          googlePlayUrl: "https://lnkd.in/d4rck-9T",
+          appStoreUrl: "https://apps.apple.com/sa/app/arabic-coin-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6792820414",
+          googlePlayUrl: "https://play.google.com/store/apps/details?id=com.arabpound.metals",
         },
         {
           id: 3,
@@ -406,7 +423,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     skills: {
       tag: "// TECHNICAL EXPERTISE",
       heading: "Skills & Technologies",
-      subtitle: "Core technical proficiencies utilized in building production web applications, mobile apps, and UI/UX systems.",
+      subtitle: "Core technical proficiencies utilized in building production web applications, mobile apps, and AI-enabled systems.",
       tabs: {
         all: "All Skills",
         frontend: "Frontend Development",
@@ -418,7 +435,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         frontend: "Frontend",
         mobile: "Mobile",
         backend: "Backend",
-        apis: "APIs",
+        apis: "APIs & AI",
         tools: "Tools",
         design: "Design",
       },
@@ -426,7 +443,12 @@ export const translations: Record<Language, TranslationDictionary> = {
     education: {
       tag: "// ACADEMIC & CREDENTIALS",
       heading: "Education & Certifications",
-      subtitle: "Formal education in Information Technology and specialized professional certifications.",
+      subtitle: "Formal academic degree in Information Technology and verified professional certifications from global technology leaders.",
+      certificationsHeading: "Licensed & Verified Certifications",
+      certificationsSubtitle: "Official credentials from DataCamp, Microsoft, LinkedIn Learning, and Tuwaiq Academy (Satr Platform).",
+      verifyBtn: "Verify Credential ↗",
+      previewBtn: "Preview Certificate",
+      closePreview: "Close Preview",
       degree: {
         type: "Higher Education",
         period: "2021 – 2025",
@@ -445,6 +467,109 @@ export const translations: Record<Language, TranslationDictionary> = {
           "Specialized training in user research, wireframing, design thinking principles, high-fidelity interactive prototyping, usability heuristics, and modern component systems using Figma.",
         verified: "Verified Credential",
       },
+      certificationsList: [
+        {
+          id: "aieda",
+          type: "Associate Certification",
+          period: "2026",
+          title: "AI Engineer for Developers Associate (AIEDA)",
+          issuer: "DataCamp",
+          description:
+            "Professional certification validating practical expertise in integrating Large Language Models (LLMs), OpenAI APIs, prompt engineering, and building AI-powered software architectures.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/datacamp-aieda.png",
+          credentialUrl: "https://www.datacamp.com/certificate/AIEDA0013287689794",
+        },
+        {
+          id: "daa",
+          type: "Associate Certification",
+          period: "2026",
+          title: "Associate Data Analyst (DAA)",
+          issuer: "DataCamp",
+          description:
+            "Professional certification validating proficiency in data analysis, SQL, exploratory data visualization, statistical analysis, and data-driven decision making.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/datacamp-daa.jpg",
+          credentialUrl: "https://www.datacamp.com/certificate/DAA0014885246864",
+        },
+        {
+          id: "linkedin-ai",
+          type: "Learning Path Certificate",
+          period: "2026",
+          title: "Career Essentials in Generative AI & Professional Development",
+          issuer: "Microsoft & LinkedIn Learning",
+          description:
+            "Comprehensive 4+ hour learning path by Microsoft and LinkedIn covering Generative AI fundamentals, Microsoft Copilot workflows, and responsible AI practices.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/linkedin-learning.png",
+          credentialUrl:
+            "https://www.linkedin.com/learning/certificates/5c5341ebd3a832dfaafea62f57a2f1e8a5b58172e28084e1ddbce52363bf770d",
+        },
+        {
+          id: "ms-learn",
+          type: "Official Certificate",
+          period: "2026",
+          title: "GitHub Basics - Management Essentials and Product Features",
+          issuer: "Microsoft",
+          description:
+            "Official certificate awarded by Microsoft Learn for completing the GitHub Administration Basics, Management Essentials, and Product Features learning path.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/microsoft-learn.jpg",
+          credentialUrl:
+            "https://learn.microsoft.com/ar-sa/users/salembaabbad-4230/achievements/2tat5wbv?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+        },
+        {
+          id: "github-foundations",
+          type: "Technical Credential",
+          period: "2026",
+          title: "GitHub Foundations",
+          issuer: "Microsoft",
+          description:
+            "Verified credential demonstrating proficiency in Git version control, repository management, branching strategies, pull requests, and collaborative software development workflows.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/microsoft-github.png",
+          credentialUrl: "https://learn.microsoft.com/en-us/users/salembaabbad-4230/achievements/feh3nf6x",
+        },
+        {
+          id: "satr-database",
+          type: "Course Certificate",
+          period: "2026",
+          title: "Database Fundamentals Certificate",
+          issuer: "Satr Platform — Tuwaiq Academy",
+          description:
+            "Certified training in relational database fundamentals, data modeling, structured queries, and backend data architecture.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/satr-database.png",
+          credentialUrl:
+            "https://core-files.tuwaiq.edu.sa/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1791291459_f1340f32-9179-4790-86a1-e618487cb7dc.png",
+        },
+        {
+          id: "satr-firebase",
+          type: "Course Certificate",
+          period: "2026",
+          title: "Firebase Fundamentals Certificate",
+          issuer: "Satr Platform — Tuwaiq Academy",
+          description:
+            "Practical training in Google Firebase services including authentication, real-time cloud databases, cloud storage, and mobile/web backend integration.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/satr-firebase.png",
+          credentialUrl:
+            "https://core-files.tuwaiq.edu.sa/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1791466026_54a0935a-6ed3-4727-84d4-371c060474ce.png",
+        },
+        {
+          id: "satr-uxui",
+          type: "Professional Certificate",
+          period: "2025",
+          title: "UX/UI Design Certificate",
+          issuer: "Satr Platform — Tuwaiq Academy",
+          description:
+            "Applied project training in user experience research, wireframing, design thinking, interactive prototyping, and component design using Figma.",
+          verified: "Verified Credential",
+          imageUrl: "/certificates/satr-uxui.png",
+          credentialUrl:
+            "https://assets.safcsp.cloud/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1757241641_e6e5eda4-dc51-4734-a828-c2e9f1af61cb.png",
+        },
+      ],
       languages: {
         title: "Languages",
         subtitle: "Communication in Arabic and English.",
@@ -491,7 +616,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       tag: "// GET IN TOUCH",
       heading: "Let's Build Something Impactful Together",
       subtitle:
-        "I am available for full-time frontend and mobile engineering roles, product collaborations, and innovative web projects.",
+        "I am available for full-time full-stack, frontend, and mobile engineering roles, product collaborations, and innovative web projects.",
       directTitle: "Direct Contact Details",
       emailLabel: "Email Address",
       phoneLabel: "Phone & WhatsApp",
@@ -531,7 +656,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         experience: "الخبرة",
         projects: "المشاريع",
         skills: "المهارات",
-        education: "التعليم",
+        education: "التعليم والشهادات",
         approach: "كيف أعمل",
         contact: "تواصل معي",
       },
@@ -547,7 +672,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleMain: "مطور Full-Stack",
       titleSub: "| مطور تطبيقات iOS و Android | مصمم UI/UX",
       subtitle:
-        "أبني تجارب رقمية حديثة تجمع بين تطوير البرمجيات المتكاملة (Full-Stack)، وتطبيقات الجوال، وتصميم تجربة المستخدم. محوّلًا الأفكار إلى منتجات سريعة وسلسة وقابلة للتوسع.",
+        "مطور Full-Stack وخريج تقنية معلومات بخبرة عملية في بناء تطبيقات الويب القابلة للتوسع وتطبيقات الجوال متعددة المنصات باستخدام React و Next.js و React Native و TypeScript و Node.js و Supabase.",
       exploreProjects: "استكشف المشاريع",
       viewResume: "عرض السيرة الذاتية",
       getInTouch: "تواصل معي",
@@ -572,7 +697,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       availableBadge: "متاح للعمل",
       mainHeading: "تحويل المتطلبات المعقدة إلى منتجات رقمية بديهية وسريعة وقابلة للتوسع.",
       bioP1:
-        "خريج بكالوريوس تقنية معلومات (2021 – 2025) من جامعة الريان، مع تخصص وخبرة في تطوير الواجهات الأمامية (Frontend Development)، وتطبيقات الجوال متعددة المنصات (Cross-Platform Mobile Development)، وتصميم تجربة وواجهة المستخدم (UI/UX Design).",
+        "خريج بكالوريوس تقنية معلومات (2021 – 2025) من جامعة الريان، مع تخصص وخبرة في تطوير الويب المتكامل (Full-Stack)، وتطبيقات الجوال متعددة المنصات (Cross-Platform Mobile Development)، وتصميم تجربة وواجهة المستخدم (UI/UX Design).",
       bioP2:
         "يرتكز أسلوبي على بناء تطبيقات بمستوى إنتاجي يجمع بين الجاذبية البصرية والأداء العالي. بفضل تطويري وإطلاقي لمنصات حية مثل موقع عرب كوين للمعادن الثمينة (الذي يخدم أكثر من 1,500 مستخدم نشط وتجاوز 20,000 مشاهدة وزيارة) وتطبيقه على أنظمة iOS و Android، أمتلك الخبرة العملية لتقديم برمجيات متكاملة تحظى برضا المستخدمين وتلبي أهداف الأعمال.",
       coreValues: {
@@ -597,23 +722,24 @@ export const translations: Record<Language, TranslationDictionary> = {
     experience: {
       tag: "// الخبرة المهنية",
       heading: "الخبرات المهنية",
-      subtitle: "مسيرة عملية تعكس الانضباط التشغيلي، الدقة في إدارة البيانات، والتعامل الاحترافي مع العملاء.",
+      subtitle: "مسيرة عملية تجمع بين تطوير المنصات الرقمية الحية، والانضباط التشغيلي، والدقة في إدارة البيانات.",
       role: "موظف مبيعات وأخصائي إدخال بيانات",
       company: "شركة العملة العربية (Arab Coin)",
       location: "الرياض، المملكة العربية السعودية",
       period: "أكتوبر 2025 – حتى الآن",
       type: "دوام كامل",
       description:
-        "إدارة السجلات التشغيلية والتحقق اليومي من بيانات المبيعات والمعاملات التجارية في بيئة عمل سريعة مع التزام صارم بدقة البيانات وجودتها.",
+        "تطوير وتشغيل المنصات الرقمية الرسمية للشركة (الموقع الإلكتروني وتطبيق الجوال) إلى جانب إدارة السجلات التشغيلية والتحقق اليومي من بيانات المبيعات والمعاملات التجارية بدقة عالية.",
       responsibilitiesTitle: "المسؤوليات والإنجازات الرئيسية:",
       responsibilities: [
+        "تطوير وإطلاق المنصات الرسمية الحية للذهب والفضة (الموقع الإلكتروني وتطبيقات الجوال) للشركة باستخدام Next.js و React Native.",
         "الحفاظ على سجلات دقيقة للعملاء والمبيعات باستخدام Microsoft Excel وأدوات Office.",
         "إدارة عمليات إدخال البيانات اليومية ومراجعة السجلات بتركيز عالٍ على الدقة وضبط الجودة.",
         "دعم العمليات التجارية اليومية من خلال التوثيق المنظم وسير عمل إدارة البيانات.",
         "خدمة العملاء وإتمام معاملات المبيعات في بيئة تجارية نشطة وسريعة الوتيرة.",
       ],
       toolsTitle: "المهارات والأدوات:",
-      tools: ["Microsoft Excel", "التحقق من البيانات", "التوثيق", "خدمة العملاء", "أدوات Office"],
+      tools: ["Next.js", "React Native", "Microsoft Excel", "التحقق من البيانات", "التوثيق", "خدمة العملاء", "أدوات Office"],
     },
     projects: {
       tag: "// أبرز الأعمال",
@@ -666,7 +792,7 @@ export const translations: Record<Language, TranslationDictionary> = {
           badge: "منشور على App Store و Google Play",
           summary: "تطبيق جوال متعدد المنصات لنظامي iOS و Android لمتابعة أسعار المعادن الثمينة وتنبيهات الأسعار الفورية.",
           description:
-            "التطبيق الرسمي للشركة مطور بتقنيات React Native و Expo لأنظمة iOS و Android. يتيح للمستثمرين متابعة أسعار السبائك والذهب لحظة بلحظة، وحساب قيمة المقتنيات فورياً، واستقبال الإشعارات الفورية عند تغيرات السوق.",
+            "التطبيق الرسمي للشركة مطور بتقنيات React Native و Expo و Supabase لأنظمة iOS و Android. يتيح للمستثمرين متابعة أسعار السبائك والذهب لحظة بلحظة، وحساب قيمة المقتنيات فورياً، واستقبال الإشعارات الفورية عند تغيرات السوق.",
           bullets: [
             "تطوير وإطلاق تطبيق جوال متعدد المنصات لأسعار المعادن الثمينة المباشرة باستخدام React Native و Expo.",
             "تسجيل أكثر من 200 جهاز على iOS وأكثر من 200 على Android عبر سجلات رموز أجهزة Supabase.",
@@ -677,11 +803,11 @@ export const translations: Record<Language, TranslationDictionary> = {
             { value: "200+", label: "تسجيلات أجهزة iOS" },
             { value: "200+", label: "تسجيلات أجهزة Android" },
           ],
-          tags: ["React Native", "Expo", "TypeScript", "REST APIs", "Push Notifications", "Mobile UI/UX"],
+          tags: ["React Native", "Expo", "Supabase", "TypeScript", "REST APIs", "Push Notifications"],
           imageUrl: "/arabic-coin-app-icon.png",
           imageStyle: "full",
-          appStoreUrl: "https://lnkd.in/dpwsJw_x",
-          googlePlayUrl: "https://lnkd.in/d4rck-9T",
+          appStoreUrl: "https://apps.apple.com/sa/app/arabic-coin-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6792820414",
+          googlePlayUrl: "https://play.google.com/store/apps/details?id=com.arabpound.metals",
         },
         {
           id: 3,
@@ -726,7 +852,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     skills: {
       tag: "// الخبرات والمهارات التقنية",
       heading: "المهارات والتقنيات",
-      subtitle: "القدرات التقنية الأساسية المستخدمة في بناء وتطوير منصات الويب وتطبيقات الجوال وأنظمة UI/UX.",
+      subtitle: "القدرات التقنية الأساسية المستخدمة في بناء وتطوير منصات الويب وتطبيقات الجوال وأنظمة الذكاء الاصطناعي.",
       tabs: {
         all: "جميع المهارات",
         frontend: "تطوير الواجهات",
@@ -738,7 +864,7 @@ export const translations: Record<Language, TranslationDictionary> = {
         frontend: "تطوير الواجهات",
         mobile: "تطبيقات الجوال",
         backend: "الخلفية",
-        apis: "واجهات API",
+        apis: "واجهات API و AI",
         tools: "أدوات",
         design: "تصميم",
       },
@@ -746,7 +872,12 @@ export const translations: Record<Language, TranslationDictionary> = {
     education: {
       tag: "// المؤهلات الأكاديمية والشهادات",
       heading: "التعليم والشهادات المهنية",
-      subtitle: "التعليم الأكاديمي في تقنية المعلومات والشهادات التخصصية المعتمدة.",
+      subtitle: "الدرجة الأكاديمية في تقنية المعلومات والشهادات الاحترافية الموثقة من كبرى الجهات التقنية العالمية.",
+      certificationsHeading: "الشهادات المهنية والاعتمادات الموثقة",
+      certificationsSubtitle: "شهادات معتمدة من DataCamp و Microsoft و LinkedIn Learning وأكاديمية طويق (منصة سطر).",
+      verifyBtn: "توثيق وعرض الشهادة ↗",
+      previewBtn: "معاينة الشهادة",
+      closePreview: "إغلاق المعاينة",
       degree: {
         type: "التعليم الجامعي",
         period: "2021 – 2025",
@@ -765,6 +896,109 @@ export const translations: Record<Language, TranslationDictionary> = {
           "تدريب متخصص في أبحاث المستخدمين، وتخطيط الهياكل، ومبادئ التفكير التصميمي، وبناء النماذج التفاعلية عالية الدقة، واختبارات الاستخدام، وأنظمة المكونات في Figma.",
         verified: "شهادة معتمدة وموثقة",
       },
+      certificationsList: [
+        {
+          id: "aieda",
+          type: "اعتماد مهني",
+          period: "2026",
+          title: "مهندس ذكاء اصطناعي للمطورين (AIEDA)",
+          issuer: "DataCamp",
+          description:
+            "اعتماد مهني يوثق المهارات العملية في دمج نماذج اللغة الكبيرة (LLMs)، وواجهات OpenAI API، وهندسة الأوامر، وبناء الأنظمة البرمجية المدعومة بالذكاء الاصطناعي.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/datacamp-aieda.png",
+          credentialUrl: "https://www.datacamp.com/certificate/AIEDA0013287689794",
+        },
+        {
+          id: "daa",
+          type: "اعتماد مهني",
+          period: "2026",
+          title: "محلل بيانات معتمد (Associate Data Analyst)",
+          issuer: "DataCamp",
+          description:
+            "اعتماد مهني يوثق الكفاءة في تحليل البيانات، واستعلامات SQL، واستكشاف وتمثيل البيانات بصريًا، والتحليل الإحصائي.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/datacamp-daa.jpg",
+          credentialUrl: "https://www.datacamp.com/certificate/DAA0014885246864",
+        },
+        {
+          id: "linkedin-ai",
+          type: "مسار تدريبي معتمد",
+          period: "2026",
+          title: "أساسيات الذكاء الاصطناعي التوليدي والتطوير المهني",
+          issuer: "Microsoft & LinkedIn Learning",
+          description:
+            "مسار تدريبي متكامل من Microsoft و LinkedIn يغطي أساسيات الذكاء الاصطناعي التوليدي (Generative AI)، وأدوات Microsoft Copilot، وأخلاقيات الذكاء الاصطناعي المسؤول.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/linkedin-learning.png",
+          credentialUrl:
+            "https://www.linkedin.com/learning/certificates/5c5341ebd3a832dfaafea62f57a2f1e8a5b58172e28084e1ddbce52363bf770d",
+        },
+        {
+          id: "ms-learn",
+          type: "شهادة رسمية معتمدة",
+          period: "2026",
+          title: "أساسيات GitHub - أساسيات الإدارة وميزات المنتج",
+          issuer: "Microsoft",
+          description:
+            "شهادة رسمية من Microsoft Learn لإتمام مسار أساسيات إدارة GitHub وميزات المنتجات وإدارة الفرق والمستودعات البرمجية.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/microsoft-learn.jpg",
+          credentialUrl:
+            "https://learn.microsoft.com/ar-sa/users/salembaabbad-4230/achievements/2tat5wbv?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+        },
+        {
+          id: "github-foundations",
+          type: "شهادة تقنية",
+          period: "2026",
+          title: "أساسيات GitHub (GitHub Foundations)",
+          issuer: "Microsoft",
+          description:
+            "شهادة موثقة من Microsoft تثبت الكفاءة في إدارة الإصدارات عبر Git، وإدارة المستودعات البرمجية، واستراتيجيات الفروع، وأتمتة سير العمل التعاوني.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/microsoft-github.png",
+          credentialUrl: "https://learn.microsoft.com/en-us/users/salembaabbad-4230/achievements/feh3nf6x",
+        },
+        {
+          id: "satr-database",
+          type: "شهادة دورة تخصصية",
+          period: "2026",
+          title: "شهادة مقدمة في قواعد البيانات",
+          issuer: "منصة سطر — أكاديمية طويق",
+          description:
+            "تدريب معتمد في أساسيات قواعد البيانات العلائقية، ونمذجة البيانات، وهيكلة الاستعلامات وإدارة البيانات الخلفية للتطبيقات.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/satr-database.png",
+          credentialUrl:
+            "https://core-files.tuwaiq.edu.sa/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1791291459_f1340f32-9179-4790-86a1-e618487cb7dc.png",
+        },
+        {
+          id: "satr-firebase",
+          type: "شهادة دورة تخصصية",
+          period: "2026",
+          title: "شهادة أساسيات Firebase",
+          issuer: "منصة سطر — أكاديمية طويق",
+          description:
+            "تدريب تطبيقي على خدمات Google Firebase شمل المصادقة، وقواعد البيانات السحابية اللحظية، والتخزين السحابي، وربط تطبيقات الويب والجوال.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/satr-firebase.png",
+          credentialUrl:
+            "https://core-files.tuwaiq.edu.sa/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1791466026_54a0935a-6ed3-4727-84d4-371c060474ce.png",
+        },
+        {
+          id: "satr-uxui",
+          type: "شهادة مهنية",
+          period: "2025",
+          title: "شهادة تصميم UX/UI (مشروع تطبيقي)",
+          issuer: "منصة سطر — أكاديمية طويق",
+          description:
+            "تدريب تطبيقي متخصص في أبحاث المستخدمين، وتخطيط الهياكل، ومبادئ التفكير التصميمي، وبناء النماذج التفاعلية عالية الدقة في Figma.",
+          verified: "شهادة معتمدة وموثقة",
+          imageUrl: "/certificates/satr-uxui.png",
+          credentialUrl:
+            "https://assets.safcsp.cloud/public/certificates/530354ce-6787-474c-b07f-fe12f7f6f09b/1757241641_e6e5eda4-dc51-4734-a828-c2e9f1af61cb.png",
+        },
+      ],
       languages: {
         title: "اللغات",
         subtitle: "التواصل باللغتين العربية والإنجليزية.",
@@ -811,7 +1045,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       tag: "// تواصل معي",
       heading: "لنبتكر شيئًا مميزًا ومؤثرًا معًا",
       subtitle:
-        "متاح لفرص العمل بدوام كامل في تطوير الواجهات وتطبيقات الجوال، والتعاون في المنتجات الرقمية والمشاريع المبتكرة.",
+        "متاح لفرص العمل بدوام كامل في تطوير Full-Stack والواجهات وتطبيقات الجوال، والتعاون في المنتجات الرقمية والمشاريع المبتكرة.",
       directTitle: "بيانات التواصل المباشر",
       emailLabel: "البريد الإلكتروني",
       phoneLabel: "الهاتف والواتساب",
