@@ -30,11 +30,7 @@ export default function HeroSection() {
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Identity & Headline */}
-        <div className="space-y-3 mb-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8E7C9]/60 backdrop-blur-md border border-[#064E3B]/15 text-xs uppercase tracking-[0.2em] text-[#064E3B] font-bold font-heading shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B] animate-pulse"></span>
-            {t.hero.name}
-          </div>
+        <div className="mb-4">
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-[#064E3B] leading-[1.25] tracking-tight max-w-4xl">
             {t.hero.titleMain}{" "}
             <span className="text-[#064E3B]">
