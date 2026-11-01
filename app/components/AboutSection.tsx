@@ -30,30 +30,18 @@ export default function AboutSection() {
 
               {/* Avatar Container Card */}
               <div className="relative w-full rounded-[28px] bg-white border border-[#064E3B]/15 overflow-hidden p-6 shadow-xl flex flex-col gap-5 transition-all duration-500 hover:shadow-2xl">
-                {/* Photo & Semi-Circle Stage */}
-                <div className="relative w-full pt-10 pb-2 flex justify-center items-center">
-                  {/* Layer 1: Ambient Champagne Glow behind Arch */}
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-64 h-32 rounded-t-full bg-[#F8E7C9] blur-xl opacity-75 pointer-events-none" />
-
-                  {/* Layer 2: Outer Dashed Geometric Semi-Circle Halo */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[270px] sm:w-[290px] h-[135px] sm:h-[145px] rounded-t-full border-t-2 border-x-2 border-dashed border-[#064E3B]/25 pointer-events-none" />
-
-                  {/* Layer 3: Solid Architectural Semi-Circle Arch in Champagne */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[240px] sm:w-[260px] h-[120px] sm:h-[130px] rounded-t-full bg-gradient-to-b from-[#F8E7C9] via-[#F8E7C9]/90 to-[#FAF4EA]/40 border-t-2 border-x-2 border-[#064E3B]/20 shadow-[0_-6px_20px_rgba(248,231,201,0.65)] pointer-events-none" />
-
-                  {/* Layer 4: Photo Container */}
-                  <div className="relative z-10 w-full max-w-[270px] sm:max-w-[290px] h-72 sm:h-80 rounded-2xl overflow-hidden border-2 border-[#064E3B]/15 shadow-md bg-[#FAF4EA] group">
-                    <Image
-                      src="/salem-profile.jpg"
-                      alt={t.about.name}
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                      sizes="(max-width: 768px) 100vw, 320px"
-                      priority
-                    />
-                    {/* Soft gradient bottom fade */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-85 pointer-events-none" />
-                  </div>
+                {/* Photo Container */}
+                <div className="relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-[#064E3B]/12 shadow-sm bg-[#FAF4EA] group">
+                  <Image
+                    src="/salem-profile.jpg"
+                    alt={t.about.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    priority
+                  />
+                  {/* Soft gradient bottom fade */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-85 pointer-events-none" />
                 </div>
 
                 {/* Name & Title */}
