@@ -231,6 +231,65 @@ html.dark .glass-panel {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Infinite Marquee Animations for Skills */
+@keyframes skill-marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes skill-marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-skill-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: skill-marquee-left 26s linear infinite;
+  will-change: transform;
+}
+
+.animate-skill-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: skill-marquee-right 26s linear infinite;
+  will-change: transform;
+}
+
+.animate-skill-marquee-left:hover,
+.animate-skill-marquee-right:hover,
+.skills-paused .animate-skill-marquee-left,
+.skills-paused .animate-skill-marquee-right {
+  animation-play-state: paused;
+}
+
+.animate-gentle-float {
+  animation: gentle-float 3.5s ease-in-out infinite;
+}
+
+/* Gradient fade mask for smooth marquee edges inside cards */
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
 

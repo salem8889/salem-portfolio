@@ -5,6 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function EducationSection() {
   const { t } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
   const [previewCert, setPreviewCert] = useState<{
     title: string;
     issuer: string;
@@ -13,9 +14,15 @@ export default function EducationSection() {
     credentialUrl: string;
   } | null>(null);
 
+  const visibleCerts = showAll
+    ? t.education.certificationsList
+    : t.education.certificationsList.slice(0, 3);
+
+  const remainingCount = t.education.certificationsList.length - 3;
+
   return (
     <section id="education" className="py-24 relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-zinc-700 dark:text-zinc-300 font-heading font-bold text-xs tracking-widest uppercase">
@@ -31,7 +38,7 @@ export default function EducationSection() {
         </div>
 
         {/* Degree Card */}
-        <div className="mb-12">
+        <div className="mb-10">
           <div className="glow-card p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
@@ -60,12 +67,12 @@ export default function EducationSection() {
           </div>
         </div>
 
-        {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {t.education.certificationsList.map((cert) => (
+        {/* Certifications Grid (Top 3 by default) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {visibleCerts.map((cert) => (
             <div
               key={cert.id}
-              className="glow-card p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-sm flex flex-col justify-between"
+              className="glow-card p-6 rounded-3xl bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 shadow-sm flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
@@ -80,7 +87,7 @@ export default function EducationSection() {
                 {/* Certificate Image */}
                 <div
                   onClick={() => setPreviewCert(cert)}
-                  className="w-full h-48 sm:h-52 mb-5 rounded-2xl bg-zinc-50 dark:bg-zinc-800/80 border border-black/10 dark:border-white/10 overflow-hidden cursor-pointer flex items-center justify-center p-2"
+                  className="w-full h-44 sm:h-48 mb-5 rounded-2xl bg-zinc-50 dark:bg-zinc-800/80 border border-black/10 dark:border-white/10 overflow-hidden cursor-pointer flex items-center justify-center p-2"
                 >
                   <img
                     src={cert.imageUrl}
@@ -90,13 +97,13 @@ export default function EducationSection() {
                   />
                 </div>
 
-                <h3 className="font-heading text-xl font-bold text-zinc-950 dark:text-zinc-50">
+                <h3 className="font-heading text-lg font-bold text-zinc-950 dark:text-zinc-50 leading-snug">
                   {cert.title}
                 </h3>
                 <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 mt-1">
                   {cert.issuer}
                 </p>
-                <p className="mt-4 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                <p className="mt-3 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                   {cert.description}
                 </p>
               </div>
@@ -118,6 +125,30 @@ export default function EducationSection() {
             </div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button */}
+        {t.education.certificationsList.length > 3 && (
+          <div className="flex justify-center mb-12">
+            <button
+              type="button"
+              onClick={() => setShowAll(!showAll)}
+              className="px-7 py-3 rounded-full bg-white dark:bg-zinc-900 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-zinc-950 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs sm:text-sm border border-black/15 dark:border-white/15 shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer"
+            >
+              <span>
+                {showAll
+                  ? t.education.showLess
+                  : `${t.education.showMore} (+${remainingCount})`}
+              </span>
+              <span
+                className={`transition-transform duration-200 inline-block ${
+                  showAll ? "rotate-180" : ""
+                }`}
+              >
+                ↓
+              </span>
+            </button>
+          </div>
+        )}
 
         {/* Languages Banner */}
         <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-900/80 border border-black/10 dark:border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">

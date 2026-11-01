@@ -127,6 +127,12 @@ export interface TranslationDictionary {
       tools: string;
       design: string;
     };
+    categoryDetails: {
+      frontend: { title: string; subtitle: string; count: string };
+      mobile: { title: string; subtitle: string; count: string };
+      backend: { title: string; subtitle: string; count: string };
+      tools: { title: string; subtitle: string; count: string };
+    };
   };
   education: {
     tag: string;
@@ -137,6 +143,8 @@ export interface TranslationDictionary {
     verifyBtn: string;
     previewBtn: string;
     closePreview: string;
+    showMore: string;
+    showLess: string;
     degree: {
       type: string;
       period: string;
@@ -439,6 +447,28 @@ export const translations: Record<Language, TranslationDictionary> = {
         tools: "Tools",
         design: "Design",
       },
+      categoryDetails: {
+        frontend: {
+          title: "Frontend Development",
+          subtitle: "Modern component architecture, responsive UI, and state management",
+          count: "8 Skills",
+        },
+        mobile: {
+          title: "Mobile Development",
+          subtitle: "Cross-platform mobile applications for iOS & Android",
+          count: "4 Skills",
+        },
+        backend: {
+          title: "Backend & APIs",
+          subtitle: "Scalable backends, relational databases, and AI integration",
+          count: "6 Skills",
+        },
+        tools: {
+          title: "Tools & Design",
+          subtitle: "Version control, design systems, deployment, and analytics",
+          count: "7 Skills",
+        },
+      },
     },
     education: {
       tag: "// ACADEMIC & CREDENTIALS",
@@ -449,6 +479,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       verifyBtn: "Verify Credential ↗",
       previewBtn: "Preview Certificate",
       closePreview: "Close Preview",
+      showMore: "Show More",
+      showLess: "Show Less",
       degree: {
         type: "Higher Education",
         period: "2021 – 2025",
@@ -868,6 +900,28 @@ export const translations: Record<Language, TranslationDictionary> = {
         tools: "أدوات",
         design: "تصميم",
       },
+      categoryDetails: {
+        frontend: {
+          title: "تطوير الواجهات (Frontend)",
+          subtitle: "أحدث أطر العمل وتطوير الواجهات المتجاوبة وإدارة الحالة",
+          count: "8 مهارات",
+        },
+        mobile: {
+          title: "تطبيقات الجوال (Mobile)",
+          subtitle: "تطوير تطبيقات الجوال متعددة المنصات لنظامي iOS و Android",
+          count: "4 مهارات",
+        },
+        backend: {
+          title: "الخلفية وواجهات API (Backend & APIs)",
+          subtitle: "الخدمات السحابية وقواعد البيانات وتكامل نماذج الذكاء الاصطناعي",
+          count: "6 مهارات",
+        },
+        tools: {
+          title: "الأدوات والتصميم (Tools & Design)",
+          subtitle: "إدارة الإصدارات وأنظمة التصميم في Figma والأتمتة والتحليلات",
+          count: "7 مهارات",
+        },
+      },
     },
     education: {
       tag: "// المؤهلات الأكاديمية والشهادات",
@@ -878,6 +932,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       verifyBtn: "توثيق وعرض الشهادة ↗",
       previewBtn: "معاينة الشهادة",
       closePreview: "إغلاق المعاينة",
+      showMore: "رؤية المزيد",
+      showLess: "عرض أقل",
       degree: {
         type: "التعليم الجامعي",
         period: "2021 – 2025",

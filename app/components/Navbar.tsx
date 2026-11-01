@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Sun, Moon, ArrowUpRight } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useTheme } from "../context/ThemeContext";
 
@@ -169,18 +169,6 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Unified Resume Button */}
-          <a
-            href="/SALEM_BAABBAD.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-9 px-3.5 rounded-full bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md hover:bg-black/[0.06] dark:hover:bg-white/[0.12] text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs border border-black/[0.08] dark:border-white/[0.1] hover:border-black/25 dark:hover:border-white/25 transition-all duration-200 flex items-center gap-1.5 shadow-xs"
-          >
-            <span>{t.navbar.resume}</span>
-            <span className="text-[10px] text-zinc-700 dark:text-zinc-300 font-mono font-bold">PDF</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300 stroke-[2]" />
-          </a>
-
           {/* Unified Get In Touch Primary Button */}
           <button
             onClick={() => scrollTo("contact")}
@@ -285,15 +273,6 @@ export default function Navbar() {
             </button>
           ))}
           <div className="pt-2 flex flex-col gap-2">
-            <a
-              href="/SALEM_BAABBAD.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full h-9 rounded-xl bg-black/[0.04] dark:bg-white/[0.06] backdrop-blur-md hover:bg-black/[0.08] dark:hover:bg-white/[0.1] text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs flex items-center justify-center gap-1.5 border border-black/10 dark:border-white/10 transition-all duration-200"
-            >
-              <span>{t.navbar.downloadResume}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300 stroke-[2]" />
-            </a>
             <button
               onClick={() => scrollTo("contact")}
               className="w-full h-9 rounded-xl bg-zinc-950 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs flex items-center justify-center transition-all duration-200 shadow-xs"
