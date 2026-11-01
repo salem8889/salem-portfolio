@@ -24,25 +24,25 @@ export default function Preloader() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white dark:bg-[#09090b] transition-opacity duration-600 ease-out ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#FAF4EA] transition-opacity duration-600 ease-out ${
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
       <div className="relative flex items-center justify-center">
         {/* Spinner Outer Rings */}
-        <div className="w-20 h-20 rounded-full border-2 border-t-black dark:border-t-white border-r-zinc-400 dark:border-r-zinc-600 border-b-transparent border-l-transparent animate-spin"></div>
-        <div className="absolute w-14 h-14 rounded-full border-2 border-b-black dark:border-b-white border-l-zinc-300 dark:border-l-zinc-700 border-t-transparent border-r-transparent animate-[spin_1.5s_linear_infinite_reverse]"></div>
+        <div className="w-20 h-20 rounded-full border-2 border-t-[#064E3B] border-r-[#F8E7C9] border-b-transparent border-l-transparent animate-spin"></div>
+        <div className="absolute w-14 h-14 rounded-full border-2 border-b-[#064E3B] border-l-[#F8E7C9] border-t-transparent border-r-transparent animate-[spin_1.5s_linear_infinite_reverse]"></div>
 
         {/* Core Monogram */}
-        <span className="absolute font-heading text-lg font-black text-black dark:text-white tracking-widest">
+        <span className="absolute font-heading text-lg font-black text-[#064E3B] tracking-widest">
           SB
         </span>
       </div>
 
-      <h2 className="mt-5 font-heading text-base font-extrabold text-zinc-950 dark:text-zinc-50 tracking-wider">
+      <h2 className="mt-5 font-heading text-base font-extrabold text-[#064E3B] tracking-wider">
         {t.preloader.name}
       </h2>
-      <p className="mt-1 text-[11px] text-zinc-500 dark:text-zinc-400 font-medium tracking-wide">
+      <p className="mt-1 text-[11px] text-[#064E3B]/70 font-medium tracking-wide">
         {t.preloader.role}
       </p>
     </div>

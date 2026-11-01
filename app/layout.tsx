@@ -1,8 +1,31 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, Tajawal } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
+
+const camelFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/TheYearofTheCamel-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/TheYearofTheCamel-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/TheYearofTheCamel-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-camel",
+  display: "swap",
+});
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -70,7 +93,7 @@ export default function RootLayout({
       lang="en"
       dir="ltr"
       suppressHydrationWarning
-      className={`${plusJakarta.variable} ${inter.variable} ${tajawal.variable} scroll-smooth`}
+      className={`${plusJakarta.variable} ${inter.variable} ${tajawal.variable} ${camelFont.variable} scroll-smooth`}
     >
       <head>
         <script
@@ -78,22 +101,16 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('portfolio_theme');
-                  var isDark = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                  if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.style.colorScheme = 'dark';
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.style.colorScheme = 'light';
-                  }
+                  localStorage.removeItem('portfolio_theme');
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.style.colorScheme = 'light';
                 } catch(e) {}
               })();
             `,
           }}
         />
       </head>
-      <body className="bg-[#ffffff] text-[#09090b] font-sans antialiased selection:bg-black/10 selection:text-black overflow-x-hidden min-h-screen">
+      <body className="bg-[#FAF4EA] text-[#064E3B] font-sans antialiased selection:bg-[#064E3B]/20 selection:text-[#064E3B] overflow-x-hidden min-h-screen">
         <ThemeProvider>
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>

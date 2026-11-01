@@ -66,40 +66,39 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative bg-[#FAF4EA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-zinc-700 dark:text-zinc-300 font-heading font-bold text-xs tracking-widest uppercase">
+          <span className="text-[#064E3B]/80 font-heading font-bold text-xs tracking-widest uppercase">
             {t.contact.tag}
           </span>
-          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-zinc-950 dark:text-zinc-50">
+          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-[#064E3B]">
             {t.contact.heading}
           </h2>
-          <p className="mt-3 text-zinc-700 dark:text-zinc-300 text-sm sm:text-base">
+          <p className="mt-3 text-[#064E3B]/80 text-sm sm:text-base">
             {t.contact.subtitle}
           </p>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-zinc-300 via-black to-zinc-300 dark:from-zinc-700 dark:via-white dark:to-zinc-700 mx-auto rounded-full"></div>
         </div>
 
         {/* Layout: Info & Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Direct Contact Cards */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 shadow-sm">
-              <h3 className="font-heading text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-6">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#064E3B]/15 bg-[#FFFDF9] shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
                 {t.contact.directTitle}
               </h3>
 
               <div className="space-y-6">
                 {/* Email */}
                 <div>
-                  <span className="text-xs text-zinc-600 dark:text-zinc-400 block uppercase tracking-wider font-bold">
+                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.emailLabel}
                   </span>
                   <a
                     href="mailto:SALEM_BAABAD@outlook.sa"
-                    className="font-heading font-bold text-zinc-950 dark:text-zinc-50 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors text-sm sm:text-base"
+                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors text-sm sm:text-base"
                   >
                     SALEM_BAABAD@outlook.sa
                   </a>
@@ -107,12 +106,12 @@ export default function ContactSection() {
 
                 {/* Phone */}
                 <div>
-                  <span className="text-xs text-zinc-600 dark:text-zinc-400 block uppercase tracking-wider font-bold">
+                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.phoneLabel}
                   </span>
                   <a
                     href="tel:+966509788768"
-                    className="font-heading font-bold text-zinc-950 dark:text-zinc-50 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors block text-sm sm:text-base"
+                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors block text-sm sm:text-base"
                     dir="ltr"
                   >
                     +966 50 978 8768
@@ -121,22 +120,22 @@ export default function ContactSection() {
 
                 {/* Location */}
                 <div>
-                  <span className="text-xs text-zinc-600 dark:text-zinc-400 block uppercase tracking-wider font-bold">
+                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.locationLabel}
                   </span>
-                  <span className="font-heading font-bold text-zinc-950 dark:text-zinc-50 text-sm sm:text-base">
+                  <span className="font-heading font-bold text-[#064E3B] text-sm sm:text-base">
                     {t.contact.locationVal}
                   </span>
                 </div>
               </div>
 
               {/* Links & Resume download */}
-              <div className="mt-8 pt-6 border-t border-black/10 dark:border-white/10 flex flex-col gap-3">
+              <div className="mt-8 pt-6 border-t border-[#064E3B]/10 flex flex-col gap-3">
                 <a
                   href="/SALEM_BAABBAD.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-950 dark:text-zinc-50 font-heading font-bold text-xs flex items-center justify-between border border-black/10 dark:border-white/10 transition-all"
+                  className="w-full py-3 px-4 rounded-2xl bg-[#F8E7C9]/60 hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs flex items-center justify-between border border-[#064E3B]/15 transition-all cursor-pointer"
                 >
                   <span>{t.contact.downloadResume}</span>
                   <span className="text-xs font-mono font-bold">PDF ↗</span>
@@ -147,7 +146,7 @@ export default function ContactSection() {
                     href="https://www.linkedin.com/in/salem-baabbad-626592359/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs text-center border border-black/15 dark:border-white/15 shadow-xs transition-all"
+                    className="py-2.5 px-3 rounded-xl bg-[#FFFDF9] hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-[#064E3B]/15 shadow-xs transition-all cursor-pointer"
                   >
                     LinkedIn ↗
                   </a>
@@ -155,13 +154,13 @@ export default function ContactSection() {
                     href="https://github.com/salem8889"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-heading font-bold text-xs text-center border border-black/15 dark:border-white/15 shadow-xs transition-all"
+                    className="py-2.5 px-3 rounded-xl bg-[#FFFDF9] hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-[#064E3B]/15 shadow-xs transition-all cursor-pointer"
                   >
                     GitHub ↗
                   </a>
                   <a
                     href="mailto:SALEM_BAABAD@outlook.sa"
-                    className="py-2.5 px-3 rounded-xl bg-black hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs text-center shadow-xs transition-all"
+                    className="py-2.5 px-3 rounded-xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-xs text-center shadow-xs transition-all cursor-pointer"
                   >
                     {t.contact.directEmailBtn}
                   </a>
@@ -172,8 +171,8 @@ export default function ContactSection() {
 
           {/* Contact Message Form */}
           <div className="lg:col-span-7">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-zinc-900 shadow-sm">
-              <h3 className="font-heading text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-6">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#064E3B]/15 bg-[#FFFDF9] shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
                 {t.contact.formTitle}
               </h3>
 
@@ -288,7 +287,7 @@ export default function ContactSection() {
                     type="submit"
                     disabled={status === "loading"}
                     onClick={status === "loading" ? undefined : handleRipple}
-                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-black hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-heading font-extrabold text-sm border border-black dark:border-white shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.25)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-extrabold text-sm border border-[#064E3B] shadow-[0_4px_20px_rgba(6,78,59,0.25)] hover:shadow-[0_8px_25px_rgba(6,78,59,0.35)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {status === "loading" ? (
                       <>

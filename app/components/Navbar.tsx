@@ -2,13 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Sun, Moon } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
-  const { isDark, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -23,7 +20,6 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
-    // Section Observer for active link highlight
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -40% 0px",
@@ -73,8 +69,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-white/75 dark:bg-[#09090b]/80 backdrop-blur-2xl border-b border-black/[0.08] dark:border-white/[0.1] shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.5)] py-2.5 sm:py-3"
-          : "bg-white/60 dark:bg-[#09090b]/65 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] shadow-[0_2px_15px_rgba(0,0,0,0.03)] dark:shadow-[0_2px_20px_rgba(0,0,0,0.3)] py-3 sm:py-3.5"
+          ? "bg-[#FAF4EA]/90 backdrop-blur-2xl border-b border-[#064E3B]/10 shadow-[0_4px_30px_rgba(6,78,59,0.06)] py-2.5 sm:py-3"
+          : "bg-[#FAF4EA]/75 backdrop-blur-xl border-b border-[#064E3B]/08 shadow-[0_2px_15px_rgba(6,78,59,0.03)] py-3 sm:py-3.5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -83,7 +79,7 @@ export default function Navbar() {
           onClick={() => scrollTo("hero")}
           className="flex items-center gap-2.5 sm:gap-3 group cursor-pointer focus:outline-none text-start"
         >
-          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden border border-black/15 dark:border-white/20 group-hover:border-black dark:group-hover:border-white group-hover:scale-105 transition-all duration-200 bg-white/40 dark:bg-white/[0.06] backdrop-blur-md flex-shrink-0 shadow-xs">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden border border-[#064E3B]/20 group-hover:border-[#064E3B] group-hover:scale-105 transition-all duration-200 bg-[#F8E7C9]/40 backdrop-blur-md flex-shrink-0 shadow-xs">
             <Image
               src="/salem-profile.jpg"
               alt={t.navbar.name}
@@ -93,27 +89,27 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col text-start">
-            <span className="font-heading font-black text-xs sm:text-sm text-zinc-950 dark:text-zinc-50 group-hover:text-black dark:group-hover:text-white transition-colors tracking-tight leading-snug">
+            <span className="font-heading font-black text-xs sm:text-sm text-[#064E3B] group-hover:text-[#043629] transition-colors tracking-tight leading-snug">
               {t.navbar.name}
             </span>
-            <span className="text-[10px] sm:text-[11px] text-zinc-700 dark:text-zinc-300 font-semibold tracking-tight leading-snug">
+            <span className="text-[10px] sm:text-[11px] text-[#064E3B]/80 font-semibold tracking-tight leading-snug">
               {t.navbar.role}
             </span>
           </div>
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center h-9 bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] rounded-full p-1 gap-0.5 shadow-xs">
+        <nav className="hidden lg:flex items-center h-9 bg-[#F8E7C9]/50 backdrop-blur-md border border-[#064E3B]/12 rounded-full p-1 gap-0.5 shadow-xs">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`h-7 px-3 text-xs font-semibold tracking-wide transition-all duration-200 rounded-full flex items-center justify-center ${
+                className={`h-7 px-3 text-xs font-semibold tracking-wide transition-all duration-200 rounded-full flex items-center justify-center cursor-pointer ${
                   isActive
-                    ? "bg-white dark:bg-white/20 text-zinc-950 dark:text-zinc-50 font-bold border border-black/10 dark:border-white/20 shadow-xs backdrop-blur-sm"
-                    : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50 hover:bg-black/5 dark:hover:bg-white/10"
+                    ? "bg-[#064E3B] text-[#F8E7C9] font-bold border border-[#064E3B] shadow-xs"
+                    : "text-[#064E3B]/80 hover:text-[#064E3B] hover:bg-[#F8E7C9]/80"
                 }`}
               >
                 {item.label}
@@ -126,17 +122,17 @@ export default function Navbar() {
         <div className="hidden sm:flex items-center gap-2">
           {/* Unified Language Switcher */}
           <div
-            className="flex items-center h-9 bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] rounded-full p-1 gap-0.5 shadow-xs"
+            className="flex items-center h-9 bg-[#F8E7C9]/50 backdrop-blur-md border border-[#064E3B]/12 rounded-full p-1 gap-0.5 shadow-xs"
             dir="ltr"
           >
             <button
               type="button"
               onClick={() => setLanguage("en")}
               aria-label="Switch to English"
-              className={`h-7 px-2.5 rounded-full text-xs font-heading font-bold transition-all duration-200 flex items-center justify-center ${
+              className={`h-7 px-2.5 rounded-full text-xs font-heading font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
                 language === "en"
-                  ? "bg-white dark:bg-white/20 text-zinc-950 dark:text-zinc-50 border border-black/10 dark:border-white/20 shadow-xs backdrop-blur-sm"
-                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+                  ? "bg-[#064E3B] text-[#F8E7C9] border border-[#064E3B] shadow-xs"
+                  : "text-[#064E3B]/80 hover:text-[#064E3B]"
               }`}
             >
               EN
@@ -145,54 +141,40 @@ export default function Navbar() {
               type="button"
               onClick={() => setLanguage("ar")}
               aria-label="التبديل إلى العربية"
-              className={`h-7 px-2.5 rounded-full text-xs font-heading font-bold transition-all duration-200 flex items-center justify-center ${
+              className={`h-7 px-2.5 rounded-full text-xs font-heading font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
                 language === "ar"
-                  ? "bg-white dark:bg-white/20 text-zinc-950 dark:text-zinc-50 border border-black/10 dark:border-white/20 shadow-xs backdrop-blur-sm"
-                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+                  ? "bg-[#064E3B] text-[#F8E7C9] border border-[#064E3B] shadow-xs"
+                  : "text-[#064E3B]/80 hover:text-[#064E3B]"
               }`}
             >
               العربية
             </button>
           </div>
 
-          {/* Unified Theme Toggle Button */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={isDark ? "التبديل للوضع النهاري" : "التبديل للوضع الليلي"}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md text-zinc-900 dark:text-zinc-100 border border-black/[0.08] dark:border-white/[0.1] hover:border-black/25 dark:hover:border-white/25 hover:bg-black/[0.06] dark:hover:bg-white/[0.12] transition-all duration-200 shadow-xs"
-          >
-            {isDark ? (
-              <Sun className="w-4 h-4 text-amber-400 stroke-[2]" />
-            ) : (
-              <Moon className="w-4 h-4 text-zinc-900 dark:text-zinc-100 stroke-[2]" />
-            )}
-          </button>
-
           {/* Unified Get In Touch Primary Button */}
           <button
             onClick={() => scrollTo("contact")}
-            className="h-9 px-4 rounded-full bg-zinc-950 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs border border-zinc-950 dark:border-white transition-all duration-200 flex items-center justify-center shadow-xs"
+            className="h-9 px-4 rounded-full bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-xs border border-[#064E3B] transition-all duration-200 flex items-center justify-center shadow-xs cursor-pointer hover:shadow-md"
           >
             {t.navbar.getInTouch}
           </button>
         </div>
 
-        {/* Mobile View: Lang Switcher + Theme Toggle + Hamburger */}
-        <div className="flex items-center gap-1.5 lg:hidden">
+        {/* Mobile View: Lang Switcher + Hamburger */}
+        <div className="flex items-center gap-2 lg:hidden">
           {/* Mobile Language Switcher */}
           <div
-            className="flex items-center h-8 bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] rounded-full p-0.5 shadow-xs"
+            className="flex items-center h-8 bg-[#F8E7C9]/50 backdrop-blur-md border border-[#064E3B]/12 rounded-full p-0.5 shadow-xs"
             dir="ltr"
           >
             <button
               type="button"
               onClick={() => setLanguage("en")}
               aria-label="Switch to English"
-              className={`h-6 px-2 rounded-full text-[11px] font-heading font-bold transition-all duration-200 flex items-center justify-center ${
+              className={`h-6 px-2 rounded-full text-[11px] font-heading font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
                 language === "en"
-                  ? "bg-white dark:bg-white/20 text-zinc-950 dark:text-zinc-50 border border-black/10 dark:border-white/20 shadow-xs backdrop-blur-sm"
-                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+                  ? "bg-[#064E3B] text-[#F8E7C9] border border-[#064E3B] shadow-xs"
+                  : "text-[#064E3B]/80 hover:text-[#064E3B]"
               }`}
             >
               EN
@@ -201,35 +183,21 @@ export default function Navbar() {
               type="button"
               onClick={() => setLanguage("ar")}
               aria-label="التبديل إلى العربية"
-              className={`h-6 px-2 rounded-full text-[11px] font-heading font-bold transition-all duration-200 flex items-center justify-center ${
+              className={`h-6 px-2 rounded-full text-[11px] font-heading font-bold transition-all duration-200 flex items-center justify-center cursor-pointer ${
                 language === "ar"
-                  ? "bg-white dark:bg-white/20 text-zinc-950 dark:text-zinc-50 border border-black/10 dark:border-white/20 shadow-xs backdrop-blur-sm"
-                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-zinc-50"
+                  ? "bg-[#064E3B] text-[#F8E7C9] border border-[#064E3B] shadow-xs"
+                  : "text-[#064E3B]/80 hover:text-[#064E3B]"
               }`}
             >
               العربية
             </button>
           </div>
 
-          {/* Mobile Theme Toggle Button */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={isDark ? "التبديل للوضع النهاري" : "التبديل للوضع الليلي"}
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md text-zinc-900 dark:text-zinc-100 border border-black/[0.08] dark:border-white/[0.1] hover:bg-black/[0.06] dark:hover:bg-white/[0.12] transition-all duration-200 shadow-xs"
-          >
-            {isDark ? (
-              <Sun className="w-3.5 h-3.5 text-amber-400 stroke-[2]" />
-            ) : (
-              <Moon className="w-3.5 h-3.5 text-zinc-900 dark:text-zinc-100 stroke-[2]" />
-            )}
-          </button>
-
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation menu"
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-black/[0.03] dark:bg-white/[0.06] backdrop-blur-md border border-black/[0.08] dark:border-white/[0.1] hover:bg-black/[0.06] dark:hover:bg-white/[0.12] text-zinc-950 dark:text-zinc-50 focus:outline-none transition-all duration-200 shadow-xs"
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-[#F8E7C9]/50 backdrop-blur-md border border-[#064E3B]/12 text-[#064E3B] focus:outline-none transition-all duration-200 shadow-xs cursor-pointer"
           >
             <div className="w-4 h-3.5 relative flex flex-col justify-between">
               <span
@@ -254,7 +222,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-[57px] bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-2xl border-b border-black/[0.08] dark:border-white/[0.1] shadow-2xl transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden fixed inset-x-0 top-[57px] bg-[#FAF4EA]/95 backdrop-blur-2xl border-b border-[#064E3B]/12 shadow-2xl transition-all duration-300 overflow-hidden ${
           mobileOpen ? "max-h-[520px] opacity-100 py-6" : "max-h-0 opacity-0 py-0 pointer-events-none"
         }`}
       >
@@ -263,10 +231,10 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className={`text-start py-2.5 px-4 rounded-xl text-xs font-semibold transition-all duration-200 ${
+              className={`text-start py-2.5 px-4 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
                 activeSection === item.id
-                  ? "bg-black/10 dark:bg-white/15 text-zinc-950 dark:text-zinc-50 border border-black/10 dark:border-white/20 font-bold backdrop-blur-sm"
-                  : "text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/5 hover:text-zinc-950 dark:hover:text-zinc-50"
+                  ? "bg-[#064E3B] text-[#F8E7C9] border border-[#064E3B] font-bold"
+                  : "text-[#064E3B]/80 hover:bg-[#F8E7C9]/60 hover:text-[#064E3B]"
               }`}
             >
               {item.label}
@@ -275,7 +243,7 @@ export default function Navbar() {
           <div className="pt-2 flex flex-col gap-2">
             <button
               onClick={() => scrollTo("contact")}
-              className="w-full h-9 rounded-xl bg-zinc-950 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 font-heading font-bold text-xs flex items-center justify-center transition-all duration-200 shadow-xs"
+              className="w-full h-9 rounded-xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-xs flex items-center justify-center transition-all duration-200 shadow-xs cursor-pointer"
             >
               {t.navbar.getInTouch}
             </button>

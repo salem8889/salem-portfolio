@@ -1,36 +1,35 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-emerald-ink: #064e3b;
+  --color-champagne: #f8e7c9;
+
+  --color-black: #064e3b;
+  --color-white: #fffdf9;
+
+  --color-zinc-950: #064e3b;
+  --color-zinc-900: #043629;
+  --color-zinc-800: #064e3b;
+  --color-zinc-700: #0b5843;
+  --color-zinc-600: #146951;
+  --color-zinc-500: #207d62;
+  --color-zinc-400: #7b9f93;
+  --color-zinc-300: #b5ccc4;
+  --color-zinc-200: #e2dbce;
+  --color-zinc-100: #f8e7c9;
+  --color-zinc-50: #faf4ea;
+}
 
 :root {
-  --bg-main: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f4f4f5;
-  --accent-white: #000000;
-  --accent-silver: #3f3f46;
-  --text-light: #09090b;
-  --text-muted: #52525b;
-  --grid-line: rgba(0, 0, 0, 0.095);
-}
-
-html.dark,
-.dark {
-  --bg-main: #09090b;
-  --bg-card: #121215;
-  --bg-card-hover: #18181b;
-  --accent-white: #ffffff;
-  --accent-silver: #a1a1aa;
-  --text-light: #f4f4f5;
-  --text-muted: #a1a1aa;
-  --grid-line: rgba(255, 255, 255, 0.085);
-}
-
-html {
+  --bg-main: #faf4ea;
+  --bg-card: #fffdf9;
+  --bg-card-hover: #f8e7c9;
+  --accent-white: #064e3b;
+  --accent-silver: #146951;
+  --text-light: #064e3b;
+  --text-muted: #146951;
+  --grid-line: rgba(6, 78, 59, 0.08);
   color-scheme: light;
-}
-
-html.dark {
-  color-scheme: dark;
 }
 
 *,
@@ -60,14 +59,43 @@ h6,
   font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
 }
 
-/* Arabic RTL Typography - Numbers stay in English (0-9) */
+/* Custom @font-face for Year of the Camel Font (خط عام الإبل) */
+@font-face {
+  font-family: "The Year of The Camel";
+  src: url("/fonts/TheYearofTheCamel-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Year of The Camel";
+  src: url("/fonts/TheYearofTheCamel-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "The Year of The Camel";
+  src: url("/fonts/TheYearofTheCamel-Bold.otf") format("opentype");
+  font-weight: 700 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Arabic RTL Typography - Year of the Camel Font (خط عام الإبل) */
 [dir="rtl"],
 [dir="rtl"] body,
 [dir="rtl"] button,
 [dir="rtl"] input,
 [dir="rtl"] textarea,
-[dir="rtl"] select {
-  font-family: var(--font-tajawal), system-ui, -apple-system, sans-serif;
+[dir="rtl"] select,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] div {
+  font-family: var(--font-camel), "The Year of The Camel", var(--font-tajawal), system-ui, -apple-system, sans-serif;
   font-feature-settings: "locl" 0;
   -webkit-font-feature-settings: "locl" 0;
 }
@@ -79,7 +107,7 @@ h6,
 [dir="rtl"] h5,
 [dir="rtl"] h6,
 [dir="rtl"] .font-heading {
-  font-family: var(--font-tajawal), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-camel), "The Year of The Camel", var(--font-tajawal), system-ui, -apple-system, sans-serif;
   font-feature-settings: "locl" 0;
   -webkit-font-feature-settings: "locl" 0;
 }
@@ -90,30 +118,17 @@ h6,
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #faf4ea;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e4e4e7;
-  border: 2px solid #ffffff;
+  background: #f8e7c9;
+  border: 2px solid #faf4ea;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
-}
-
-html.dark ::-webkit-scrollbar-track {
-  background: #09090b;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border: 2px solid #09090b;
-}
-
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #064e3b;
 }
 
 /* Cursor Following Mouse Glow on Cards */
@@ -131,7 +146,7 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   right: 0;
   bottom: 0;
   background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(0, 0, 0, 0.04),
+      rgba(6, 78, 59, 0.07),
       transparent 40%);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -143,12 +158,6 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   opacity: 1;
 }
 
-html.dark .glow-card::before {
-  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.05),
-      transparent 40%);
-}
-
 /* Floating Label Form Fields */
 .floating-group {
   position: relative;
@@ -157,31 +166,20 @@ html.dark .glow-card::before {
 .floating-input {
   width: 100%;
   padding: 1.1rem 1rem 0.5rem 1rem;
-  background-color: rgba(244, 244, 245, 0.7);
-  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background-color: #ffffff !important;
+  border: 1.5px solid rgba(6, 78, 59, 0.18);
   border-radius: 0.75rem;
-  color: #09090b;
+  color: #064e3b;
   outline: none;
   font-size: 0.95rem;
   transition: all 0.25s ease;
+  box-shadow: 0 1px 3px rgba(6, 78, 59, 0.05);
 }
 
 .floating-input:focus {
-  border-color: #000000;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-  background-color: #ffffff;
-}
-
-html.dark .floating-input {
-  background-color: rgba(24, 24, 27, 0.8);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #fafafa;
-}
-
-html.dark .floating-input:focus {
-  border-color: #ffffff;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
-  background-color: #18181b;
+  border-color: #064e3b;
+  box-shadow: 0 0 0 3px rgba(6, 78, 59, 0.12);
+  background-color: #ffffff !important;
 }
 
 .floating-label {
@@ -189,14 +187,10 @@ html.dark .floating-input:focus {
   inset-inline-start: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #71717a;
+  color: #146951;
   pointer-events: none;
   transition: all 0.25s ease;
   font-size: 0.95rem;
-}
-
-html.dark .floating-label {
-  color: #a1a1aa;
 }
 
 .floating-textarea~.floating-label {
@@ -209,26 +203,16 @@ html.dark .floating-label {
   top: 0.45rem;
   transform: none;
   font-size: 0.75rem;
-  color: #000000;
-  font-weight: 600;
-}
-
-html.dark .floating-input:focus~.floating-label,
-html.dark .floating-input:not(:placeholder-shown)~.floating-label {
-  color: #ffffff;
+  color: #064e3b;
+  font-weight: 700;
 }
 
 /* Glassmorphism utility */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(250, 244, 234, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-html.dark .glass-panel {
-  background: rgba(18, 18, 22, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(6, 78, 59, 0.12);
 }
 
 /* Infinite Marquee Animations for Skills */
@@ -284,15 +268,14 @@ html.dark .glass-panel {
   animation: gentle-float 3.5s ease-in-out infinite;
 }
 
-/* Gradient fade mask for smooth marquee edges inside cards */
+/* Gradient fade mask for smooth marquee edges */
 .marquee-mask {
-  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #064e3b 6%, #064e3b 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #064e3b 6%, #064e3b 94%, transparent 100%);
 }
 
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   ::before,
   ::after {

@@ -10,15 +10,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black border-t border-zinc-800/80 py-12 relative text-white">
+    <footer className="bg-[#064E3B] border-t border-[#F8E7C9]/20 py-12 relative text-[#F8E7C9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright & Identity */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-start text-sm text-zinc-400">
-          <span className="font-heading font-medium text-zinc-400">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-start text-sm text-[#F8E7C9]/80">
+          <span className="font-heading font-bold text-[#F8E7C9]">
             {t.footer.name}
           </span>
-          <span className="hidden sm:inline text-zinc-500">•</span>
-          <p className="text-zinc-400">
+          <span className="hidden sm:inline text-[#F8E7C9]/40">•</span>
+          <p className="text-[#F8E7C9]/80">
             {t.footer.role} © {new Date().getFullYear()} {t.footer.rights}
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function Footer() {
         {/* Back To Top Button */}
         <button
           onClick={scrollToTop}
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-white/20 text-white text-xs font-heading font-bold hover:bg-white hover:text-black transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#043629] border border-[#F8E7C9]/30 text-[#F8E7C9] text-xs font-heading font-bold hover:bg-[#F8E7C9] hover:text-[#064E3B] transition-all shadow-[0_4px_15px_rgba(0,0,0,0.2)] cursor-pointer"
         >
           <span>{t.footer.backToTop}</span>
           <span>↑</span>
