@@ -66,21 +66,21 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Projects Grid: 2 columns on mobile, 2 columns on desktop */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
               onMouseMove={handleMouseMove}
               onClick={() => setSelectedProjectId(project.id)}
-              className="glow-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between cursor-pointer group bg-[#FFFDF9] border border-[#064E3B]/15 hover:border-[#064E3B]/40 transition-all shadow-sm"
+              className="glow-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer group bg-[#FFFDF9] border border-[#064E3B]/15 hover:border-[#064E3B]/40 transition-all shadow-sm"
             >
               <div>
                 {/* Visual Header / Image Container */}
-                <div className="w-full h-52 sm:h-60 rounded-2xl bg-[#FAF4EA] border border-[#064E3B]/12 flex flex-col items-center justify-center mb-6 relative overflow-hidden group-hover:border-[#064E3B]/30 transition-all">
+                <div className="w-full h-32 sm:h-52 md:h-60 rounded-xl sm:rounded-2xl bg-[#FAF4EA] border border-[#064E3B]/12 flex flex-col items-center justify-center mb-3 sm:mb-6 relative overflow-hidden group-hover:border-[#064E3B]/30 transition-all">
                   {project.imageUrl ? (
                     project.imageStyle === "full" ? (
-                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-3">
+                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-2 sm:p-3">
                         <img
                           src={project.imageUrl}
                           alt={project.title}
@@ -89,56 +89,56 @@ export default function ProjectsSection() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9]/70 via-transparent to-transparent pointer-events-none z-10"></div>
                       </div>
                     ) : (
-                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-4">
+                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-2 sm:p-4">
                         <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9]/80 via-transparent to-transparent z-10"></div>
                         <img
                           src={project.imageUrl}
                           alt={project.title}
-                          className="w-36 h-36 sm:w-40 sm:h-40 object-contain rounded-2xl border border-[#064E3B]/15 shadow-md z-0 group-hover:scale-105 transition-transform duration-500"
+                          className="w-20 h-20 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-xl sm:rounded-2xl border border-[#064E3B]/15 shadow-md z-0 group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
                     )
                   ) : (
-                    <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex flex-col items-center justify-center p-6 text-center">
-                      <div className="w-14 h-14 rounded-2xl bg-[#F8E7C9] border border-[#064E3B]/15 flex items-center justify-center font-heading font-black text-xl text-[#064E3B] shadow-sm mb-2">
+                    <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex flex-col items-center justify-center p-3 sm:p-6 text-center">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-[#F8E7C9] border border-[#064E3B]/15 flex items-center justify-center font-heading font-black text-sm sm:text-xl text-[#064E3B] shadow-sm mb-1.5 sm:mb-2">
                         IT
                       </div>
-                      <span className="font-heading font-bold text-sm text-[#064E3B]">
+                      <span className="font-heading font-bold text-xs sm:text-sm text-[#064E3B] line-clamp-2">
                         {project.title}
                       </span>
                     </div>
                   )}
 
                   {/* Badge & Category */}
-                  <div className="absolute top-3 end-3 flex flex-col items-end gap-1.5 z-20">
-                    <span className="px-3 py-1 rounded-full bg-[#F8E7C9] backdrop-blur-md text-[#064E3B] text-[11px] font-bold border border-[#064E3B]/15 shadow-xs">
+                  <div className="absolute top-2 end-2 sm:top-3 sm:end-3 flex flex-col items-end gap-1 sm:gap-1.5 z-20">
+                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F8E7C9] backdrop-blur-md text-[#064E3B] text-[9px] sm:text-[11px] font-bold border border-[#064E3B]/15 shadow-xs">
                       {project.categoryLabel}
                     </span>
                     {project.badge && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#064E3B] text-[#F8E7C9] text-[10px] font-bold border border-[#064E3B] shadow-xs">
+                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-[#064E3B] text-[#F8E7C9] text-[10px] font-bold border border-[#064E3B] shadow-xs">
                         {project.badge}
                       </span>
                     )}
                   </div>
 
                   {/* Direct Link Badges at Bottom */}
-                  <div className="absolute bottom-3 inset-x-3 z-20 flex flex-wrap gap-2 items-center">
+                  <div className="absolute bottom-2 inset-x-2 sm:bottom-3 sm:inset-x-3 z-20 flex flex-wrap gap-1 sm:gap-2 items-center">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-xs text-[#064E3B] font-bold px-3 py-1.5 rounded-full bg-[#F8E7C9] backdrop-blur-md border border-[#064E3B]/20 hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1"
+                        className="font-heading text-[9px] sm:text-xs text-[#064E3B] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#F8E7C9] backdrop-blur-md border border-[#064E3B]/20 hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1"
                       >
                         <span>
                           {project.category === "design"
                             ? isRtl
-                              ? "نموذج Figma ↗"
-                              : "Figma Prototype ↗"
+                              ? "Figma ↗"
+                              : "Figma ↗"
                             : isRtl
-                            ? "الموقع الحي ↗"
-                            : "Live Website ↗"}
+                            ? "موقع ↗"
+                            : "Live ↗"}
                         </span>
                       </a>
                     )}
@@ -148,7 +148,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-xs text-[#F8E7C9] font-bold px-3 py-1.5 rounded-full bg-[#064E3B] hover:bg-[#043629] transition-all shadow-xs flex items-center gap-1"
+                        className="font-heading text-[9px] sm:text-xs text-[#F8E7C9] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#064E3B] hover:bg-[#043629] transition-all shadow-xs flex items-center gap-1"
                       >
                         <span>App Store ↗</span>
                       </a>
@@ -159,7 +159,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-xs text-[#064E3B] font-bold px-3 py-1.5 rounded-full bg-[#F8E7C9] hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1 border border-[#064E3B]/20"
+                        className="font-heading text-[9px] sm:text-xs text-[#064E3B] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#F8E7C9] hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1 border border-[#064E3B]/20"
                       >
                         <span>Google Play ↗</span>
                       </a>
@@ -168,25 +168,25 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Title & Summary */}
-                <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#064E3B] group-hover:text-[#043629] transition-colors leading-snug">
+                <h3 className="font-heading text-xs sm:text-xl md:text-2xl font-bold text-[#064E3B] group-hover:text-[#043629] transition-colors leading-snug line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-[#064E3B]/80 leading-relaxed">
+                <p className="mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm text-[#064E3B]/80 leading-relaxed line-clamp-2 sm:line-clamp-none">
                   {project.summary}
                 </p>
 
                 {/* Key Metrics Callout if available */}
                 {project.metrics && project.metrics.length > 0 && (
-                  <div className="mt-4 grid grid-cols-2 gap-2.5 p-3 rounded-2xl bg-[#F8E7C9]/35 border border-[#064E3B]/10">
+                  <div className="mt-2.5 sm:mt-4 grid grid-cols-2 gap-1.5 sm:gap-2.5 p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-[#F8E7C9]/35 border border-[#064E3B]/10">
                     {project.metrics.map((m, i) => (
-                      <div key={i}>
+                      <div key={i} className="min-w-0">
                         <div
-                          className="font-heading text-base sm:text-lg font-extrabold text-[#064E3B]"
+                          className="font-heading text-xs sm:text-base md:text-lg font-extrabold text-[#064E3B] truncate"
                           dir="ltr"
                         >
                           {m.value}
                         </div>
-                        <div className="text-[11px] text-[#064E3B]/70 font-medium leading-tight">
+                        <div className="text-[9px] sm:text-[11px] text-[#064E3B]/70 font-medium leading-tight truncate">
                           {m.label}
                         </div>
                       </div>
@@ -196,24 +196,24 @@ export default function ProjectsSection() {
               </div>
 
               {/* Tags & Action Link */}
-              <div className="mt-6 pt-5 border-t border-[#064E3B]/10 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.slice(0, 4).map((tag) => (
+              <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-5 border-t border-[#064E3B]/10 flex flex-wrap items-center justify-between gap-1.5 sm:gap-3">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                  {project.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-lg bg-[#F8E7C9]/50 text-[#064E3B] text-[11px] font-semibold border border-[#064E3B]/10"
+                      className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#F8E7C9]/50 text-[#064E3B] text-[9px] sm:text-[11px] font-semibold border border-[#064E3B]/10 truncate max-w-[80px] sm:max-w-none"
                     >
                       {tag}
                     </span>
                   ))}
-                  {project.tags.length > 4 && (
-                    <span className="px-2 py-0.5 rounded-md bg-[#F8E7C9]/40 text-[#064E3B]/70 text-[11px] font-semibold">
-                      +{project.tags.length - 4}
+                  {project.tags.length > 2 && (
+                    <span className="px-1 sm:px-2 py-0.5 rounded-md bg-[#F8E7C9]/40 text-[#064E3B]/70 text-[9px] sm:text-[11px] font-semibold">
+                      +{project.tags.length - 2}
                     </span>
                   )}
                 </div>
 
-                <span className="text-xs font-heading font-bold text-[#064E3B] flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                <span className="text-[10px] sm:text-xs font-heading font-bold text-[#064E3B] flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
                   {t.projects.viewDetails}
                 </span>
               </div>
