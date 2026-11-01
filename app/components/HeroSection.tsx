@@ -44,18 +44,6 @@ export default function HeroSection() {
           {t.hero.subtitle}
         </p>
 
-        {/* Tech Stack Chips */}
-        <div className="mt-7 flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-2xl">
-          {["React", "Next.js", "React Native", "Expo", "TypeScript", "Supabase", "Node.js", "UI/UX & Figma"].map((tech) => (
-            <span
-              key={tech}
-              className="px-3.5 py-1.5 rounded-xl bg-[#FFFDF9] backdrop-blur-md border border-[#064E3B]/15 text-[#064E3B] text-xs font-semibold hover:border-[#064E3B]/40 hover:bg-[#F8E7C9] transition-all shadow-xs cursor-pointer"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
         {/* CTA Buttons */}
         <div className="mt-9 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
           <button
