@@ -27,7 +27,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Identity & Headline */}
         <div className="mb-4">
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-[#064E3B] leading-[1.25] tracking-tight max-w-4xl">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-[#064E3B] leading-[1.25] tracking-tight rtl:tracking-normal max-w-4xl">
             {t.hero.titleMain}{" "}
             <span className="text-[#064E3B]">
               {t.hero.titleSub}

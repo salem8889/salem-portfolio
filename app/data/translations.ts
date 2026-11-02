@@ -251,7 +251,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleMain: "Full-Stack Developer",
       titleSub: "| iOS & Android App Developer | UI/UX",
       subtitle:
-        "Results-driven Full-Stack Developer and Information Technology graduate building scalable web and cross-platform mobile applications with React, Next.js, React Native, TypeScript, Node.js, and Supabase.",
+        "Results-driven Full-Stack Developer and Information Technology graduate building scalable web and cross-platform mobile applications.",
       exploreProjects: "Explore Projects",
       viewResume: "View Resume",
       getInTouch: "Get In Touch",
@@ -704,7 +704,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       titleMain: "مطور Full-Stack",
       titleSub: "| مطور تطبيقات iOS و Android | مصمم UI/UX",
       subtitle:
-        "مطور Full-Stack وخريج تقنية معلومات بخبرة عملية في بناء تطبيقات الويب القابلة للتوسع وتطبيقات الجوال متعددة المنصات باستخدام React و Next.js و React Native و TypeScript و Node.js و Supabase.",
+        "مطور Full-Stack وخريج تقنية معلومات بخبرة عملية في بناء تطبيقات الويب القابلة للتوسع وتطبيقات الجوال متعددة المنصات.",
       exploreProjects: "استكشف المشاريع",
       viewResume: "عرض السيرة الذاتية",
       getInTouch: "تواصل معي",

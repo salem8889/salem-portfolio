@@ -22,6 +22,16 @@ const camelFont = localFont({
       weight: "700",
       style: "normal",
     },
+    {
+      path: "../public/fonts/TheYearofTheCamel-Bold.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/TheYearofTheCamel-Bold.otf",
+      weight: "900",
+      style: "normal",
+    },
   ],
   variable: "--font-camel",
   display: "swap",

@@ -89,6 +89,11 @@ h6,
 
 /* Arabic RTL Typography - Year of the Camel Font (خط عام الإبل) */
 [dir="rtl"],
+[dir="rtl"] * {
+  letter-spacing: normal !important;
+}
+
+[dir="rtl"],
 [dir="rtl"] body,
 [dir="rtl"] button,
 [dir="rtl"] input,
@@ -99,6 +104,7 @@ h6,
 [dir="rtl"] a,
 [dir="rtl"] div {
   font-family: var(--font-camel), "The Year of The Camel", var(--font-tajawal), system-ui, -apple-system, sans-serif;
+  letter-spacing: normal !important;
   font-feature-settings: "locl" 0;
   -webkit-font-feature-settings: "locl" 0;
 }
@@ -111,6 +117,7 @@ h6,
 [dir="rtl"] h6,
 [dir="rtl"] .font-heading {
   font-family: var(--font-camel), "The Year of The Camel", var(--font-tajawal), system-ui, -apple-system, sans-serif;
+  letter-spacing: normal !important;
   font-feature-settings: "locl" 0;
   -webkit-font-feature-settings: "locl" 0;
 }
