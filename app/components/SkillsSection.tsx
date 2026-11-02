@@ -320,16 +320,16 @@ export default function SkillsSection() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <ScrollReveal className="max-w-3xl mb-12 text-start">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F8E7C9]/60 border border-[#064E3B]/15 text-[#064E3B] text-xs font-heading font-bold mb-3 shadow-xs">
+        {/* Section Header - Centered like the other sections */}
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F8E7C9]/60 border border-[#064E3B]/15 text-[#064E3B] text-xs font-heading font-bold mb-2.5 sm:mb-3 shadow-xs">
             <Code2 className="w-3.5 h-3.5 text-[#064E3B]" />
             <span>{t.skills.tag}</span>
           </div>
-          <h2 className="font-heading text-3xl sm:text-5xl font-black text-[#064E3B] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl font-black text-[#064E3B] tracking-tight">
             {t.skills.heading}
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#064E3B]/80 font-normal">
+          <p className="mt-2 sm:mt-3 text-xs sm:text-base text-[#064E3B]/80 font-normal max-w-2xl mx-auto">
             {t.skills.subtitle}
           </p>
         </ScrollReveal>
