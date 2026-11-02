@@ -69,8 +69,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-[#FAF4EA]/90 backdrop-blur-2xl border-b border-[#064E3B]/10 shadow-[0_4px_30px_rgba(6,78,59,0.06)] py-2.5 sm:py-3"
-          : "bg-[#FAF4EA]/75 backdrop-blur-xl border-b border-[#064E3B]/08 shadow-[0_2px_15px_rgba(6,78,59,0.03)] py-3 sm:py-3.5"
+          ? "bg-[#FAF4EA]/90 backdrop-blur-2xl shadow-[0_4px_30px_rgba(6,78,59,0.06)] py-2.5 sm:py-3"
+          : "bg-[#FAF4EA]/75 backdrop-blur-xl shadow-[0_2px_15px_rgba(6,78,59,0.03)] py-3 sm:py-3.5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -222,7 +222,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-[57px] bg-[#FAF4EA]/95 backdrop-blur-2xl border-b border-[#064E3B]/12 shadow-2xl transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden fixed inset-x-0 top-[57px] bg-[#FAF4EA]/95 backdrop-blur-2xl shadow-2xl transition-all duration-300 overflow-hidden ${
           mobileOpen ? "max-h-[520px] opacity-100 py-6" : "max-h-0 opacity-0 py-0 pointer-events-none"
         }`}
       >
