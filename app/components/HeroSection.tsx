@@ -110,44 +110,6 @@ export default function HeroSection() {
             {t.hero.getInTouch}
           </button>
         </div>
-
-        {/* Quick Social / Contact Strip */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-[#064E3B]/70 font-medium">
-          <a
-            href="https://www.linkedin.com/in/salem-baabbad-626592359/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#064E3B] transition-colors flex items-center gap-1.5 font-semibold"
-          >
-            <span>LinkedIn</span>
-            <span className="text-[10px]">↗</span>
-          </a>
-          <span className="text-[#064E3B]/30">•</span>
-          <a
-            href="https://github.com/salem8889"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#064E3B] transition-colors flex items-center gap-1.5 font-semibold"
-          >
-            <span>GitHub</span>
-            <span className="text-[10px]">↗</span>
-          </a>
-          <span className="text-[#064E3B]/30">•</span>
-          <a
-            href="mailto:SALEM_BAABAD@outlook.sa"
-            className="hover:text-[#064E3B] transition-colors flex items-center gap-1.5 font-semibold"
-          >
-            <span>SALEM_BAABAD@outlook.sa</span>
-          </a>
-          <span className="text-[#064E3B]/30">•</span>
-          <a
-            href="tel:+966509788768"
-            className="hover:text-[#064E3B] transition-colors flex items-center gap-1.5 font-semibold"
-            dir="ltr"
-          >
-            <span>+966 50 978 8768</span>
-          </a>
-        </div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export default function EducationSection() {
   const { t } = useLanguage();
@@ -24,7 +25,7 @@ export default function EducationSection() {
     <section id="education" className="py-24 relative bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[#064E3B]/80 font-heading font-bold text-xs tracking-widest uppercase">
             {t.education.tag}
           </span>
@@ -34,10 +35,10 @@ export default function EducationSection() {
           <p className="mt-3 text-[#064E3B]/80 text-sm sm:text-base">
             {t.education.subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Degree Card */}
-        <div className="mb-10">
+        <ScrollReveal delay={0.1} className="mb-10">
           <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
@@ -64,70 +65,75 @@ export default function EducationSection() {
               <span>{t.education.degree.conferred}</span>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Certifications Grid: 2 columns on mobile, 3 columns on large screens */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-8">
-          {visibleCerts.map((cert) => (
-            <div
+          {visibleCerts.map((cert, idx) => (
+            <ScrollReveal
               key={cert.id}
-              className="glow-card p-3 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm flex flex-col justify-between"
+              delay={(idx % 3) * 0.08}
+              className="h-full"
             >
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-2 sm:mb-4">
-                  <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-[#064E3B]/80 truncate">
-                    {cert.type}
-                  </span>
-                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F8E7C9]/60 text-[#064E3B] text-[9px] sm:text-xs font-bold border border-[#064E3B]/15 self-start sm:self-auto">
-                    {cert.period}
-                  </span>
+              <div
+                className="glow-card p-3 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm flex flex-col justify-between h-full"
+              >
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-2 sm:mb-4">
+                    <span className="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-[#064E3B]/80 truncate">
+                      {cert.type}
+                    </span>
+                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F8E7C9]/60 text-[#064E3B] text-[9px] sm:text-xs font-bold border border-[#064E3B]/15 self-start sm:self-auto">
+                      {cert.period}
+                    </span>
+                  </div>
+
+                  {/* Certificate Image */}
+                  <div
+                    onClick={() => setPreviewCert(cert)}
+                    className="w-full h-24 sm:h-44 md:h-48 mb-2.5 sm:mb-5 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 overflow-hidden cursor-pointer flex items-center justify-center p-1 sm:p-2 group hover:border-[#064E3B]/35 transition-all"
+                  >
+                    <img
+                      src={cert.imageUrl}
+                      alt={cert.title}
+                      loading="lazy"
+                      className="w-full h-full object-contain rounded-lg sm:rounded-xl group-hover:scale-[1.03] transition-transform duration-300"
+                    />
+                  </div>
+
+                  <h3 className="font-heading text-xs sm:text-base md:text-lg font-bold text-[#064E3B] leading-snug line-clamp-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-[10px] sm:text-sm font-semibold text-[#064E3B] mt-0.5 sm:mt-1 truncate">
+                    {cert.issuer}
+                  </p>
+                  <p className="mt-1.5 sm:mt-3 text-[10px] sm:text-xs md:text-sm text-[#064E3B]/80 leading-relaxed line-clamp-2 sm:line-clamp-none">
+                    {cert.description}
+                  </p>
                 </div>
 
-                {/* Certificate Image */}
-                <div
-                  onClick={() => setPreviewCert(cert)}
-                  className="w-full h-24 sm:h-44 md:h-48 mb-2.5 sm:mb-5 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 overflow-hidden cursor-pointer flex items-center justify-center p-1 sm:p-2 group hover:border-[#064E3B]/35 transition-all"
-                >
-                  <img
-                    src={cert.imageUrl}
-                    alt={cert.title}
-                    loading="lazy"
-                    className="w-full h-full object-contain rounded-lg sm:rounded-xl group-hover:scale-[1.03] transition-transform duration-300"
-                  />
+                <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-[#064E3B]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5 sm:gap-2 text-xs">
+                  <span className="font-semibold text-[#064E3B] flex items-center gap-1 text-[9px] sm:text-xs">
+                    <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#064E3B]"></span>
+                    <span className="truncate">{cert.verified}</span>
+                  </span>
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-[9px] sm:text-xs transition-all shadow-xs cursor-pointer w-full sm:w-auto text-center"
+                  >
+                    {t.education.verifyBtn}
+                  </a>
                 </div>
-
-                <h3 className="font-heading text-xs sm:text-base md:text-lg font-bold text-[#064E3B] leading-snug line-clamp-2">
-                  {cert.title}
-                </h3>
-                <p className="text-[10px] sm:text-sm font-semibold text-[#064E3B] mt-0.5 sm:mt-1 truncate">
-                  {cert.issuer}
-                </p>
-                <p className="mt-1.5 sm:mt-3 text-[10px] sm:text-xs md:text-sm text-[#064E3B]/80 leading-relaxed line-clamp-2 sm:line-clamp-none">
-                  {cert.description}
-                </p>
               </div>
-
-              <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-[#064E3B]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5 sm:gap-2 text-xs">
-                <span className="font-semibold text-[#064E3B] flex items-center gap-1 text-[9px] sm:text-xs">
-                  <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#064E3B]"></span>
-                  <span className="truncate">{cert.verified}</span>
-                </span>
-                <a
-                  href={cert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-[9px] sm:text-xs transition-all shadow-xs cursor-pointer w-full sm:w-auto text-center"
-                >
-                  {t.education.verifyBtn}
-                </a>
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Show More / Show Less Button */}
         {t.education.certificationsList.length > 3 && (
-          <div className="flex justify-center mb-12">
+          <ScrollReveal delay={0.1} className="flex justify-center mb-12">
             <button
               type="button"
               onClick={() => setShowAll(!showAll)}
@@ -146,11 +152,11 @@ export default function EducationSection() {
                 ↓
               </span>
             </button>
-          </div>
+          </ScrollReveal>
         )}
 
         {/* Languages Banner */}
-        <div className="rounded-2xl bg-white/50 backdrop-blur-xl border border-white/60 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <ScrollReveal delay={0.1} className="rounded-2xl bg-white/50 backdrop-blur-xl border border-white/60 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h4 className="font-heading text-sm font-bold text-[#064E3B]">
               {t.education.languages.title}
@@ -171,7 +177,7 @@ export default function EducationSection() {
               </span>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Certificate Lightbox Modal */}
         {previewCert && (

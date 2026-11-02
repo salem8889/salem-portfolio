@@ -31,6 +31,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export interface SkillItem {
   name: string;
@@ -320,7 +321,7 @@ export default function SkillsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 text-start">
+        <ScrollReveal className="max-w-3xl mb-12 text-start">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F8E7C9]/60 border border-[#064E3B]/15 text-[#064E3B] text-xs font-heading font-bold mb-3 shadow-xs">
             <Code2 className="w-3.5 h-3.5 text-[#064E3B]" />
             <span>{t.skills.tag}</span>
@@ -331,11 +332,11 @@ export default function SkillsSection() {
           <p className="mt-2 text-sm sm:text-base text-[#064E3B]/80 font-normal">
             {t.skills.subtitle}
           </p>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Moving Square Tiles Ribbons (Transparent Boxes Marquee) */}
-      <div className="relative w-full overflow-hidden space-y-4 py-2" dir="ltr">
+      <ScrollReveal delay={0.1} className="relative w-full overflow-hidden space-y-4 py-2" dir="ltr">
         {/* Soft edge gradient masks */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-[#FAF4EA] to-transparent z-20" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-[#FAF4EA] to-transparent z-20" />
@@ -381,52 +382,57 @@ export default function SkillsSection() {
             ))}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Category Breakdown Cards (Matching the reference layout) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categoryCards.map((cat) => {
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-10 sm:mt-14 relative z-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          {categoryCards.map((cat, idx) => {
             const CatIcon = cat.icon;
             return (
-              <div
+              <ScrollReveal
                 key={cat.code}
-                className="glow-card p-6 sm:p-7 rounded-3xl shadow-xs transition-all duration-300 flex flex-col justify-between group"
+                delay={idx * 0.08}
+                className="h-full"
               >
-                <div>
-                  {/* Top code pill + icon */}
-                  <div className="flex items-center justify-between gap-2 pb-4 mb-3 border-b border-[#064E3B]/10">
-                    <span className="font-mono text-[11px] font-bold tracking-wider text-[#064E3B] px-2.5 py-1 rounded-md bg-[#F8E7C9]/60 border border-[#064E3B]/12">
-                      {cat.code}
-                    </span>
-                    <div className="w-7 h-7 rounded-lg bg-[#F8E7C9]/40 border border-[#064E3B]/10 flex items-center justify-center text-[#064E3B] group-hover:scale-110 transition-transform">
-                      <CatIcon className="w-4 h-4" />
+                <div
+                  className="glow-card p-3 sm:p-6 md:p-7 rounded-2xl sm:rounded-3xl shadow-xs transition-all duration-300 flex flex-col justify-between group h-full"
+                >
+                  <div>
+                    {/* Top code pill + icon */}
+                    <div className="flex items-center justify-between gap-1 sm:gap-2 pb-2.5 sm:pb-4 mb-2 sm:mb-3 border-b border-[#064E3B]/10">
+                      <span className="font-mono text-[9px] sm:text-[11px] font-bold tracking-wider text-[#064E3B] px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-[#F8E7C9]/60 border border-[#064E3B]/12">
+                        {cat.code}
+                      </span>
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#F8E7C9]/40 border border-[#064E3B]/10 flex items-center justify-center text-[#064E3B] group-hover:scale-110 transition-transform">
+                        <CatIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </div>
                     </div>
+
+                    {/* Category Title */}
+                    <h3 className="font-heading text-xs sm:text-lg md:text-xl font-extrabold text-[#064E3B] leading-snug mb-2.5 sm:mb-5">
+                      {cat.title}
+                    </h3>
+
+                    {/* Arrow-prefixed skills list */}
+                    <ul className="space-y-1.5 sm:space-y-2.5 text-[10px] sm:text-xs md:text-sm text-[#064E3B]/85 font-medium">
+                      {cat.skills.map((skill) => (
+                        <li
+                          key={skill}
+                          className="flex items-start gap-1.5 sm:gap-2.5 group/item transition-colors"
+                        >
+                          <span className="text-[#064E3B] font-mono font-bold text-[10px] sm:text-xs select-none group-hover/item:translate-x-1 rtl:group-hover/item:-translate-x-1 transition-transform shrink-0 mt-0.5">
+                            &gt;
+                          </span>
+                          <span className="group-hover/item:text-[#064E3B] group-hover/item:font-bold transition-all leading-tight">
+                            {skill}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  {/* Category Title */}
-                  <h3 className="font-heading text-lg sm:text-xl font-extrabold text-[#064E3B] leading-snug mb-5">
-                    {cat.title}
-                  </h3>
-
-                  {/* Arrow-prefixed skills list */}
-                  <ul className="space-y-2.5 text-xs sm:text-sm text-[#064E3B]/85 font-medium">
-                    {cat.skills.map((skill) => (
-                      <li
-                        key={skill}
-                        className="flex items-start gap-2.5 group/item transition-colors"
-                      >
-                        <span className="text-[#064E3B] font-mono font-bold text-xs select-none group-hover/item:translate-x-1 rtl:group-hover/item:-translate-x-1 transition-transform shrink-0 mt-0.5">
-                          &gt;
-                        </span>
-                        <span className="group-hover/item:text-[#064E3B] group-hover/item:font-bold transition-all">
-                          {skill}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

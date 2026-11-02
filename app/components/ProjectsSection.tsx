@@ -2,11 +2,13 @@
 
 import { useState, MouseEvent } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ProjectsSection() {
   const { t, isRtl } = useLanguage();
   const [activeTab, setActiveTab] = useState<"all" | "web" | "mobile" | "design">("all");
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -22,6 +24,12 @@ export default function ProjectsSection() {
       ? t.projects.items
       : t.projects.items.filter((p) => p.category === activeTab);
 
+  const visibleProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, 3);
+
+  const remainingCount = filteredProjects.length - 3;
+
   const selectedProject = selectedProjectId
     ? t.projects.items.find((p) => p.id === selectedProjectId) || null
     : null;
@@ -30,7 +38,7 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24 relative bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-[#064E3B]/80 font-heading font-bold text-xs tracking-widest uppercase">
             {t.projects.tag}
           </span>
@@ -40,10 +48,10 @@ export default function ProjectsSection() {
           <p className="mt-3 text-[#064E3B]/80 text-sm sm:text-base">
             {t.projects.subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Category Filters */}
-        <div className="flex justify-center items-center gap-2 sm:gap-3 mb-14 flex-wrap">
+        <ScrollReveal delay={0.1} className="flex justify-center items-center gap-2 sm:gap-3 mb-14 flex-wrap">
           {(
             [
               { id: "all", label: t.projects.tabs.all },
@@ -54,7 +62,10 @@ export default function ProjectsSection() {
           ).map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setShowAll(false);
+              }}
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-heading font-bold transition-all cursor-pointer ${
                 activeTab === tab.id
                   ? "bg-[#064E3B] text-[#F8E7C9] shadow-[0_4px_15px_rgba(6,78,59,0.25)] border border-[#064E3B]"
@@ -64,42 +75,56 @@ export default function ProjectsSection() {
               {tab.label}
             </button>
           ))}
-        </div>
+        </ScrollReveal>
 
         {/* Projects Grid: 2 columns on mobile, 2 columns on desktop */}
         <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
-          {filteredProjects.map((project) => (
-            <div
+          {visibleProjects.map((project, idx) => (
+            <ScrollReveal
               key={project.id}
-              onMouseMove={handleMouseMove}
-              onClick={() => setSelectedProjectId(project.id)}
-              className="glow-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer group transition-all"
+              delay={(idx % 2) * 0.08}
+              className="h-full"
             >
+              <div
+                onMouseMove={handleMouseMove}
+                onClick={() => setSelectedProjectId(project.id)}
+                className="glow-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer group transition-all h-full"
+              >
               <div>
-                {/* Visual Header / Image Container */}
-                <div className="w-full h-32 sm:h-52 md:h-60 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 flex flex-col items-center justify-center mb-3 sm:mb-6 relative overflow-hidden group-hover:border-[#064E3B]/30 transition-all">
+                {/* Category & Action Header (Cleanly separated from the image) */}
+                <div className="flex items-center justify-between gap-1.5 mb-2 sm:mb-3">
+                  <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-[#F8E7C9]/80 text-[#064E3B] text-[9px] sm:text-[11px] font-bold border border-[#064E3B]/15">
+                    {project.categoryLabel}
+                  </span>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-[9px] sm:text-xs text-[#064E3B] font-bold hover:underline flex items-center gap-0.5"
+                    >
+                      <span>
+                        {project.category === "design"
+                          ? "Figma ↗"
+                          : isRtl
+                          ? "موقع ↗"
+                          : "Live ↗"}
+                      </span>
+                    </a>
+                  )}
+                </div>
+
+                {/* Visual Header / Image Container - 100% Clean & Unobstructed */}
+                <div className="w-full h-28 sm:h-48 md:h-56 rounded-xl sm:rounded-2xl bg-white/70 backdrop-blur-md border border-white/70 flex items-center justify-center mb-2.5 sm:mb-4 overflow-hidden group-hover:border-[#064E3B]/30 transition-all p-1 sm:p-2">
                   {project.imageUrl ? (
-                    project.imageStyle === "full" ? (
-                      <div className="absolute inset-0 w-full h-full bg-white/30 flex items-center justify-center p-2 sm:p-3">
-                        <img
-                          src={project.imageUrl}
-                          alt={project.title}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 z-0"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent pointer-events-none z-10"></div>
-                      </div>
-                    ) : (
-                      <div className="absolute inset-0 w-full h-full bg-white/30 flex items-center justify-center p-2 sm:p-4">
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent z-10 pointer-events-none"></div>
-                        <img
-                          src={project.imageUrl}
-                          alt={project.title}
-                          className="w-20 h-20 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-xl sm:rounded-2xl border border-white/60 shadow-sm z-0 bg-white/50 backdrop-blur-md group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    )
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-contain rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+                    />
                   ) : (
-                    <div className="absolute inset-0 w-full h-full bg-white/30 flex flex-col items-center justify-center p-3 sm:p-6 text-center">
+                    <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center">
                       <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-[#F8E7C9] border border-[#064E3B]/15 flex items-center justify-center font-heading font-black text-sm sm:text-xl text-[#064E3B] shadow-sm mb-1.5 sm:mb-2">
                         IT
                       </div>
@@ -108,63 +133,6 @@ export default function ProjectsSection() {
                       </span>
                     </div>
                   )}
-
-                  {/* Badge & Category */}
-                  <div className="absolute top-2 end-2 sm:top-3 sm:end-3 flex flex-col items-end gap-1 sm:gap-1.5 z-20">
-                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F8E7C9] backdrop-blur-md text-[#064E3B] text-[9px] sm:text-[11px] font-bold border border-[#064E3B]/15 shadow-xs">
-                      {project.categoryLabel}
-                    </span>
-                    {project.badge && (
-                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-[#064E3B] text-[#F8E7C9] text-[10px] font-bold border border-[#064E3B] shadow-xs">
-                        {project.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Direct Link Badges at Bottom */}
-                  <div className="absolute bottom-2 inset-x-2 sm:bottom-3 sm:inset-x-3 z-20 flex flex-wrap gap-1 sm:gap-2 items-center">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-[9px] sm:text-xs text-[#064E3B] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#F8E7C9] backdrop-blur-md border border-[#064E3B]/20 hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1"
-                      >
-                        <span>
-                          {project.category === "design"
-                            ? isRtl
-                              ? "Figma ↗"
-                              : "Figma ↗"
-                            : isRtl
-                            ? "موقع ↗"
-                            : "Live ↗"}
-                        </span>
-                      </a>
-                    )}
-                    {project.appStoreUrl && (
-                      <a
-                        href={project.appStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-[9px] sm:text-xs text-[#F8E7C9] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#064E3B] hover:bg-[#043629] transition-all shadow-xs flex items-center gap-1"
-                      >
-                        <span>App Store ↗</span>
-                      </a>
-                    )}
-                    {project.googlePlayUrl && (
-                      <a
-                        href={project.googlePlayUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="font-heading text-[9px] sm:text-xs text-[#064E3B] font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-[#F8E7C9] hover:bg-[#064E3B] hover:text-[#F8E7C9] transition-all shadow-xs flex items-center gap-1 border border-[#064E3B]/20"
-                      >
-                        <span>Google Play ↗</span>
-                      </a>
-                    )}
-                  </div>
                 </div>
 
                 {/* Title & Summary */}
@@ -218,8 +186,33 @@ export default function ProjectsSection() {
                 </span>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
+
+        {/* Show More / Show Less Toggle Button (Matching Education/Certifications) */}
+        {filteredProjects.length > 3 && (
+          <ScrollReveal delay={0.1} className="flex justify-center mt-10 sm:mt-12">
+            <button
+              type="button"
+              onClick={() => setShowAll(!showAll)}
+              className="px-7 py-3 rounded-full bg-white/70 backdrop-blur-xl hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs sm:text-sm border border-white/60 shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer"
+            >
+              <span>
+                {showAll
+                  ? t.projects.showLess
+                  : `${t.projects.showMore} (+${remainingCount})`}
+              </span>
+              <span
+                className={`transition-transform duration-200 inline-block ${
+                  showAll ? "rotate-180" : ""
+                }`}
+              >
+                ↓
+              </span>
+            </button>
+          </ScrollReveal>
+        )}
 
         {/* Project Details Modal */}
         {selectedProject && (

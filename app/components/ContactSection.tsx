@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, MouseEvent } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ContactSection() {
   const { t } = useLanguage();
@@ -66,39 +67,39 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 relative bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-14 sm:py-24 relative bg-transparent">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
           <span className="text-[#064E3B]/80 font-heading font-bold text-xs tracking-widest uppercase">
             {t.contact.tag}
           </span>
-          <h2 className="mt-2 font-heading text-3xl sm:text-4xl font-extrabold text-[#064E3B]">
+          <h2 className="mt-1.5 sm:mt-2 font-heading text-2xl sm:text-4xl font-extrabold text-[#064E3B]">
             {t.contact.heading}
           </h2>
-          <p className="mt-3 text-[#064E3B]/80 text-sm sm:text-base">
+          <p className="mt-2 sm:mt-3 text-[#064E3B]/80 text-xs sm:text-base">
             {t.contact.subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Layout: Info & Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12">
           {/* Direct Contact Cards */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm">
-              <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
+          <ScrollReveal delay={0.1} className="lg:col-span-5 space-y-4 sm:space-y-6">
+            <div className="glow-card p-4 sm:p-8 rounded-2xl sm:rounded-3xl shadow-sm">
+              <h3 className="font-heading text-base sm:text-xl font-bold text-[#064E3B] mb-3 sm:mb-6">
                 {t.contact.directTitle}
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-3.5 sm:space-y-6">
                 {/* Email */}
                 <div>
-                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
+                  <span className="text-[10px] sm:text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.emailLabel}
                   </span>
                   <a
                     href="mailto:SALEM_BAABAD@outlook.sa"
-                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors text-sm sm:text-base"
+                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors text-xs sm:text-base"
                   >
                     SALEM_BAABAD@outlook.sa
                   </a>
@@ -106,12 +107,12 @@ export default function ContactSection() {
 
                 {/* Phone */}
                 <div>
-                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
+                  <span className="text-[10px] sm:text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.phoneLabel}
                   </span>
                   <a
                     href="tel:+966509788768"
-                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors block text-sm sm:text-base"
+                    className="font-heading font-bold text-[#064E3B] hover:text-[#043629] transition-colors block text-xs sm:text-base"
                     dir="ltr"
                   >
                     +966 50 978 8768
@@ -120,59 +121,34 @@ export default function ContactSection() {
 
                 {/* Location */}
                 <div>
-                  <span className="text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
+                  <span className="text-[10px] sm:text-xs text-[#064E3B]/70 block uppercase tracking-wider font-bold">
                     {t.contact.locationLabel}
                   </span>
-                  <span className="font-heading font-bold text-[#064E3B] text-sm sm:text-base">
+                  <span className="font-heading font-bold text-[#064E3B] text-xs sm:text-base">
                     {t.contact.locationVal}
                   </span>
                 </div>
               </div>
 
-              {/* Links & Resume download */}
-              <div className="mt-8 pt-6 border-t border-[#064E3B]/10 flex flex-col gap-3">
+              {/* Resume download */}
+              <div className="mt-4 sm:mt-8 pt-3 sm:pt-6 border-t border-[#064E3B]/10">
                 <a
                   href="/SALEM_BAABBAD.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 px-4 rounded-2xl bg-[#F8E7C9]/60 hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs flex items-center justify-between border border-[#064E3B]/15 transition-all cursor-pointer"
+                  className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl bg-[#F8E7C9]/60 hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-[11px] sm:text-xs flex items-center justify-between border border-[#064E3B]/15 transition-all cursor-pointer"
                 >
                   <span>{t.contact.downloadResume}</span>
-                  <span className="text-xs font-mono font-bold">PDF ↗</span>
+                  <span className="text-[11px] sm:text-xs font-mono font-bold">PDF ↗</span>
                 </a>
-
-                <div className="grid grid-cols-3 gap-2.5 pt-1">
-                  <a
-                    href="https://www.linkedin.com/in/salem-baabbad-626592359/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-white/70 backdrop-blur-md hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-white/60 shadow-xs transition-all cursor-pointer"
-                  >
-                    LinkedIn ↗
-                  </a>
-                  <a
-                    href="https://github.com/salem8889"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-white/70 backdrop-blur-md hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-white/60 shadow-xs transition-all cursor-pointer"
-                  >
-                    GitHub ↗
-                  </a>
-                  <a
-                    href="mailto:SALEM_BAABAD@outlook.sa"
-                    className="py-2.5 px-3 rounded-xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-bold text-xs text-center shadow-xs transition-all cursor-pointer"
-                  >
-                    {t.contact.directEmailBtn}
-                  </a>
-                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Contact Message Form */}
-          <div className="lg:col-span-7">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm">
-              <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
+          <ScrollReveal delay={0.2} className="lg:col-span-7">
+            <div className="glow-card p-4 sm:p-8 rounded-2xl sm:rounded-3xl shadow-sm">
+              <h3 className="font-heading text-base sm:text-xl font-bold text-[#064E3B] mb-3 sm:mb-6">
                 {t.contact.formTitle}
               </h3>
 
@@ -198,7 +174,7 @@ export default function ContactSection() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
                   {status === "error" && (
                     <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 text-sm space-y-2">
                       <p className="font-bold text-rose-800 dark:text-rose-300">
@@ -270,7 +246,7 @@ export default function ContactSection() {
                   <div className="floating-group">
                     <textarea
                       id="message"
-                      rows={4}
+                      rows={3}
                       required
                       placeholder=" "
                       value={formData.message}
@@ -287,7 +263,7 @@ export default function ContactSection() {
                     type="submit"
                     disabled={status === "loading"}
                     onClick={status === "loading" ? undefined : handleRipple}
-                    className="relative overflow-hidden w-full py-4 rounded-2xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-extrabold text-sm border border-[#064E3B] shadow-[0_4px_20px_rgba(6,78,59,0.25)] hover:shadow-[0_8px_25px_rgba(6,78,59,0.35)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 cursor-pointer"
+                    className="relative overflow-hidden w-full py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#064E3B] hover:bg-[#043629] text-[#F8E7C9] font-heading font-extrabold text-xs sm:text-sm border border-[#064E3B] shadow-[0_4px_20px_rgba(6,78,59,0.25)] hover:shadow-[0_8px_25px_rgba(6,78,59,0.35)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {status === "loading" ? (
                       <>
@@ -315,7 +291,7 @@ export default function ContactSection() {
                 </form>
               )}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

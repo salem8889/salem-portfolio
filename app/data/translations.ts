@@ -91,6 +91,8 @@ export interface TranslationDictionary {
     visitLive: string;
     appStore: string;
     googlePlay: string;
+    showMore: string;
+    showLess: string;
     items: {
       id: number;
       title: string;
@@ -340,6 +342,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       visitLive: "Visit Live Website",
       appStore: "App Store",
       googlePlay: "Google Play",
+      showMore: "View More Projects",
+      showLess: "View Less Projects",
       items: [
         {
           id: 1,
@@ -392,6 +396,26 @@ export const translations: Record<Language, TranslationDictionary> = {
         },
         {
           id: 3,
+          title: "Malath Gold & Jewelry Platform",
+          category: "web",
+          categoryLabel: "Production E-Commerce Platform",
+          badge: "Live Production Platform",
+          summary: "Official e-commerce platform for fine gold bullions and jewelry with live market pricing in Riyadh.",
+          description:
+            "A comprehensive web and e-commerce platform developed for Al-Malath Gold and Jewelry Company in Riyadh. The platform enables investors and retail clients to browse and purchase certified 24-karat gold bullions (999.9 purity), track real-time global gold prices, and enjoy seamless, secure express shipping across Saudi Arabia.",
+          bullets: [
+            "Engineered a high-performance web platform for showcasing and trading certified 24K gold bullions and jewelry.",
+            "Integrated live precious metals market feeds for accurate, real-time gold price updates.",
+            "Designed an intuitive and secure purchasing journey optimized for both mobile and desktop users.",
+            "Implemented clean, responsive modern UI with Arabic RTL typography and seamless navigation.",
+          ],
+          tags: ["Next.js", "TypeScript", "REST APIs", "Tailwind CSS", "E-Commerce", "UI/UX Design", "RTL / Arabic Support"],
+          imageUrl: "/mlath-gold.jpg",
+          imageStyle: "full",
+          liveUrl: "https://mlathgold.com",
+        },
+        {
+          id: 4,
           title: "Emaar App UI/UX Case Study",
           category: "design",
           categoryLabel: "Figma Interactive Prototype",
@@ -411,7 +435,7 @@ export const translations: Record<Language, TranslationDictionary> = {
           liveUrl: "https://www.figma.com/design/pIJjE8wN3wRGT71f0rWSuz/Emaar-App?node-id=0-1&t=zxxVwlgOVdcmavZk-1",
         },
         {
-          id: 4,
+          id: 5,
           title: "Rayyan IT Portal (Graduation Project)",
           category: "web",
           categoryLabel: "Academic Graduation Project",
@@ -673,7 +697,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     footer: {
       name: "SALEM BA ABBAD",
       role: "Full-Stack Developer | iOS & Android App Developer | UI/UX",
-      rights: "All rights reserved.",
+      rights: "All rights reserved",
       backToTop: "Back to Top",
     },
     preloader: {
@@ -794,6 +818,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       visitLive: "زيارة الموقع الحي",
       appStore: "App Store",
       googlePlay: "Google Play",
+      showMore: "رؤية المزيد من الأعمال",
+      showLess: "عرض أعمال أقل",
       items: [
         {
           id: 1,
@@ -846,6 +872,26 @@ export const translations: Record<Language, TranslationDictionary> = {
         },
         {
           id: 3,
+          title: "موقع الملاذ للذهب والمجوهرات",
+          category: "web",
+          categoryLabel: "منصة تجارة إلكترونية حية",
+          badge: "منصة حية في الإنتاج الفعلي",
+          summary: "منصة ويب رسمية لتجارة سبائك الذهب الخالص عيار 24 والمجوهرات مع تتبع مباشر لأسعار السوق بالرياض.",
+          description:
+            "منصة ويب وتجارة إلكترونية متكاملة لشركة الملاذ للذهب والمجوهرات في الرياض. تتيح للمستثمرين والعملاء شراء سبائك الذهب المعتمدة عيار 24 بنقاء (999.9) بمختلف الأوزان، ومتابعة أسعار الذهب لحظياً بناءً على حركة السوق العالمي، مع خدمة التوصيل الآمن إلى جميع مناطق المملكة.",
+          bullets: [
+            "تطوير منصة ويب تفاعلية وسريعة الاستجابة لعرض وبيع سبائك الذهب الخالص والمجوهرات بدقة عالية.",
+            "ربط وتكامل بيانات أسعار الذهب اللحظية لتحديث الأسعار تلقائياً وفقاً للمؤشرات العالمية والمحلية.",
+            "توفير تجربة تسوق وشراء آمنة وسلسة للمستثمرين والعملاء مع خدمات التوصيل والشحن المعتمد.",
+            "تصميم واجهات وتجربة مستخدم (UI/UX) عصرية متوافقة تماماً مع الأجهزة الذكية وتدعم الاتجاه العربي بالكامل.",
+          ],
+          tags: ["Next.js", "TypeScript", "REST APIs", "Tailwind CSS", "تجارة إلكترونية", "UI/UX Design", "RTL / Arabic Support"],
+          imageUrl: "/mlath-gold.jpg",
+          imageStyle: "full",
+          liveUrl: "https://mlathgold.com",
+        },
+        {
+          id: 4,
           title: "دراسة حالة تطبيق إعمار UI/UX",
           category: "design",
           categoryLabel: "نموذج تفاعلي على Figma",
@@ -865,7 +911,7 @@ export const translations: Record<Language, TranslationDictionary> = {
           liveUrl: "https://www.figma.com/design/pIJjE8wN3wRGT71f0rWSuz/Emaar-App?node-id=0-1&t=zxxVwlgOVdcmavZk-1",
         },
         {
-          id: 4,
+          id: 5,
           title: "بوابة تقنية المعلومات (مشروع التخرج)",
           category: "web",
           categoryLabel: "مشروع تخرج جامعي",
@@ -1127,7 +1173,7 @@ export const translations: Record<Language, TranslationDictionary> = {
     footer: {
       name: "سالم باعباد",
       role: "مطور Full-Stack | مطور تطبيقات iOS و Android | مصمم UI/UX",
-      rights: "جميع الحقوق محفوظة.",
+      rights: "جميع الحقوق محفوظة",
       backToTop: "العودة للأعلى",
     },
     preloader: {

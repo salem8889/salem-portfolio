@@ -39,6 +39,10 @@
   -webkit-font-feature-settings: "locl" 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-main);
   background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
@@ -186,7 +190,7 @@ h6,
 
 .floating-input {
   width: 100%;
-  padding: 1.1rem 1rem 0.5rem 1rem;
+  padding: 0.9rem 0.85rem 0.45rem 0.85rem;
   background-color: rgba(255, 255, 255, 0.6) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
@@ -194,9 +198,16 @@ h6,
   border-radius: 0.75rem;
   color: #064e3b;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   transition: all 0.25s ease;
   box-shadow: 0 1px 3px rgba(6, 78, 59, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
+}
+
+@media (min-width: 640px) {
+  .floating-input {
+    padding: 1.1rem 1rem 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 .floating-input:focus {
@@ -207,18 +218,31 @@ h6,
 
 .floating-label {
   position: absolute;
-  inset-inline-start: 1rem;
+  inset-inline-start: 0.85rem;
   top: 50%;
   transform: translateY(-50%);
   color: #146951;
   pointer-events: none;
   transition: all 0.25s ease;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .floating-label {
+    inset-inline-start: 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 .floating-textarea~.floating-label {
-  top: 1.25rem;
+  top: 1rem;
   transform: none;
+}
+
+@media (min-width: 640px) {
+  .floating-textarea~.floating-label {
+    top: 1.25rem;
+  }
 }
 
 .floating-input:focus~.floating-label,

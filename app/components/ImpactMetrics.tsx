@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ImpactMetrics() {
   const { t } = useLanguage();
@@ -77,7 +78,7 @@ export default function ImpactMetrics() {
 
   return (
     <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div className="rounded-3xl bg-[#F8E7C9]/35 border border-[#064E3B]/12 p-6 sm:p-8 shadow-xs">
+      <ScrollReveal className="rounded-3xl bg-[#F8E7C9]/35 border border-[#064E3B]/12 p-6 sm:p-8 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#064E3B]/10">
           <div>
             <span className="text-xs uppercase tracking-widest text-[#064E3B]/80 font-bold font-heading">
@@ -114,7 +115,7 @@ export default function ImpactMetrics() {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }
