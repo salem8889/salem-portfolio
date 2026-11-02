@@ -349,7 +349,7 @@ export default function SkillsSection() {
             {loop1.map((item, idx) => (
               <div
                 key={`r1-${item.name}-${idx}`}
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#FFFDF9]/40 hover:bg-[#FFFDF9]/85 backdrop-blur-md border border-[#064E3B]/15 hover:border-[#064E3B]/40 flex items-center justify-center p-2.5 shadow-[0_2px_8px_rgba(6,78,59,0.03)] hover:shadow-[0_8px_20px_rgba(6,78,59,0.12)] hover:scale-110 transition-all duration-300 cursor-pointer group relative shrink-0"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/50 hover:bg-white/85 backdrop-blur-md border border-white/60 hover:border-[#064E3B]/30 flex items-center justify-center p-2.5 shadow-[0_2px_8px_rgba(6,78,59,0.03)] hover:shadow-[0_8px_20px_rgba(6,78,59,0.12)] hover:scale-110 transition-all duration-300 cursor-pointer group relative shrink-0"
               >
                 <TechIcon name={item.name} className="w-7 h-7 sm:w-8 sm:h-8" />
                 {/* Floating tooltip */}
@@ -370,7 +370,7 @@ export default function SkillsSection() {
             {loop2.map((item, idx) => (
               <div
                 key={`r2-${item.name}-${idx}`}
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#FFFDF9]/40 hover:bg-[#FFFDF9]/85 backdrop-blur-md border border-[#064E3B]/15 hover:border-[#064E3B]/40 flex items-center justify-center p-2.5 shadow-[0_2px_8px_rgba(6,78,59,0.03)] hover:shadow-[0_8px_20px_rgba(6,78,59,0.12)] hover:scale-110 transition-all duration-300 cursor-pointer group relative shrink-0"
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/50 hover:bg-white/85 backdrop-blur-md border border-white/60 hover:border-[#064E3B]/30 flex items-center justify-center p-2.5 shadow-[0_2px_8px_rgba(6,78,59,0.03)] hover:shadow-[0_8px_20px_rgba(6,78,59,0.12)] hover:scale-110 transition-all duration-300 cursor-pointer group relative shrink-0"
               >
                 <TechIcon name={item.name} className="w-7 h-7 sm:w-8 sm:h-8" />
                 {/* Floating tooltip */}
@@ -391,7 +391,7 @@ export default function SkillsSection() {
             return (
               <div
                 key={cat.code}
-                className="glow-card p-6 sm:p-7 rounded-3xl bg-[#FFFDF9]/60 hover:bg-[#FFFDF9]/90 backdrop-blur-md border border-[#064E3B]/15 hover:border-[#064E3B]/35 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                className="glow-card p-6 sm:p-7 rounded-3xl shadow-xs transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Top code pill + icon */}

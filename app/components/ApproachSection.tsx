@@ -26,7 +26,7 @@ export default function ApproachSection() {
           {t.approach.principles.map((p) => (
             <div
               key={p.number}
-              className="glow-card p-6 sm:p-8 rounded-3xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-sm flex flex-col justify-between"
+              className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

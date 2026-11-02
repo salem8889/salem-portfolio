@@ -23,7 +23,7 @@ export default function ExperienceSection() {
 
         {/* Experience Card */}
         <div className="space-y-6">
-          <div className="glow-card p-6 sm:p-8 rounded-3xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-sm">
+          <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[#064E3B]/10">
               <div>
                 <div className="flex items-center gap-2.5 flex-wrap">

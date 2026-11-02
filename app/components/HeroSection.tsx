@@ -1,9 +1,34 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function HeroSection() {
   const { t } = useLanguage();
+  const [displayedGreeting, setDisplayedGreeting] = useState("");
+  const [isTypingDone, setIsTypingDone] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    const textToType = t.hero.greeting;
+    setDisplayedGreeting("");
+    setIsTypingDone(false);
+
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        index++;
+        setDisplayedGreeting(textToType.slice(0, index));
+        if (index >= textToType.length) {
+          setIsTypingDone(true);
+          clearInterval(interval);
+        }
+      }, 70);
+
+      return () => clearInterval(interval);
+    }, 250);
+
+    return () => clearTimeout(timeout);
+  }, [t.hero.greeting]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -26,7 +51,28 @@ export default function HeroSection() {
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
         {/* Identity & Headline */}
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col items-center">
+          {/* Typewriter Greeting: Large, free-standing, no box */}
+          <div className="min-h-[2.5rem] flex items-center justify-center gap-2 mb-2 select-none">
+            <span className="font-heading font-extrabold text-xl sm:text-2xl md:text-3xl text-[#064E3B] tracking-normal">
+              {displayedGreeting}
+            </span>
+            {!isTypingDone && (
+              <span className="inline-block w-0.5 h-6 sm:h-7 bg-[#064E3B] animate-pulse" />
+            )}
+            <span
+              className={`text-xl sm:text-2xl transition-all duration-500 transform ${
+                isTypingDone
+                  ? "opacity-100 scale-100 animate-wave"
+                  : "opacity-0 scale-75"
+              }`}
+              role="img"
+              aria-label="Waving hand"
+            >
+              👋
+            </span>
+          </div>
+
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-[#064E3B] leading-[1.25] tracking-tight rtl:tracking-normal max-w-4xl">
             {t.hero.titleMain}{" "}
             <span className="text-[#064E3B]">
@@ -59,7 +105,7 @@ export default function HeroSection() {
           </a>
           <button
             onClick={() => scrollTo("contact")}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#FFFDF9] hover:bg-[#F8E7C9]/50 backdrop-blur-md text-[#064E3B] font-heading font-bold text-sm border border-[#064E3B]/15 hover:border-[#064E3B]/35 transition-all transform hover:-translate-y-0.5 shadow-xs cursor-pointer"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/70 hover:bg-[#F8E7C9]/50 backdrop-blur-xl text-[#064E3B] font-heading font-bold text-sm border border-white/60 hover:border-[#064E3B]/35 transition-all transform hover:-translate-y-0.5 shadow-xs cursor-pointer"
           >
             {t.hero.getInTouch}
           </button>

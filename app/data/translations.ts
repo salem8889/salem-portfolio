@@ -20,6 +20,7 @@ export interface TranslationDictionary {
     switchLangAria: string;
   };
   hero: {
+    greeting: string;
     statusBadge: string;
     name: string;
     titleMain: string;
@@ -246,6 +247,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       switchLangAria: "Switch language to Arabic",
     },
     hero: {
+      greeting: "Hello, I'm Salem",
       statusBadge: "Available for Full-Stack & Mobile Opportunities",
       name: "SALEM BA ABBAD",
       titleMain: "Full-Stack Developer",
@@ -383,8 +385,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             { value: "200+", label: "Android Registrations" },
           ],
           tags: ["React Native", "Expo", "Supabase", "TypeScript", "REST APIs", "Push Notifications"],
-          imageUrl: "/arabic-coin-app-icon.png",
-          imageStyle: "full",
+          imageUrl: "/arabic-coin-logo.jpg",
+          imageStyle: "logo",
           appStoreUrl: "https://apps.apple.com/sa/app/arabic-coin-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6792820414",
           googlePlayUrl: "https://play.google.com/store/apps/details?id=com.arabpound.metals",
         },
@@ -699,6 +701,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       switchLangAria: "التبديل إلى اللغة الإنجليزية",
     },
     hero: {
+      greeting: "مرحباً، أنا سالم",
       statusBadge: "متاح لفرص تطوير Full-Stack وتطبيقات الجوال",
       name: "سالم باعباد",
       titleMain: "مطور Full-Stack",
@@ -836,8 +839,8 @@ export const translations: Record<Language, TranslationDictionary> = {
             { value: "200+", label: "تسجيلات أجهزة Android" },
           ],
           tags: ["React Native", "Expo", "Supabase", "TypeScript", "REST APIs", "Push Notifications"],
-          imageUrl: "/arabic-coin-app-icon.png",
-          imageStyle: "full",
+          imageUrl: "/arabic-coin-logo.jpg",
+          imageStyle: "logo",
           appStoreUrl: "https://apps.apple.com/sa/app/arabic-coin-%D8%A7%D9%84%D8%AC%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A/id6792820414",
           googlePlayUrl: "https://play.google.com/store/apps/details?id=com.arabpound.metals",
         },

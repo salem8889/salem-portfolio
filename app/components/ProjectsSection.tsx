@@ -58,7 +58,7 @@ export default function ProjectsSection() {
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-heading font-bold transition-all cursor-pointer ${
                 activeTab === tab.id
                   ? "bg-[#064E3B] text-[#F8E7C9] shadow-[0_4px_15px_rgba(6,78,59,0.25)] border border-[#064E3B]"
-                  : "bg-[#FFFDF9] text-[#064E3B] border border-[#064E3B]/15 hover:bg-[#F8E7C9] shadow-xs"
+                  : "bg-white text-[#064E3B] border border-[#064E3B]/15 hover:bg-[#F8E7C9] shadow-xs"
               }`}
             >
               {tab.label}
@@ -73,33 +73,33 @@ export default function ProjectsSection() {
               key={project.id}
               onMouseMove={handleMouseMove}
               onClick={() => setSelectedProjectId(project.id)}
-              className="glow-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer group bg-[#FFFDF9] border border-[#064E3B]/15 hover:border-[#064E3B]/40 transition-all shadow-sm"
+              className="glow-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer group transition-all"
             >
               <div>
                 {/* Visual Header / Image Container */}
-                <div className="w-full h-32 sm:h-52 md:h-60 rounded-xl sm:rounded-2xl bg-[#FAF4EA] border border-[#064E3B]/12 flex flex-col items-center justify-center mb-3 sm:mb-6 relative overflow-hidden group-hover:border-[#064E3B]/30 transition-all">
+                <div className="w-full h-32 sm:h-52 md:h-60 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 flex flex-col items-center justify-center mb-3 sm:mb-6 relative overflow-hidden group-hover:border-[#064E3B]/30 transition-all">
                   {project.imageUrl ? (
                     project.imageStyle === "full" ? (
-                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-2 sm:p-3">
+                      <div className="absolute inset-0 w-full h-full bg-white/30 flex items-center justify-center p-2 sm:p-3">
                         <img
                           src={project.imageUrl}
                           alt={project.title}
                           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 z-0"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9]/70 via-transparent to-transparent pointer-events-none z-10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent pointer-events-none z-10"></div>
                       </div>
                     ) : (
-                      <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex items-center justify-center p-2 sm:p-4">
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF9]/80 via-transparent to-transparent z-10"></div>
+                      <div className="absolute inset-0 w-full h-full bg-white/30 flex items-center justify-center p-2 sm:p-4">
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <img
                           src={project.imageUrl}
                           alt={project.title}
-                          className="w-20 h-20 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-xl sm:rounded-2xl border border-[#064E3B]/15 shadow-md z-0 group-hover:scale-105 transition-transform duration-500"
+                          className="w-20 h-20 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-xl sm:rounded-2xl border border-white/60 shadow-sm z-0 bg-white/50 backdrop-blur-md group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
                     )
                   ) : (
-                    <div className="absolute inset-0 w-full h-full bg-[#FAF4EA] flex flex-col items-center justify-center p-3 sm:p-6 text-center">
+                    <div className="absolute inset-0 w-full h-full bg-white/30 flex flex-col items-center justify-center p-3 sm:p-6 text-center">
                       <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-[#F8E7C9] border border-[#064E3B]/15 flex items-center justify-center font-heading font-black text-sm sm:text-xl text-[#064E3B] shadow-sm mb-1.5 sm:mb-2">
                         IT
                       </div>
@@ -224,7 +224,7 @@ export default function ProjectsSection() {
         {/* Project Details Modal */}
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#043629]/75 backdrop-blur-md animate-fade-in">
-            <div className="relative w-full max-w-2xl bg-[#FFFDF9] border border-[#064E3B]/20 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div className="relative w-full max-w-2xl bg-white/90 backdrop-blur-2xl border border-white/70 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
               <button
                 onClick={() => setSelectedProjectId(null)}
                 aria-label={t.projects.closeBtn}
@@ -239,7 +239,7 @@ export default function ProjectsSection() {
                   <img
                     src={selectedProject.imageUrl}
                     alt={selectedProject.title}
-                    className="w-16 h-16 rounded-2xl border border-[#064E3B]/15 object-contain p-1 bg-[#FAF4EA] shadow-xs shrink-0"
+                    className="w-16 h-16 rounded-2xl border border-[#064E3B]/15 object-contain p-1 bg-white shadow-xs shrink-0"
                   />
                 )}
                 <div>

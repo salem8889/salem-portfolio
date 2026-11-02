@@ -38,7 +38,7 @@ export default function EducationSection() {
 
         {/* Degree Card */}
         <div className="mb-10">
-          <div className="glow-card p-6 sm:p-8 rounded-3xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-sm flex flex-col justify-between">
+          <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#064E3B]/80">
@@ -71,7 +71,7 @@ export default function EducationSection() {
           {visibleCerts.map((cert) => (
             <div
               key={cert.id}
-              className="glow-card p-3 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-sm flex flex-col justify-between"
+              className="glow-card p-3 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm flex flex-col justify-between"
             >
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-2 sm:mb-4">
@@ -86,7 +86,7 @@ export default function EducationSection() {
                 {/* Certificate Image */}
                 <div
                   onClick={() => setPreviewCert(cert)}
-                  className="w-full h-24 sm:h-44 md:h-48 mb-2.5 sm:mb-5 rounded-xl sm:rounded-2xl bg-[#FAF4EA] border border-[#064E3B]/12 overflow-hidden cursor-pointer flex items-center justify-center p-1 sm:p-2 group hover:border-[#064E3B]/35 transition-all"
+                  className="w-full h-24 sm:h-44 md:h-48 mb-2.5 sm:mb-5 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-md border border-white/60 overflow-hidden cursor-pointer flex items-center justify-center p-1 sm:p-2 group hover:border-[#064E3B]/35 transition-all"
                 >
                   <img
                     src={cert.imageUrl}
@@ -131,7 +131,7 @@ export default function EducationSection() {
             <button
               type="button"
               onClick={() => setShowAll(!showAll)}
-              className="px-7 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs sm:text-sm border border-[#064E3B]/20 shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer"
+              className="px-7 py-3 rounded-full bg-white/70 backdrop-blur-xl hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs sm:text-sm border border-white/60 shadow-xs transition-all duration-200 flex items-center gap-2 cursor-pointer"
             >
               <span>
                 {showAll
@@ -150,7 +150,7 @@ export default function EducationSection() {
         )}
 
         {/* Languages Banner */}
-        <div className="rounded-2xl bg-[#F8E7C9]/40 border border-[#064E3B]/15 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="rounded-2xl bg-white/50 backdrop-blur-xl border border-white/60 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h4 className="font-heading text-sm font-bold text-[#064E3B]">
               {t.education.languages.title}
@@ -160,12 +160,12 @@ export default function EducationSection() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="px-5 py-2.5 rounded-xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-xs text-center">
+            <div className="px-5 py-2.5 rounded-xl bg-white/70 backdrop-blur-md border border-white/60 shadow-xs text-center">
               <span className="block font-heading text-sm font-bold text-[#064E3B]">
                 {t.education.languages.arabic}
               </span>
             </div>
-            <div className="px-5 py-2.5 rounded-xl bg-[#FFFDF9] border border-[#064E3B]/15 shadow-xs text-center">
+            <div className="px-5 py-2.5 rounded-xl bg-white/70 backdrop-blur-md border border-white/60 shadow-xs text-center">
               <span className="block font-heading text-sm font-bold text-[#064E3B]">
                 {t.education.languages.english}
               </span>
@@ -181,7 +181,7 @@ export default function EducationSection() {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl bg-[#FFFDF9] border border-[#064E3B]/20 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-4xl bg-white/90 backdrop-blur-2xl border border-white/70 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden"
             >
               <div className="flex items-center justify-between gap-4 pb-4 mb-4 border-b border-[#064E3B]/10">
                 <div>

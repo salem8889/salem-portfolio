@@ -87,7 +87,7 @@ export default function ImpactMetrics() {
               {t.metrics.title}
             </h3>
           </div>
-          <span className="text-xs text-[#064E3B] bg-[#FFFDF9] px-3.5 py-1 rounded-full border border-[#064E3B]/15 self-start md:self-auto font-semibold">
+          <span className="text-xs text-[#064E3B] bg-white/70 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/60 self-start md:self-auto font-semibold">
             {t.metrics.badge}
           </span>
         </div>
@@ -96,7 +96,7 @@ export default function ImpactMetrics() {
           {metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="glow-card p-5 rounded-2xl bg-[#FFFDF9] border border-[#064E3B]/12 text-center shadow-xs hover:border-[#064E3B]/35 transition-all"
+              className="glow-card p-5 rounded-2xl text-center shadow-xs transition-all"
             >
               <div
                 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-[#064E3B]"

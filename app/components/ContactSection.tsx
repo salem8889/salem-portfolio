@@ -85,7 +85,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Direct Contact Cards */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#064E3B]/15 bg-[#FFFDF9] shadow-sm">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm">
               <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
                 {t.contact.directTitle}
               </h3>
@@ -146,7 +146,7 @@ export default function ContactSection() {
                     href="https://www.linkedin.com/in/salem-baabbad-626592359/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-[#FFFDF9] hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-[#064E3B]/15 shadow-xs transition-all cursor-pointer"
+                    className="py-2.5 px-3 rounded-xl bg-white/70 backdrop-blur-md hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-white/60 shadow-xs transition-all cursor-pointer"
                   >
                     LinkedIn ↗
                   </a>
@@ -154,7 +154,7 @@ export default function ContactSection() {
                     href="https://github.com/salem8889"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-[#FFFDF9] hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-[#064E3B]/15 shadow-xs transition-all cursor-pointer"
+                    className="py-2.5 px-3 rounded-xl bg-white/70 backdrop-blur-md hover:bg-[#F8E7C9] text-[#064E3B] font-heading font-bold text-xs text-center border border-white/60 shadow-xs transition-all cursor-pointer"
                   >
                     GitHub ↗
                   </a>
@@ -171,7 +171,7 @@ export default function ContactSection() {
 
           {/* Contact Message Form */}
           <div className="lg:col-span-7">
-            <div className="glow-card p-6 sm:p-8 rounded-3xl border border-[#064E3B]/15 bg-[#FFFDF9] shadow-sm">
+            <div className="glow-card p-6 sm:p-8 rounded-3xl shadow-sm">
               <h3 className="font-heading text-xl font-bold text-[#064E3B] mb-6">
                 {t.contact.formTitle}
               </h3>

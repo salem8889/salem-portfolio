@@ -22,8 +22,8 @@
 
 :root {
   --bg-main: #faf4ea;
-  --bg-card: #fffdf9;
-  --bg-card-hover: #f8e7c9;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.85);
   --accent-white: #064e3b;
   --accent-silver: #146951;
   --text-light: #064e3b;
@@ -144,8 +144,19 @@ h6,
 /* Cursor Following Mouse Glow on Cards */
 .glow-card {
   position: relative;
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 8px 32px rgba(6, 78, 59, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+.glow-card:hover {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(6, 78, 59, 0.25) !important;
+  box-shadow: 0 12px 36px rgba(6, 78, 59, 0.09), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
 }
 
 .glow-card::before {
@@ -176,20 +187,22 @@ h6,
 .floating-input {
   width: 100%;
   padding: 1.1rem 1rem 0.5rem 1rem;
-  background-color: #ffffff !important;
-  border: 1.5px solid rgba(6, 78, 59, 0.18);
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1.5px solid rgba(6, 78, 59, 0.15) !important;
   border-radius: 0.75rem;
   color: #064e3b;
   outline: none;
   font-size: 0.95rem;
   transition: all 0.25s ease;
-  box-shadow: 0 1px 3px rgba(6, 78, 59, 0.05);
+  box-shadow: 0 1px 3px rgba(6, 78, 59, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
 }
 
 .floating-input:focus {
-  border-color: #064e3b;
-  box-shadow: 0 0 0 3px rgba(6, 78, 59, 0.12);
-  background-color: #ffffff !important;
+  border-color: #064e3b !important;
+  box-shadow: 0 0 0 3px rgba(6, 78, 59, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.88) !important;
 }
 
 .floating-label {
@@ -223,6 +236,30 @@ h6,
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(6, 78, 59, 0.12);
+}
+
+@keyframes wave {
+  0%, 60%, 100% {
+    transform: rotate(0deg);
+  }
+  10%, 30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.5s ease-in-out infinite;
 }
 
 /* Infinite Marquee Animations for Skills */

@@ -29,9 +29,9 @@ export default function AboutSection() {
               <div className="absolute -inset-2 bg-gradient-to-b from-[#F8E7C9] via-[#064E3B]/10 to-[#F8E7C9]/40 rounded-[32px] blur-2xl opacity-50 group-hover:opacity-75 transition duration-500 pointer-events-none" />
 
               {/* Avatar Container Card */}
-              <div className="relative w-full rounded-[28px] bg-white border border-[#064E3B]/15 overflow-hidden p-6 shadow-xl flex flex-col gap-5 transition-all duration-500 hover:shadow-2xl">
+              <div className="glow-card relative w-full rounded-[28px] overflow-hidden p-6 flex flex-col gap-5 transition-all duration-500 hover:shadow-2xl">
                 {/* Photo Container */}
-                <div className="relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-[#064E3B]/12 shadow-sm bg-[#FAF4EA] group">
+                <div className="relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden border border-[#064E3B]/12 shadow-sm bg-[#FAF4EA]/50 group">
                   <Image
                     src="/salem-profile.jpg"
                     alt={t.about.name}
@@ -41,7 +41,7 @@ export default function AboutSection() {
                     priority
                   />
                   {/* Soft gradient bottom fade */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-85 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent opacity-85 pointer-events-none" />
                 </div>
 
                 {/* Name & Title */}
@@ -81,7 +81,7 @@ export default function AboutSection() {
 
             {/* Core Values / Focus Chips */}
             <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <div className="p-4 rounded-2xl bg-white/90 border border-[#064E3B]/12 hover:border-[#064E3B]/30 hover:bg-white transition-all duration-300 shadow-xs flex items-start gap-3">
+              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 hover:border-[#064E3B]/30 hover:bg-white/85 transition-all duration-300 shadow-xs flex items-start gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#064E3B] mt-1.5 shrink-0 shadow-xs"></span>
                 <div>
                   <h4 className="font-heading text-sm font-bold text-[#064E3B]">
@@ -93,7 +93,7 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/90 border border-[#064E3B]/12 hover:border-[#064E3B]/30 hover:bg-white transition-all duration-300 shadow-xs flex items-start gap-3">
+              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 hover:border-[#064E3B]/30 hover:bg-white/85 transition-all duration-300 shadow-xs flex items-start gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#064E3B] mt-1.5 shrink-0 shadow-xs"></span>
                 <div>
                   <h4 className="font-heading text-sm font-bold text-[#064E3B]">
@@ -105,7 +105,7 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/90 border border-[#064E3B]/12 hover:border-[#064E3B]/30 hover:bg-white transition-all duration-300 shadow-xs flex items-start gap-3">
+              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 hover:border-[#064E3B]/30 hover:bg-white/85 transition-all duration-300 shadow-xs flex items-start gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#064E3B] mt-1.5 shrink-0 shadow-xs"></span>
                 <div>
                   <h4 className="font-heading text-sm font-bold text-[#064E3B]">
@@ -117,7 +117,7 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/90 border border-[#064E3B]/12 hover:border-[#064E3B]/30 hover:bg-white transition-all duration-300 shadow-xs flex items-start gap-3">
+              <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 hover:border-[#064E3B]/30 hover:bg-white/85 transition-all duration-300 shadow-xs flex items-start gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#064E3B] mt-1.5 shrink-0 shadow-xs"></span>
                 <div>
                   <h4 className="font-heading text-sm font-bold text-[#064E3B]">
