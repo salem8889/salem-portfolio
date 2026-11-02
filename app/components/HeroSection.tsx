@@ -1,6 +1,5 @@
 "use client";
 
-import HeroCanvas from "./HeroCanvas";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function HeroSection() {
@@ -16,11 +15,8 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#FAF4EA]"
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-transparent"
     >
-      {/* Canvas Particle Background */}
-      <HeroCanvas />
-
       {/* Subtle Ambient Champagne Glow behind Hero */}
       <div
         aria-hidden="true"

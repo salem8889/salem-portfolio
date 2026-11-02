@@ -110,7 +110,17 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-[#FAF4EA] text-[#064E3B] font-sans antialiased selection:bg-[#064E3B]/20 selection:text-[#064E3B] overflow-x-hidden min-h-screen">
+      <body className="bg-[#FAF4EA] text-[#064E3B] font-sans antialiased selection:bg-[#064E3B]/20 selection:text-[#064E3B] overflow-x-hidden min-h-screen relative">
+        {/* Global Vertical Grid Lines Background Layer */}
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+          style={{
+            backgroundImage: "linear-gradient(to right, var(--grid-line) 1px, transparent 1px)",
+            backgroundSize: "52px 100%",
+            backgroundPosition: "center top",
+          }}
+        />
         <ThemeProvider>
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>

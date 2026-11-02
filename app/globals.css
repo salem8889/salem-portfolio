@@ -41,6 +41,9 @@
 
 body {
   background-color: var(--bg-main);
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+  background-size: 52px 100%;
+  background-position: center top;
   color: var(--text-light);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;

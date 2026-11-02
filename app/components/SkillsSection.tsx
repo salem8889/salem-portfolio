@@ -311,7 +311,7 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="py-24 relative bg-[#FAF4EA] overflow-hidden">
+    <section id="skills" className="py-24 relative bg-transparent overflow-hidden">
       {/* Background ambient lighting */}
       <div
         aria-hidden="true"

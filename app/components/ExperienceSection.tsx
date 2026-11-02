@@ -6,7 +6,7 @@ export default function ExperienceSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="experience" className="py-24 relative bg-[#F8E7C9]/25 border-y border-[#064E3B]/10">
+    <section id="experience" className="py-24 relative bg-transparent border-y border-[#064E3B]/10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

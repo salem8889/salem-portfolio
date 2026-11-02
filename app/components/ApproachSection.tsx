@@ -6,7 +6,7 @@ export default function ApproachSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="approach" className="py-24 relative bg-[#F8E7C9]/25 border-y border-[#064E3B]/10">
+    <section id="approach" className="py-24 relative bg-transparent border-y border-[#064E3B]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
